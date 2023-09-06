@@ -1,10 +1,9 @@
 import React, { createContext, useContext, useState, ReactNode } from 'react';
-import {TokenResult, User} from "../network/Api";
-import { LOCAL_STORAGE_ACCESS_TOKEN_KEY } from '../repository/Storage';
+import {User} from "../network/Api";
 
 interface UserContextType {
   user: User | null;
-  login: (tokenResult: TokenResult) => void;
+  login: (user: User) => void;
   logout: () => void;
 }
 
@@ -26,12 +25,8 @@ export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
 	const [user, setUser] = useState<User | null>(null);
 
 	// ログイン状態を設定する関数
-	const login = (tokenResult: TokenResult) => {
-		setUser(tokenResult.user);
-		localStorage.setItem(
-			LOCAL_STORAGE_ACCESS_TOKEN_KEY,
-			tokenResult.token.access_token
-		);
+	const login = (user: User) => {
+		setUser(user);
 	};
 
 	// ログアウト状態を設定する関数

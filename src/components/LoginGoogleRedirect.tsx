@@ -1,8 +1,9 @@
 import React, { useEffect, useRef } from "react";
-import {BACKEND_HOST, TokenResult} from "../network/Api";
+import {API_GOOGLE_REDIRECT_URL, TokenResult} from "../network/Api";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useUser } from '../contexts/UserContext';
+import { LOCAL_STORAGE_ACCESS_TOKEN_KEY } from "../repository/Storage";
 
 function LoginGoogleRedirect() {
 	const navigate = useNavigate();
@@ -19,12 +20,16 @@ function LoginGoogleRedirect() {
 
 			// OAuth2認証コードが存在する場合、バックエンドに送信してアクセストークンを取得
 			axios
-				.get<TokenResult>(BACKEND_HOST + `/auth/google/callback?code=${code}`)
+				.get<TokenResult>(API_GOOGLE_REDIRECT_URL + `?code=${code}`)
 				.then((res) => {
 					console.log("Success Get Token:", res.data);
 
 					if (res.data.token) {
-						login(res.data);
+						login(res.data.user);
+						localStorage.setItem(
+							LOCAL_STORAGE_ACCESS_TOKEN_KEY,
+							res.data.token.access_token
+						);
 						navigate('/');
 					}
 				})
