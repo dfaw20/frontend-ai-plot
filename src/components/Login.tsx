@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {User} from "../types/User";
+import {BACKEND_HOST} from "../network/Api";
 
 function Login() {
 	const [user, setUser] = useState<User|null>(null);
@@ -12,9 +13,11 @@ function Login() {
 
 		if (code) {
 			// OAuth2認証コードが存在する場合、バックエンドに送信してアクセストークンを取得
-			fetch(`/auth/google/callback?code=${code}`)
+			fetch(BACKEND_HOST + `/auth/google/callback?code=${code}`)
 				.then((response) => response.json())
 				.then((data) => {
+                    console.error("Success Get Token:", data);
+
 					if (data.token) {
 						// アクセストークンが正常に取得された場合、ユーザー情報を取得
 						setUser(data.user);
@@ -40,7 +43,7 @@ function Login() {
 		return (
 			<div>
 				<h1>Login with Google</h1>
-				<a href="/auth/google">Login with Google</a>
+				<a href={BACKEND_HOST + "/auth/google"}>Login with Google</a>
 			</div>
 		);
 	}
