@@ -1,13 +1,8 @@
 import React from "react";
-import {User} from "../network/Api";
 import {API_GET_GOOGLE_URL, GoogleOAuthUrlObject} from "../network/Api";
 import axios from "axios";
 
-interface Prop {
-    user: User | null
-}
-
-function Login(props: Prop) {
+function Login() {
 
 	function onClickGoogleLoginButton() {
 		axios.get<GoogleOAuthUrlObject>(API_GET_GOOGLE_URL)
@@ -20,21 +15,9 @@ function Login(props: Prop) {
 			});
 	}
     
-
-	if (!props.user) {
-		// ユーザーがログインしていない場合、OAuth2認証ボタンを表示
-		return (
-			<div>
-				<button onClick={onClickGoogleLoginButton}>Login with Google!</button>
-			</div>
-		);
-	}
-
-	// ユーザーがログインしている場合、ユーザー情報を表示
 	return (
 		<div>
-			<h1>Welcome, {props.user?.display_name}</h1>
-			{/* ここにユーザー情報を表示するコードを追加 */}
+			<button onClick={onClickGoogleLoginButton}>Login with Google!</button>
 		</div>
 	);
 }

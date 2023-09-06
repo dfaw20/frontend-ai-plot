@@ -23,7 +23,7 @@ function App() {
 						<Route path="/mypage" 
 							element={<RouteAuthGuard component={<MyPage />} redirect={"/login"} />}/>
 						<Route path="/login"
-							element={<RouteGuestGuard component={<Login user={null}/>} redirect={"/mypage"} />}
+							element={<RouteGuestGuard component={<Login/>} redirect={"/mypage"} />}
 						/>
 						<Route path="/auth/google/callback"
 							element={<RouteGuestGuard component={<LoginGoogleRedirect />} redirect={"/mypage"} />}

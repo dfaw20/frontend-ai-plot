@@ -6,6 +6,7 @@ function MyPage() {
 
 	function onClickLogout() {
 		logout();
+		
 	}
 
 	return (
