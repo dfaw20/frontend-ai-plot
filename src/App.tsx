@@ -4,19 +4,21 @@ import Login from "./components/Login";
 import LoginGoogleRedirect from "./components/LoginGoogleRedirect";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 import Home from "./components/Home";
+import { UserProvider } from './contexts/UserContext';
+import Header from "./components/Header";
 
 function App() {
 	return (
 		<div className="App">
-			<header className="App-header">
-			</header>
-
 			<BrowserRouter>
-				<Routes>
-					<Route path="/" element={<Home/>}/>
-					<Route path="/login" element={<Login user={null}/>} />
-					<Route path="/auth/google/callback" element={<LoginGoogleRedirect />} />
-				</Routes>
+				<UserProvider>
+					<Header/>
+					<Routes>
+						<Route path="/" element={<Home/>}/>
+						<Route path="/login" element={<Login user={null}/>} />
+						<Route path="/auth/google/callback" element={<LoginGoogleRedirect />} />
+					</Routes>
+				</UserProvider>
 			</BrowserRouter>
 		</div>
 	);

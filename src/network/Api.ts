@@ -7,21 +7,19 @@ export {
 };
 
 export interface GoogleOAuthUrlObject {
-    oauthUrl: string
+    oauth_url: string
 }
 
 export interface Token {
-    accessToken: string
-	tokenType: string
-	refreshToken: string
+    access_token: string
+	token_type: string
+	refresh_token: string
 	expiry: string
 }
 
 export interface User {
-    accessToken: string
-	tokenType: string
-	refreshToken: string
-	expiry: string
+    email: string
+    display_name: string
 }
 
 export interface TokenResult {

@@ -1,5 +1,5 @@
 import React from "react";
-import {User} from "../types/User";
+import {User} from "../network/Api";
 import {API_GET_GOOGLE_URL, GoogleOAuthUrlObject} from "../network/Api";
 import axios from "axios";
 
@@ -33,7 +33,7 @@ function Login(props: Prop) {
 	// ユーザーがログインしている場合、ユーザー情報を表示
 	return (
 		<div>
-			<h1>Welcome, {props.user.displayName}</h1>
+			<h1>Welcome, {props.user?.display_name}</h1>
 			{/* ここにユーザー情報を表示するコードを追加 */}
 		</div>
 	);

@@ -1,13 +1,13 @@
 import React, { useEffect, useRef } from "react";
 import {BACKEND_HOST, TokenResult} from "../network/Api";
 import { useNavigate } from "react-router-dom";
-import { LOCAL_STORAGE_ACCESS_TOKEN_KEY } from "../repository/Storage";
 import axios from "axios";
+import { useUser } from '../contexts/UserContext';
 
 function LoginGoogleRedirect() {
 	const navigate = useNavigate();
-
 	const didLoadRef = useRef(false);
+	const { login } = useUser();
 
 	useEffect(() => {
 		if (didLoadRef.current === false) {
@@ -24,10 +24,7 @@ function LoginGoogleRedirect() {
 					console.log("Success Get Token:", res.data);
 
 					if (res.data.token) {
-						localStorage.setItem(
-							LOCAL_STORAGE_ACCESS_TOKEN_KEY,
-							 res.data.token.accessToken
-							 );
+						login(res.data);
 						navigate('/');
 					}
 				})
