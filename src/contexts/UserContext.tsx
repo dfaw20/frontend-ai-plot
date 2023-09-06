@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 import {User} from "../network/Api";
+import { LOCAL_STORAGE_ACCESS_TOKEN_KEY } from '../repository/Storage';
 
 interface UserContextType {
   user: User | null;
@@ -32,6 +33,7 @@ export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
 	// ログアウト状態を設定する関数
 	const logout = () => {
 		setUser(null);
+		localStorage.removeItem(LOCAL_STORAGE_ACCESS_TOKEN_KEY);
 	};
 
 	return (
