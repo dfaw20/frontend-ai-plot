@@ -5,7 +5,7 @@ import axios from 'axios';
 import { API_USER_INFO_URL, UserResult } from "../network/Api";
 
 function LoginStateRestore() {
-	const {login} = useUser();
+	const {login, logout} = useUser();
 
 	useEffect(() => {
 		const accessToken = localStorage.getItem(LOCAL_STORAGE_ACCESS_TOKEN_KEY);
@@ -19,6 +19,8 @@ function LoginStateRestore() {
 				.then(res => {
 					login(res.data.user);
 				});
+		} else {
+			logout();
 		}
 	}, []);	
 
