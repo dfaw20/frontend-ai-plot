@@ -14,7 +14,7 @@ function App() {
 			<BrowserRouter>
 				<Routes>
 					<Route path="/" element={<Home/>}/>
-					<Route path="/login" element={<Login user={undefined}/>} />
+					<Route path="/login" element={<Login user={null}/>} />
 					<Route path="/auth/google/callback" element={<LoginGoogleRedirect />} />
 				</Routes>
 			</BrowserRouter>

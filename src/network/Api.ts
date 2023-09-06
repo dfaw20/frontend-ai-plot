@@ -6,6 +6,25 @@ export {
 	API_GET_GOOGLE_URL,
 };
 
-export interface GoogleOAuthUrl {
-    oauth_url: string
+export interface GoogleOAuthUrlObject {
+    oauthUrl: string
+}
+
+export interface Token {
+    accessToken: string
+	tokenType: string
+	refreshToken: string
+	expiry: string
+}
+
+export interface User {
+    accessToken: string
+	tokenType: string
+	refreshToken: string
+	expiry: string
+}
+
+export interface TokenResult {
+    token: Token
+    user: User
 }

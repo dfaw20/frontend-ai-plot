@@ -1,16 +1,16 @@
 import React from "react";
 import {User} from "../types/User";
-import {API_GET_GOOGLE_URL, GoogleOAuthUrl} from "../network/Api";
+import {API_GET_GOOGLE_URL, GoogleOAuthUrlObject} from "../network/Api";
 import axios from "axios";
 
 interface Prop {
-    user: User | undefined
+    user: User | null
 }
 
 function Login(props: Prop) {
 
 	function onClickGoogleLoginButton() {
-		axios.get<GoogleOAuthUrl>(API_GET_GOOGLE_URL)
+		axios.get<GoogleOAuthUrlObject>(API_GET_GOOGLE_URL)
 			.then(res => {
 
 				console.log(res.data.oauth_url);
