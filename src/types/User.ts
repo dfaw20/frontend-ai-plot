@@ -1,3 +1,3 @@
-export default interface User {
-    displayName: string
+export interface User {
+    displayName: string;
 }
