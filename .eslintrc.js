@@ -39,14 +39,13 @@ module.exports = {
 			"error",
 			"unix"
 		],
-		"quotes": [
-			"error",
-			"double"
-		],
 		"semi": [
 			"error",
 			"always"
-		]
+		],
+        "@typescript-eslint/no-unused-vars": [
+            "error"
+        ]
 	},
 	settings: {
 		react: {
