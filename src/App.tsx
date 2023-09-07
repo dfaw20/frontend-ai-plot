@@ -1,13 +1,13 @@
 import React from "react";
 import "./App.css";
-import Login from "./components/Login";
-import LoginGoogleRedirect from "./components/LoginGoogleRedirect";
+import Login from "./screens/Login";
+import LoginGoogleRedirect from "./screens/LoginGoogleRedirect";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
-import Home from "./components/Home";
+import Home from "./screens/Home";
 import { UserProvider } from './contexts/UserContext';
 import Header from "./components/Header";
 import LoginStateRestore from "./components/LoginStateRestore";
-import MyPage from "./components/MyPage";
+import MyPage from "./screens/MyPage";
 import { RouteAuthGuard } from "./routes/RouteAuthGuard";
 import { RouteGuestGuard } from "./routes/RouteGuestGuard";
 
