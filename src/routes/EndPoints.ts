@@ -36,7 +36,7 @@ export function pathUserPlots(userID: string): string {
 	return "/u/" + userID + "/plots"
 }
 export function pathUserStories(userID: string): string {
-	return "/u/" + userID + "/plots"
+	return "/u/" + userID + "/stories"
 }
 
 /**
