@@ -11,15 +11,13 @@ function Header() {
 		return <></>;
 	case "LOGIN":
 		return (
-			<header className="App-header">
+			<>
 				<Link to="/mypage">{user?.display_name}</Link>
-			</header>
+			</>
 		);
 	case "LOGOUT":
 		return (
-			<header className="App-header">
-				<Link to="/login">ログイン</Link>
-			</header>
+			<></>
 		);
 	}
 }

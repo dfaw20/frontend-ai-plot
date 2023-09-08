@@ -12,10 +12,11 @@ import { RouteGuardAuth } from "./routes/RouteGuardAuth";
 import { RouteGuardGuestOnly } from "./routes/RouteGuardGuestOnly";
 import CharacterList from "./screens/character/CharacterList";
 import CreateCharacter from "./screens/character/CreateCharacter";
+import BottomTab from "./components/ButtomTabs";
 
 function App() {
 	return (
-		<div className="App">
+		<div className="w-screen">
 			<BrowserRouter>
 				<UserProvider>
 					<LoginStateRestore/>
@@ -37,6 +38,7 @@ function App() {
 							element={<RouteGuardAuth component={<CreateCharacter/>} redirect={"/login"} />}
 						/>
 					</Routes>
+					<BottomTab/>
 				</UserProvider>
 			</BrowserRouter>
 		</div>
