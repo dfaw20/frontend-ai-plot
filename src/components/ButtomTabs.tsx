@@ -1,35 +1,14 @@
 import React, { useState } from "react";
-import styled from 'styled-components';
+import { 
+	GiSwordsEmblem,
+	GiBookmarklet,
+	GiMushroomHouse,
+} from "react-icons/gi";
 
-const TabsContainer = styled.div`
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  background-color: #FFF;
-  color: #0f1419;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 60px;
-  z-index: 1;
-`;
-
-const TabItem = styled.div`
-  padding: 10px;
-  cursor: pointer;
-`;
-
-const ContentContainer = styled.div`
-  padding: 20px;
-  background-color: #f0f0f0;
-  height: calc(100vh - 60px); /* 画面下部のタブの高さを除外 */
-`;
-
-type TabCode = 'tab1' | 'tab2' | 'tab3'
+export type TabCode = 'tabA' | 'tabB' | 'tabC'
 
 const BottomTabs = () => {
-	const [activeTab, setActiveTab] = useState<TabCode>('tab1'); // 初期のアクティブタブ
+	const [activeTab, setActiveTab] = useState<TabCode>('tabA'); // 初期のアクティブタブ
 
 	const handleTabClick = (tabCode: TabCode) => {
 		setActiveTab(tabCode);
@@ -37,22 +16,33 @@ const BottomTabs = () => {
 
 	return (
 		<>
-			<TabsContainer>
-				<TabItem onClick={() => handleTabClick('tab1')} style={{ color: activeTab === 'tab1' ? 'blue' : '#0f1419' }}>
-				Tale
-				</TabItem>
-				<TabItem onClick={() => handleTabClick('tab2')} style={{ color: activeTab === 'tab2' ? 'blue' : '#0f1419' }}>
-          History
-				</TabItem>
-				<TabItem onClick={() => handleTabClick('tab3')} style={{ color: activeTab === 'tab3' ? 'blue' : '#0f1419' }}>
-          Characters
-				</TabItem>
-			</TabsContainer>
-			<ContentContainer>
-				{activeTab === 'tab1' && <div>Tale</div>}
-				{activeTab === 'tab2' && <div>History</div>}
-				{activeTab === 'tab3' && <div>Characters</div>}
-			</ContentContainer>
+			<div className="bg-white text-gray-700 fixed bottom-0 left-0 w-full h-20 flex justify-around items-center z-10 py-2">
+				<div
+					className={`cursor-pointer ${activeTab === 'tabA' ? 'text-blue-500' : ''}`}
+					onClick={() => handleTabClick('tabA')}>
+					<GiSwordsEmblem className="mx-auto" size={30}/>
+					Character
+				</div>
+				<div
+					className={`cursor-pointer ${activeTab === 'tabB' ? 'text-blue-500' : ''}`}
+					onClick={() => handleTabClick('tabB')}>
+					<div>
+						<GiBookmarklet className="mx-auto" size={30}/>
+					</div>
+					<div>History</div>
+				</div>
+				<div
+					className={`cursor-pointer ${activeTab === 'tabC' ? 'text-blue-500' : ''}`}
+					onClick={() => handleTabClick('tabC')}>
+					<GiMushroomHouse className="mx-auto" size={30}/>
+					Home
+				</div>
+			</div>
+			<div className="bg-gray-200 p-4 min-h-screen">
+				{activeTab === 'tabA' && <div>Tale</div>}
+				{activeTab === 'tabB' && <div>History</div>}
+				{activeTab === 'tabC' && <div>HOME</div>}
+			</div>
 		</>
 	);
 };

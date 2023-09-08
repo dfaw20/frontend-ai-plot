@@ -1,5 +1,4 @@
 import React from "react";
-import "./App.css";
 import Login from "./screens/Login";
 import LoginGoogleRedirect from "./screens/LoginGoogleRedirect";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
