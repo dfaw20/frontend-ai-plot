@@ -2,7 +2,7 @@ import React from "react";
 import { useUser } from "../contexts/UserContext";
 import { Link } from "react-router-dom";
 
-function MyPage() {
+function Setting() {
 	const {logout} = useUser();
 
 	function onClickLogout() {
@@ -12,11 +12,10 @@ function MyPage() {
 
 	return (
 		<div>
-			<div>マイページ</div>
-			<Link to="/characters">キャラ一覧</Link>
+			<div>設定</div>
 			<button onClick={onClickLogout}>ログアウト</button>
 		</div>
 	);
 }
 
-export default MyPage;
+export default Setting;

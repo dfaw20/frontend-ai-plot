@@ -1,17 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
 import { 
 	GiSwordsEmblem,
 	GiBookmarklet,
 	GiMushroomHouse,
 } from "react-icons/gi";
-
-export type TabCode = 'tabA' | 'tabB' | 'tabC'
+import { TabCode, useTab } from "../contexts/TabContext";
 
 const BottomTabs = () => {
-	const [activeTab, setActiveTab] = useState<TabCode>('tabA'); // 初期のアクティブタブ
+	const {activeTab, updateActiveTab} = useTab();
 
 	const handleTabClick = (tabCode: TabCode) => {
-		setActiveTab(tabCode);
+		updateActiveTab(tabCode);
 	};
 
 	return (
