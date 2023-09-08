@@ -15,20 +15,23 @@ function UserCharacters() {
 		// TODO alert
 		if (user == null) return
 
+		console.log('load')
+
 		axios.get<Character[]>(apiCharactersByUser(user.ID.toString()))
 			.then((res) => {
+				console.log(res.data)
 				setCharacters(res.data)
 			})
 	}
 
 	useEffect(() => {
 		loadUserCharacters()
-	}, [])	
+	}, [user])	
 
 	return (
 		<>
 		{characters?.map((chara) => {
-			return <>{chara.Name}</>
+			return <div key={chara.ID}>{chara.Name}</div>
 		})}
 		</>
 	)
