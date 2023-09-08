@@ -3,20 +3,18 @@ import { useUser } from '../contexts/UserContext';
 import { Navigate, useLocation } from "react-router-dom";
 
 type Props = {
-    component: React.ReactNode;
+    component: React.ReactNode,
     redirect: string,
   }
 
-export const RouteGuardGuest: React.FC<Props> = (props) => {
-	const authUser = useUser().user;
+export const RouteGuardGuestOnly: React.FC<Props> = (props) => {
+	const {loginStatus} = useUser();
   
-	let allowRoute = false;
-	allowRoute = authUser == null;
-  
-	if (!allowRoute) {
+	switch (loginStatus) {
+	case 'INIT':
+	case 'LOGOUT':
+		return <>{props.component}</>;
+	case 'LOGIN':
 		return <Navigate to={props.redirect} state={{from:useLocation()}} replace={false} />;
 	}
-  
-	return <>{props.component}</>;
-  
 };
