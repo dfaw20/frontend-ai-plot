@@ -1,6 +1,7 @@
 import React from "react"
-import {API_GET_GOOGLE_URL, GoogleOAuthUrlObject} from "../../network/Api"
+import {API_GET_GOOGLE_URL} from "../../network/Api"
 import axios from "axios"
+import { GoogleOAuthUrlObject } from "../../entities/Auth"
 
 function Login() {
 

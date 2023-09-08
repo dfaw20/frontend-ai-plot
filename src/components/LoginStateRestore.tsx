@@ -2,7 +2,8 @@ import React, { useEffect } from "react"
 import { useUser } from '../contexts/UserContext'
 import { makeBearerToken } from "../repository/Storage"
 import axios from 'axios'
-import { API_USER_INFO_URL, UserResult } from "../network/Api"
+import { API_USER_INFO_URL } from "../network/Api"
+import { UserResult } from "../entities/User"
 
 function LoginStateRestore() {
 	const {login, logout} = useUser()

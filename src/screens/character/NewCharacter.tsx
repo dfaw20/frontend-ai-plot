@@ -1,7 +1,7 @@
 import axios from "axios"
 import React from "react"
 import { API_CHARACTER_CREATE } from "../../network/Api"
-import { CharacterInput } from "../../types/PostData"
+import { CharacterInput } from "../../types/post_data/PostData"
 import { makeBearerToken } from "../../repository/Storage"
 
 function CreateCharacter() {

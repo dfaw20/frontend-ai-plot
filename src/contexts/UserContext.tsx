@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, ReactNode } from 'react'
-import {User} from "../network/Api"
 import { LOCAL_STORAGE_ACCESS_TOKEN_KEY } from '../repository/Storage'
+import { User } from '../entities/User'
 
 export type LoginStatus = 'INIT' | 'LOGIN' | 'LOGOUT';
 

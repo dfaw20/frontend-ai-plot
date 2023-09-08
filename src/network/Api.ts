@@ -1,41 +1,22 @@
 const BACKEND_HOST = "http://localhost:8080"
-const API_GET_GOOGLE_URL = BACKEND_HOST + "/auth/google"
-const API_GOOGLE_REDIRECT_URL = BACKEND_HOST + "/auth/google/callback"
-const API_USER_INFO_URL = BACKEND_HOST + "/user_info"
-const API_CHARACTER_LIST = BACKEND_HOST + "/characters/"
-const API_CHARACTER_CREATE = BACKEND_HOST + "/characters/create"
+export {BACKEND_HOST};
 
-export {
-	BACKEND_HOST,
-	API_GET_GOOGLE_URL,
-	API_GOOGLE_REDIRECT_URL,
-	API_USER_INFO_URL,
-	API_CHARACTER_LIST,
-	API_CHARACTER_CREATE
+export function apiGetGoogle(): string {
+    return BACKEND_HOST + "/auth/google"
 }
 
-export interface GoogleOAuthUrlObject {
-    oauth_url: string
+export function apiGoogleRedirectUrl(): string {
+    return BACKEND_HOST + "/auth/google/callback"
 }
 
-export interface Token {
-    access_token: string
-	token_type: string
-	refresh_token: string
-	expiry: string
+export function apiUserInfo(): string {
+    return BACKEND_HOST + "/user_info"
 }
 
-export interface User {
-    ID: number
-    email: string
-    display_name: string
+export function apiCharacterCreate(): string {
+    return BACKEND_HOST + "/characters/create"
 }
 
-export interface TokenResult {
-    token: Token
-    user: User
-}
-
-export interface UserResult {
-    user: User
+export function apiUserCharacters(userID: string): string {
+    return BACKEND_HOST + "/characters"
 }
