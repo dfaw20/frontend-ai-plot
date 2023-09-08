@@ -30,9 +30,9 @@ function UserCharacters() {
 
 	return (
 		<>
-		{characters?.map((chara) => {
-			return <div key={chara.ID}>{chara.Name}</div>
-		})}
+			{characters?.map((chara) => {
+				return <div key={chara.ID}>{chara.Name}</div>
+			})}
 		</>
 	)
 }
