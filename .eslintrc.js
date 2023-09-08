@@ -32,7 +32,7 @@ module.exports = {
 	],
 	"rules": {
 		"indent": [
-			"error",
+			"warn",
 			"tab"
 		],
 		"linebreak-style": [
@@ -40,8 +40,8 @@ module.exports = {
 			"unix"
 		],
 		"semi": [
-			"error",
-			"always"
+			"warn",
+			"never"
 		],
         "@typescript-eslint/no-unused-vars": [
             "error"

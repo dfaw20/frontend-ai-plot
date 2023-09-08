@@ -1,5 +1,5 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from "react"
+import { Link } from "react-router-dom"
 
 function CharacterList() {
 	return (
@@ -7,7 +7,7 @@ function CharacterList() {
 			<div>キャラクター</div>
 			<Link to="/characters/create">キャラ作成</Link>
 		</>
-	);
+	)
 }
 
-export default CharacterList;
+export default CharacterList

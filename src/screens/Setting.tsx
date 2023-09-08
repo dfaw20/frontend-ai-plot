@@ -1,12 +1,11 @@
-import React from "react";
-import { useUser } from "../contexts/UserContext";
-import { Link } from "react-router-dom";
+import React from "react"
+import { useUser } from "../contexts/UserContext"
 
 function Setting() {
-	const {logout} = useUser();
+	const {logout} = useUser()
 
 	function onClickLogout() {
-		logout();
+		logout()
 		
 	}
 
@@ -15,7 +14,7 @@ function Setting() {
 			<div>設定</div>
 			<button onClick={onClickLogout}>ログアウト</button>
 		</div>
-	);
+	)
 }
 
-export default Setting;
+export default Setting

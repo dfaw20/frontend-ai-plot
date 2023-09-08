@@ -1,6 +1,6 @@
-import React from 'react';
-import { useUser } from '../contexts/UserContext';
-import { Navigate, useLocation } from "react-router-dom";
+import React from 'react'
+import { useUser } from '../contexts/UserContext'
+import { Navigate, useLocation } from "react-router-dom"
 
 type Props = {
     component: React.ReactNode,
@@ -8,14 +8,14 @@ type Props = {
   }
 
 export const RouteGuardAuth: React.FC<Props> = (props) => {
-	const {loginStatus} = useUser();
+	const {loginStatus} = useUser()
   
 	switch (loginStatus) {
 	case 'INIT':
-		return <></>;
+		return <></>
 	case 'LOGIN':
-		return <>{props.component}</>;
+		return <>{props.component}</>
 	case 'LOGOUT':
-		return <Navigate to={props.redirect} state={{from:useLocation()}} replace={false} />;
+		return <Navigate to={props.redirect} state={{from:useLocation()}} replace={false} />
 	}
-};
+}

@@ -1,17 +1,18 @@
-import React from "react";
+import React from "react"
 import { 
 	GiSwordsEmblem,
 	GiBookmarklet,
 	GiMushroomHouse,
-} from "react-icons/gi";
-import { TabCode, useTab } from "../contexts/TabContext";
+} from "react-icons/gi"
+import { TabCode, useTab } from "../contexts/TabContext"
 
 const BottomTabs = () => {
-	const {activeTab, updateActiveTab} = useTab();
+	const {activeTab, updateActiveTab} = useTab()
 
 	const handleTabClick = (tabCode: TabCode) => {
-		updateActiveTab(tabCode);
-	};
+		updateActiveTab(tabCode)
+		
+	}
 
 	return (
 		<>
@@ -37,14 +38,9 @@ const BottomTabs = () => {
 					Home
 				</div>
 			</div>
-			<div className="bg-gray-200 p-4 min-h-screen">
-				{activeTab === 'tabA' && <div>Tale</div>}
-				{activeTab === 'tabB' && <div>History</div>}
-				{activeTab === 'tabC' && <div>HOME</div>}
-			</div>
 		</>
-	);
-};
+	)
+}
 
-export default BottomTabs;
+export default BottomTabs
 

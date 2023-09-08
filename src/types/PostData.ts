@@ -1,4 +1,4 @@
-import { Gender } from "../entities/Master";
+import { Gender } from "../entities/Master"
 
 export interface CharacterInput {
 	name: string

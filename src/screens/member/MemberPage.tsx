@@ -1,5 +1,5 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from "react"
+import { Link } from "react-router-dom"
 function MemberPage() {
 
 	return (
@@ -7,7 +7,7 @@ function MemberPage() {
 			<div></div>
 			<Link to="/characters">キャラ</Link>
 		</div>
-	);
+	)
 }
 
-export default MemberPage;
+export default MemberPage

@@ -1,8 +1,8 @@
-import axios from "axios";
-import React from "react";
-import { API_CHARACTER_CREATE } from "../../network/Api";
-import { CharacterInput } from "../../types/PostData";
-import { makeBearerToken } from "../../repository/Storage";
+import axios from "axios"
+import React from "react"
+import { API_CHARACTER_CREATE } from "../../network/Api"
+import { CharacterInput } from "../../types/PostData"
+import { makeBearerToken } from "../../repository/Storage"
 
 function CreateCharacter() {
 
@@ -16,15 +16,15 @@ function CreateCharacter() {
 			personality: "快活",
 			tone: "若者言葉",
 			profile: "一般的な青年"
-		};
+		}
 
-		const bearer = makeBearerToken();
+		const bearer = makeBearerToken()
 		if (bearer) {
 			axios
 				.post(API_CHARACTER_CREATE, input, {headers: {	Authorization: bearer,}})
 				.then(res => {
-					console.log(res);
-				});
+					console.log(res)
+				})
 		}
 	}
 
@@ -34,7 +34,7 @@ function CreateCharacter() {
 
 			<button onClick={onClickCreate}>作成</button>
 		</div>
-	);
+	)
 }
 
-export default CreateCharacter;
+export default CreateCharacter
