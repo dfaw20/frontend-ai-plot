@@ -1,12 +1,12 @@
 import React from "react"
-import {API_GET_GOOGLE_URL} from "../../network/Api"
+import {apiGetGoogle} from "../../network/Api"
 import axios from "axios"
 import { GoogleOAuthUrlObject } from "../../entities/Auth"
 
 function Login() {
 
 	function onClickGoogleLoginButton() {
-		axios.get<GoogleOAuthUrlObject>(API_GET_GOOGLE_URL)
+		axios.get<GoogleOAuthUrlObject>(apiGetGoogle())
 			.then(res => {
 
 				console.log(res.data.oauth_url)

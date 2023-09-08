@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react"
-import {API_GOOGLE_REDIRECT_URL} from "../../network/Api"
+import {apiGoogleRedirectUrl} from "../../network/Api"
 import { useNavigate } from "react-router-dom"
 import axios from "axios"
 import { useUser } from '../../contexts/UserContext'
@@ -21,7 +21,7 @@ function LoginGoogleRedirect() {
 
 			// OAuth2認証コードが存在する場合、バックエンドに送信してアクセストークンを取得
 			axios
-				.get<TokenResult>(API_GOOGLE_REDIRECT_URL + `?code=${code}`)
+				.get<TokenResult>(apiGoogleRedirectUrl() + `?code=${code}`)
 				.then((res) => {
 					console.log("Success Get Token:", res.data)
 

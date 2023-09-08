@@ -10,13 +10,13 @@ export function apiGoogleRedirectUrl(): string {
 }
 
 export function apiUserInfo(): string {
-    return BACKEND_HOST + "/user_info"
+    return BACKEND_HOST + "/auth_user"
 }
 
 export function apiCharacterCreate(): string {
     return BACKEND_HOST + "/characters/create"
 }
 
-export function apiUserCharacters(userID: string): string {
-    return BACKEND_HOST + "/characters"
+export function apiCharactersByUser(userID: string): string {
+    return BACKEND_HOST +  "/users/" + userID + "/characters"
 }

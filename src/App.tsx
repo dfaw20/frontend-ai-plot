@@ -12,8 +12,9 @@ import CharacterList from "./screens/character/CharactersHome"
 import CreateCharacter from "./screens/character/NewCharacter"
 import BottomTab from "./components/BottomTabs"
 import { TabProvider } from "./contexts/TabContext"
-import { pathAuthGoogleRedirect, pathCharacterNew, pathCharacters, pathLogin, pathRoot, pathUser } from "./routes/EndPoints"
+import { pathAuthGoogleRedirect, pathCharacterNew, pathCharacters, pathLogin, pathRoot, pathUser, pathUserCharacters } from "./routes/EndPoints"
 import UserHome from "./screens/user/UserHome"
+import UserCharacters from "./screens/user/UserCharacters"
 
 function App() {
 	return (
@@ -25,19 +26,23 @@ function App() {
 						<Header/>
 						<Routes>
 							<Route path={pathRoot()} element={<Top/>}/>
+
 							<Route path={pathLogin()}
 								element={<RouteGuardGuestOnly component={<Login/>} redirect={pathRoot()} />}
 							/>
+
 							<Route path={pathAuthGoogleRedirect()}
 								element={<RouteGuardGuestOnly component={<LoginGoogleRedirect />} redirect={pathRoot()} />}
 							/>
-							<Route path={pathUser(":user_id")}
-								element={<UserHome />}/>
-							<Route path={pathCharacters()}
-								element={<CharacterList/>}
-							/>
-							<Route path={pathCharacterNew()}
-								element={<RouteGuardAuth component={<CreateCharacter/>} redirect={pathLogin()} />}
+
+							<Route path={pathUser(":user_id")} element={<UserHome />}/>
+
+							<Route path={pathUserCharacters(":user_id")} element={<UserCharacters />}/>
+
+							<Route path={pathCharacters()} element={<CharacterList/>}/>
+
+							<Route path={pathCharacterNew()} element={<RouteGuardAuth component={<CreateCharacter/>}
+								redirect={pathLogin()} />}
 							/>
 						</Routes>
 						<BottomTab/>
