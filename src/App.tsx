@@ -8,8 +8,10 @@ import { UserProvider } from './contexts/UserContext';
 import Header from "./components/Header";
 import LoginStateRestore from "./components/LoginStateRestore";
 import MyPage from "./screens/MyPage";
-import { RouteAuthGuard } from "./routes/RouteAuthGuard";
-import { RouteGuestGuard } from "./routes/RouteGuestGuard";
+import { RouteGuardAuth } from "./routes/RouteGuardAuth";
+import { RouteGuardGuest } from "./routes/RouteGuardGuest";
+import CharacterList from "./screens/character/CharacterList";
+import CreateCharacter from "./screens/character/CreateCharacter";
 
 function App() {
 	return (
@@ -20,13 +22,19 @@ function App() {
 					<Header/>
 					<Routes>
 						<Route path="/" element={<Home/>}/>
-						<Route path="/mypage" 
-							element={<RouteAuthGuard component={<MyPage />} redirect={"/login"} />}/>
 						<Route path="/login"
-							element={<RouteGuestGuard component={<Login/>} redirect={"/mypage"} />}
+							element={<RouteGuardGuest component={<Login/>} redirect={"/mypage"} />}
 						/>
 						<Route path="/auth/google/callback"
-							element={<RouteGuestGuard component={<LoginGoogleRedirect />} redirect={"/mypage"} />}
+							element={<RouteGuardGuest component={<LoginGoogleRedirect />} redirect={"/mypage"} />}
+						/>
+						<Route path="/mypage" 
+							element={<RouteGuardAuth component={<MyPage />} redirect={"/login"} />}/>
+						<Route path="/characters"
+							element={<RouteGuardAuth component={<CharacterList/>} redirect={"/login"} />}
+						/>
+						<Route path="/characters/create"
+							element={<RouteGuardAuth component={<CreateCharacter/>} redirect={"/login"} />}
 						/>
 					</Routes>
 				</UserProvider>

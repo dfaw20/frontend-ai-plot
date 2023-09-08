@@ -7,11 +7,11 @@ type Props = {
     redirect: string,
   }
 
-export const RouteAuthGuard: React.FC<Props> = (props) => {
+export const RouteGuardGuest: React.FC<Props> = (props) => {
 	const authUser = useUser().user;
   
 	let allowRoute = false;
-	allowRoute = authUser != null;
+	allowRoute = authUser == null;
   
 	if (!allowRoute) {
 		return <Navigate to={props.redirect} state={{from:useLocation()}} replace={false} />;
