@@ -1,18 +1,19 @@
 import React from "react"
-import Login from "./screens/Login"
-import LoginGoogleRedirect from "./screens/LoginGoogleRedirect"
+import Login from "./screens/auth/Login"
+import LoginGoogleRedirect from "./screens/auth/LoginGoogleRedirect"
 import { Route, Routes, BrowserRouter } from "react-router-dom"
-import Top from "./screens/Top"
+import Top from "./screens/top/Top"
 import { UserProvider } from './contexts/UserContext'
 import Header from "./components/Header"
 import LoginStateRestore from "./components/LoginStateRestore"
-import UserHome from "./screens/member/MemberPage"
-import { RouteGuardAuth } from "./routes/RouteGuardAuth"
-import { RouteGuardGuestOnly } from "./routes/RouteGuardGuestOnly"
-import CharacterList from "./screens/character/CharacterList"
-import CreateCharacter from "./screens/character/CreateCharacter"
+import { RouteGuardAuth } from "./routes/guards/RouteGuardAuth"
+import { RouteGuardGuestOnly } from "./routes/guards/RouteGuardGuestOnly"
+import CharacterList from "./screens/character/CharactersHome"
+import CreateCharacter from "./screens/character/NewCharacter"
 import BottomTab from "./components/BottomTabs"
 import { TabProvider } from "./contexts/TabContext"
+import { pathAuthGoogleRedirect, pathCharacterNew, pathCharacters, pathLogin, pathRoot, pathUser } from "./routes/EndPoints"
+import UserHome from "./screens/user/UserHome"
 
 function App() {
 	return (
@@ -23,20 +24,20 @@ function App() {
 						<LoginStateRestore/>
 						<Header/>
 						<Routes>
-							<Route path="/" element={<Top/>}/>
-							<Route path="/login"
-								element={<RouteGuardGuestOnly component={<Login/>} redirect={"/"} />}
+							<Route path={pathRoot()} element={<Top/>}/>
+							<Route path={pathLogin()}
+								element={<RouteGuardGuestOnly component={<Login/>} redirect={pathRoot()} />}
 							/>
-							<Route path="/auth/google/callback"
-								element={<RouteGuardGuestOnly component={<LoginGoogleRedirect />} redirect={"/"} />}
+							<Route path={pathAuthGoogleRedirect()}
+								element={<RouteGuardGuestOnly component={<LoginGoogleRedirect />} redirect={pathRoot()} />}
 							/>
-							<Route path="/u/:user_id" 
-								element={<RouteGuardAuth component={<UserHome />} redirect={"/login"} />}/>
-							<Route path="/characters"
-								element={<RouteGuardAuth component={<CharacterList/>} redirect={"/login"} />}
+							<Route path={pathUser(":user_id")}
+								element={<UserHome />}/>
+							<Route path={pathCharacters()}
+								element={<CharacterList/>}
 							/>
-							<Route path="/characters/create"
-								element={<RouteGuardAuth component={<CreateCharacter/>} redirect={"/login"} />}
+							<Route path={pathCharacterNew()}
+								element={<RouteGuardAuth component={<CreateCharacter/>} redirect={pathLogin()} />}
 							/>
 						</Routes>
 						<BottomTab/>

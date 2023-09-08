@@ -1,19 +1,27 @@
 import React from "react"
 import { useUser } from '../contexts/UserContext'
 import { Link } from 'react-router-dom'
+import { CgMenuRight } from 'react-icons/cg'
+import { pathSetting } from "../routes/EndPoints"
 
 function Header() {
 
-	const {loginStatus, user} = useUser()
+	const {loginStatus} = useUser()
 
 	switch (loginStatus) {
 	case "INIT":
 		return <></>
 	case "LOGIN":
 		return (
-			<>
-				<Link to="/mypage">{user?.display_name}</Link>
-			</>
+			<div className="flex justify-between">
+				<div className="p-4">
+				</div>
+				<div className="p-4">
+					<Link to={pathSetting()}>
+						<CgMenuRight size={30}/>
+					</Link>
+				</div>
+			</div>
 		)
 	case "LOGOUT":
 		return (

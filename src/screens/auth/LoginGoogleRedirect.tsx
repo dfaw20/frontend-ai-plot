@@ -1,9 +1,9 @@
 import React, { useEffect, useRef } from "react"
-import {API_GOOGLE_REDIRECT_URL, TokenResult} from "../network/Api"
+import {API_GOOGLE_REDIRECT_URL, TokenResult} from "../../network/Api"
 import { useNavigate } from "react-router-dom"
 import axios from "axios"
-import { useUser } from '../contexts/UserContext'
-import { LOCAL_STORAGE_ACCESS_TOKEN_KEY } from "../repository/Storage"
+import { useUser } from '../../contexts/UserContext'
+import { LOCAL_STORAGE_ACCESS_TOKEN_KEY } from "../../repository/Storage"
 
 function LoginGoogleRedirect() {
 	const navigate = useNavigate()

@@ -26,6 +26,7 @@ export interface Token {
 }
 
 export interface User {
+    ID: number
     email: string
     display_name: string
 }

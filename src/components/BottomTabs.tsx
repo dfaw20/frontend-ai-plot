@@ -5,13 +5,33 @@ import {
 	GiMushroomHouse,
 } from "react-icons/gi"
 import { TabCode, useTab } from "../contexts/TabContext"
+import { useNavigate } from "react-router-dom"
+import { useUser } from "../contexts/UserContext"
+import { pathRoot, pathUserCharacters, pathUserStories } from "../routes/EndPoints"
 
 const BottomTabs = () => {
+	const {user} = useUser()
 	const {activeTab, updateActiveTab} = useTab()
+	const navigate = useNavigate()
 
 	const handleTabClick = (tabCode: TabCode) => {
-		updateActiveTab(tabCode)
-		
+		// TODO Alert
+		if (user == null) {
+			return
+		}
+
+		updateActiveTab(tabCode)	
+		switch (tabCode) {
+		case "tabA":
+			navigate(pathRoot())
+			break
+		case "tabB":
+			navigate(pathUserStories(user.ID.toString()))
+			break
+		case "tabC":
+			navigate(pathUserCharacters(user.ID.toString()))
+			break
+		}
 	}
 
 	return (
@@ -20,8 +40,8 @@ const BottomTabs = () => {
 				<div
 					className={`cursor-pointer ${activeTab === 'tabA' ? 'text-blue-500' : ''}`}
 					onClick={() => handleTabClick('tabA')}>
-					<GiSwordsEmblem className="mx-auto" size={30}/>
-					Character
+					<GiMushroomHouse className="mx-auto" size={30}/>
+					Home
 				</div>
 				<div
 					className={`cursor-pointer ${activeTab === 'tabB' ? 'text-blue-500' : ''}`}
@@ -29,14 +49,15 @@ const BottomTabs = () => {
 					<div>
 						<GiBookmarklet className="mx-auto" size={30}/>
 					</div>
-					<div>History</div>
+					<div>Story</div>
 				</div>
 				<div
 					className={`cursor-pointer ${activeTab === 'tabC' ? 'text-blue-500' : ''}`}
 					onClick={() => handleTabClick('tabC')}>
-					<GiMushroomHouse className="mx-auto" size={30}/>
-					Home
+					<GiSwordsEmblem className="mx-auto" size={30}/>
+					Character
 				</div>
+
 			</div>
 		</>
 	)

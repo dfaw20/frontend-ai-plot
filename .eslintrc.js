@@ -43,6 +43,9 @@ module.exports = {
 			"warn",
 			"never"
 		],
+		"no-warning-comments": [
+			"warn"
+		],
         "@typescript-eslint/no-unused-vars": [
             "error"
         ]
