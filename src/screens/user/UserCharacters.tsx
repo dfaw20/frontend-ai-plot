@@ -4,6 +4,7 @@ import axios from "axios"
 import { apiCharactersByUser } from "../../network/Api"
 import { useUser } from "../../contexts/UserContext"
 import FloatingActionButton from "../../components/FloatingActionButton"
+import CharacterListItem from "../../components/CharacterListItem"
 
 function UserCharacters() {
 	const [characters, setCharacters] = useState<Character[]>()
@@ -29,10 +30,11 @@ function UserCharacters() {
 		loadUserCharacters()
 	}, [user])	
 
-	return (
-		<>
-			{characters?.map((chara) => {
-				return <div key={chara.ID}>{chara.Name}</div>
+	return (<>
+			{characters?.map((character) => {
+				return <div key={character.ID}>
+					<CharacterListItem character={character} />
+				</div>
 			})}
 			<FloatingActionButton/>
 		</>

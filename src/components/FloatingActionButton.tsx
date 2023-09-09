@@ -15,7 +15,7 @@ function FloatingActionButton() {
 			}}
 		>
 			<div className="flex items-center justify-center h-full">
-			<GiPencil className='text-white' size={30}/>
+			<GiPencil className='text-white' size={36}/>
 			</div>
 		</button>
 	)
