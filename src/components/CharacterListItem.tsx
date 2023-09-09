@@ -28,11 +28,12 @@ function CharacterListItem(props: CharacterListItemProps) {
 				</div>
 			</div>
 
-			
-			<div>{props.character.Outfit}</div>
-			<div>{props.character.Hairstyle}</div>
-			<div>{props.character.Personality}</div>
-			<div>{props.character.Tone}</div>
+			<div >
+				<div>{props.character.Outfit}</div>
+				<div>{props.character.Hairstyle}</div>
+				<div>{props.character.Personality}</div>
+				<div>{props.character.Tone}</div>
+			</div>
 			<div>{props.character.Profile}</div>
 		</div>
 	)
