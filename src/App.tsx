@@ -15,14 +15,18 @@ import { TabProvider } from "./contexts/TabContext"
 import { pathAuthGoogleRedirect, pathCharacterNew, pathCharacters, pathLogin, pathRoot, pathUser, pathUserCharacters } from "./routes/EndPoints"
 import UserHome from "./screens/user/UserHome"
 import UserCharacters from "./screens/user/UserCharacters"
+import { message } from "antd"
 
 function App() {
+
+	const [messageApi, contextHolder] = message.useMessage();
+
 	return (
 		<div className="w-screen">
 			<BrowserRouter>
 				<UserProvider>
 					<TabProvider>
-						<LoginStateRestore/>
+						<LoginStateRestore messageApi={messageApi}/>
 						<Header/>
 						<Routes>
 							<Route path={pathRoot()} element={<Top/>}/>
@@ -45,7 +49,8 @@ function App() {
 								redirect={pathLogin()} />}
 							/>
 						</Routes>
-						<BottomTab/>
+						<BottomTab messageApi={messageApi}/>
+						{contextHolder}
 					</TabProvider>
 				</UserProvider>
 			</BrowserRouter>

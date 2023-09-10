@@ -4,8 +4,13 @@ import { makeBearerToken } from "../repository/Storage"
 import axios from 'axios'
 import { apiUserInfo } from "../network/Api"
 import { UserResult } from "../entities/User"
+import { MessageInstance } from "antd/es/message/interface"
 
-function LoginStateRestore() {
+interface LoginStateRestoreProps {
+	messageApi: MessageInstance,
+}
+
+function LoginStateRestore(props: LoginStateRestoreProps) {
 	const {login, logout} = useUser()
 
 	useEffect(() => {
@@ -15,6 +20,10 @@ function LoginStateRestore() {
 				.get<UserResult>(apiUserInfo(), {headers: {	Authorization: bearer,}})
 				.then(res => {
 					login(res.data.user)
+					props.messageApi.open({
+						type: 'success',
+						content: 'ログインしました',
+					});
 				})
 		} else {
 			logout()

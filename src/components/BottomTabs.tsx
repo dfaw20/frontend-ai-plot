@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom"
 import { useUser } from "../contexts/UserContext"
 import { pathRoot, pathUserCharacters, pathUserStories } from "../routes/EndPoints"
 import { IconType } from "react-icons"
+import { MessageInstance } from "antd/es/message/interface"
 
 interface TabItemProps {
 	activeTab: string|null,
@@ -31,27 +32,44 @@ function TabItem(
 		</div>)
 }
 
-const BottomTabs = () => {
+interface BottomTabsProps {
+	messageApi: MessageInstance,
+}
+
+const BottomTabs = (props: BottomTabsProps) => {
 
 	const {user} = useUser()
+	if (user == null) {
+		return <></>
+	}
+
 	const {activeTab, updateActiveTab} = useTab()
 	const navigate = useNavigate()
-
+	
 	const handleTabClick = (tabCode: TabCode) => {
-		// TODO Alert
-		if (user == null) {
-			return
-		}
-
 		updateActiveTab(tabCode)	
 		switch (tabCode) {
 		case "tabA":
 			navigate(pathRoot())
 			break
 		case "tabB":
+			if (user == null) {
+				props.messageApi.open({
+					type: 'error',
+					content: 'ログインしていません',
+				});
+				return
+			}
 			navigate(pathUserStories(user.ID.toString()))
 			break
 		case "tabC":
+			if (user == null) {
+				props.messageApi.open({
+					type: 'error',
+					content: 'ログインしていません',
+				});
+				return
+			}
 			navigate(pathUserCharacters(user.ID.toString()))
 			break
 		}
