@@ -15,6 +15,7 @@ function Header() {
 		return (
 			<div className="flex justify-between">
 				<div className="p-4">
+					<h1>Plot</h1>
 				</div>
 				<div className="p-4">
 					<Link to={pathSetting()}>

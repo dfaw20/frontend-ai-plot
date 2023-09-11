@@ -12,14 +12,15 @@ import CharacterList from "./screens/character/CharactersHome"
 import CreateCharacter from "./screens/character/NewCharacter"
 import BottomTab from "./components/BottomTabs"
 import { TabProvider } from "./contexts/TabContext"
-import { pathAuthGoogleRedirect, pathCharacterNew, pathCharacters, pathLogin, pathRoot, pathUser, pathUserCharacters } from "./routes/EndPoints"
+import { pathAuthGoogleRedirect, pathCharacterNew, pathCharacters, pathLogin, pathTop, pathSetting, pathUser, pathUserCharacters } from "./routes/EndPoints"
 import UserHome from "./screens/user/UserHome"
 import UserCharacters from "./screens/user/UserCharacters"
-import { message } from "antd"
+import { message  as antMessage } from "antd"
+import Setting from "./screens/setting/Setting"
 
 function App() {
 
-	const [messageApi, contextHolder] = message.useMessage();
+	const [messageApi, contextHolder] = antMessage.useMessage();
 
 	return (
 		<div className="w-screen">
@@ -29,14 +30,18 @@ function App() {
 						<LoginStateRestore messageApi={messageApi}/>
 						<Header/>
 						<Routes>
-							<Route path={pathRoot()} element={<Top/>}/>
+							<Route path={pathTop()} element={<Top/>}/>
 
 							<Route path={pathLogin()}
-								element={<RouteGuardGuestOnly component={<Login/>} redirect={pathRoot()} />}
+								element={<RouteGuardGuestOnly component={<Login/>} redirect={pathTop()} />}
 							/>
 
 							<Route path={pathAuthGoogleRedirect()}
-								element={<RouteGuardGuestOnly component={<LoginGoogleRedirect />} redirect={pathRoot()} />}
+								element={<RouteGuardGuestOnly component={<LoginGoogleRedirect messageApi={messageApi} />} redirect={pathTop()} />}
+							/>
+
+							<Route path={pathSetting()} element={<RouteGuardAuth component={<Setting messageApi={messageApi}/>}
+								redirect={pathTop()} />}
 							/>
 
 							<Route path={pathUser(":user_id")} element={<UserHome />}/>
@@ -46,7 +51,7 @@ function App() {
 							<Route path={pathCharacters()} element={<CharacterList/>}/>
 
 							<Route path={pathCharacterNew()} element={<RouteGuardAuth component={<CreateCharacter/>}
-								redirect={pathLogin()} />}
+								redirect={pathTop()} />}
 							/>
 						</Routes>
 						<BottomTab messageApi={messageApi}/>

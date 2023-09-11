@@ -1,17 +1,22 @@
 import React from "react"
 import { useUser } from "../../contexts/UserContext"
+import { MessageInstance } from "antd/es/message/interface"
 
-function Setting() {
+interface SettingProps {
+	messageApi: MessageInstance
+}
+
+function Setting(props: SettingProps) {
 	const {logout} = useUser()
 
 	function onClickLogout() {
 		logout()
-		
+		props.messageApi.info('ログアウトしました')
 	}
 
 	return (
 		<div>
-			<div>設定</div>
+			<h2>設定</h2>
 			<button onClick={onClickLogout}>ログアウト</button>
 		</div>
 	)

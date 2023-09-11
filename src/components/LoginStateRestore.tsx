@@ -25,6 +25,9 @@ function LoginStateRestore(props: LoginStateRestoreProps) {
 						content: 'ログインしました',
 					});
 				})
+				.catch((err) => {
+					console.log(err)		
+				})
 		} else {
 			logout()
 		}

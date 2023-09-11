@@ -7,7 +7,7 @@ import {
 import { TabCode, useTab } from "../contexts/TabContext"
 import { useNavigate } from "react-router-dom"
 import { useUser } from "../contexts/UserContext"
-import { pathRoot, pathUserCharacters, pathUserStories } from "../routes/EndPoints"
+import { pathTop, pathUserCharacters, pathUserStories } from "../routes/EndPoints"
 import { IconType } from "react-icons"
 import { MessageInstance } from "antd/es/message/interface"
 
@@ -50,7 +50,7 @@ const BottomTabs = (props: BottomTabsProps) => {
 		updateActiveTab(tabCode)	
 		switch (tabCode) {
 		case "tabA":
-			navigate(pathRoot())
+			navigate(pathTop())
 			break
 		case "tabB":
 			if (user == null) {

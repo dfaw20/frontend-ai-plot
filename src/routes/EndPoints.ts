@@ -1,4 +1,4 @@
-export function pathRoot(): string {
+export function pathTop(): string {
 	return "/"
 }
 
