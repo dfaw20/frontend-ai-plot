@@ -16,9 +16,9 @@ function Setting(props: SettingProps) {
 	}
 
 	return (
-		<div>
-			<h2 className="mb-2 mt-0 text-4xl font-medium leading-tight text-primary">設定</h2>
-			<Button onClick={onClickLogout}>ログアウト</Button>
+		<div className="mx-4">
+			<h2 className="mb-2 mt-0 text-4xl font-medium leading-tight text-secondary">設定</h2>
+			<Button className="mt-4" onClick={onClickLogout}>ログアウト</Button>
 		</div>
 	)
 }
