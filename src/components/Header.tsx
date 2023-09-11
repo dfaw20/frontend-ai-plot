@@ -1,34 +1,34 @@
 import React from "react"
 import { useUser } from '../contexts/UserContext'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { CgMenuRight } from 'react-icons/cg'
-import { pathSetting } from "../routes/EndPoints"
+import { pathLogin, pathSetting, pathTop } from "../routes/EndPoints"
+import { Button } from "antd"
 
 function Header() {
 
 	const {loginStatus} = useUser()
-
-	switch (loginStatus) {
-	case "INIT":
-		return <></>
-	case "LOGIN":
-		return (
-			<div className="flex justify-between">
-				<div className="p-4">
+	const location = useLocation()
+	
+	return (
+		<div className="flex justify-between">
+			<div className="p-4">
+				<Link to={pathTop()}>
 					<h1>Plot</h1>
-				</div>
-				<div className="p-4">
-					<Link to={pathSetting()}>
-						<CgMenuRight size={30}/>
-					</Link>
-				</div>
+				</Link>
 			</div>
-		)
-	case "LOGOUT":
-		return (
-			<></>
-		)
-	}
+			<div className="p-4">
+				{loginStatus === 'LOGIN' ?
+				<Link to={pathSetting()}>
+					<CgMenuRight size={30}/>
+				</Link> : null }
+				{loginStatus === 'LOGOUT' && !location.pathname.includes(pathLogin()) ?
+				<Link to={pathLogin()}>
+					<Button>ログイン</Button>
+				</Link> : null }
+			</div>
+		</div>
+	)
 }
 
 export default Header

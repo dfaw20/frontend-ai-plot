@@ -1,6 +1,7 @@
 import React from "react"
 import { useUser } from "../../contexts/UserContext"
 import { MessageInstance } from "antd/es/message/interface"
+import { Button } from "antd"
 
 interface SettingProps {
 	messageApi: MessageInstance
@@ -16,8 +17,8 @@ function Setting(props: SettingProps) {
 
 	return (
 		<div>
-			<h2>設定</h2>
-			<button onClick={onClickLogout}>ログアウト</button>
+			<h2 className="mb-2 mt-0 text-4xl font-medium leading-tight text-primary">設定</h2>
+			<Button onClick={onClickLogout}>ログアウト</Button>
 		</div>
 	)
 }
