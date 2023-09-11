@@ -12,9 +12,9 @@ import CharacterList from "./screens/character/CharactersHome"
 import CreateCharacter from "./screens/character/NewCharacter"
 import BottomTab from "./components/BottomTabs"
 import { TabProvider } from "./contexts/TabContext"
-import { pathAuthGoogleRedirect, pathCharacterNew, pathCharacters, pathLogin, pathTop, pathSetting, pathUser, pathUserCharacters } from "./routes/EndPoints"
-import UserHome from "./screens/user/UserHome"
-import UserCharacters from "./screens/user/UserCharacters"
+import { pathAuthGoogleRedirect, pathCharacterNew, pathCharacters, pathLogin, pathTop, pathSetting, pathPlayer, pathPlayerCharacters } from "./routes/EndPoints"
+import PlayerPage from "./screens/player/PlayerHome"
+import PlayerCharacters from "./screens/player/PlayerCharacters"
 import { message  as antMessage } from "antd"
 import Setting from "./screens/setting/Setting"
 
@@ -44,9 +44,9 @@ function App() {
 								redirect={pathTop()} />}
 							/>
 
-							<Route path={pathUser(":user_id")} element={<UserHome />}/>
+							<Route path={pathPlayer(":playerId")} element={<PlayerPage />}/>
 
-							<Route path={pathUserCharacters(":user_id")} element={<UserCharacters />}/>
+							<Route path={pathPlayerCharacters(":playerId")} element={<PlayerCharacters messageApi={messageApi} />}/>
 
 							<Route path={pathCharacters()} element={<CharacterList/>}/>
 

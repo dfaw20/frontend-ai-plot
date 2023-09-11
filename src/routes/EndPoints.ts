@@ -21,22 +21,26 @@ export function pathSetting(): string {
 }
 
 /**
- * User
+ * Player
  */
-export function pathUser(userID: string): string {
+export function pathPlayer(userID: string): string {
 	return "/u/" + userID
 }
-export function pathUserEdit(userID: string): string {
-	return "/u/" + userID + "/edit"
-}
-export function pathUserCharacters(userID: string): string {
+export function pathPlayerCharacters(userID: string): string {
 	return "/u/" + userID + "/characters"
 }
-export function pathUserPlots(userID: string): string {
+export function pathPlayerPlots(userID: string): string {
 	return "/u/" + userID + "/plots"
 }
-export function pathUserStories(userID: string): string {
+export function pathPlayerStories(userID: string): string {
 	return "/u/" + userID + "/stories"
+}
+
+/**
+ * User
+ */
+export function pathUserEdit(userID: string): string {
+	return "/user/" + userID + "/edit"
 }
 
 /**

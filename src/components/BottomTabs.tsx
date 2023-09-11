@@ -7,7 +7,7 @@ import {
 import { TabCode, useTab } from "../contexts/TabContext"
 import { useNavigate } from "react-router-dom"
 import { useUser } from "../contexts/UserContext"
-import { pathTop, pathUserCharacters, pathUserStories } from "../routes/EndPoints"
+import { pathTop, pathPlayerCharacters, pathPlayerStories } from "../routes/EndPoints"
 import { IconType } from "react-icons"
 import { MessageInstance } from "antd/es/message/interface"
 
@@ -60,7 +60,7 @@ const BottomTabs = (props: BottomTabsProps) => {
 				});
 				return
 			}
-			navigate(pathUserStories(user.ID.toString()))
+			navigate(pathPlayerStories(user.ID.toString()))
 			break
 		case "tabC":
 			if (user == null) {
@@ -70,7 +70,7 @@ const BottomTabs = (props: BottomTabsProps) => {
 				});
 				return
 			}
-			navigate(pathUserCharacters(user.ID.toString()))
+			navigate(pathPlayerCharacters(user.ID.toString()))
 			break
 		}
 	}
