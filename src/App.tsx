@@ -27,7 +27,7 @@ function App() {
 			<BrowserRouter>
 				<UserProvider>
 					<TabProvider>
-						<LoginStateRestore messageApi={messageApi}/>
+						<LoginStateRestore/>
 						<Header/>
 						<Routes>
 							<Route path={pathTop()} element={<Top/>}/>

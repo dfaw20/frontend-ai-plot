@@ -1,8 +1,8 @@
 import React from "react"
 import { useUser } from '../contexts/UserContext'
 import { Link, useLocation } from 'react-router-dom'
-import { pathLogin, pathSetting, pathTop } from "../routes/EndPoints"
-import { Button } from "antd"
+import { pathLogin, pathTop } from "../routes/EndPoints"
+import { Button, Spin } from "antd"
 import DrawerButton from "./DrawerButton"
 
 function Header() {
@@ -18,8 +18,10 @@ function Header() {
 				</Link>
 			</div>
 			<div className="p-4">
+				{loginStatus === 'INIT' ?
+					<><Spin /></>
+				 : null }
 				{loginStatus === 'LOGIN' ?
-				
 					<DrawerButton/>
 				 : null }
 				{loginStatus === 'LOGOUT' && !location.pathname.includes(pathLogin()) ?

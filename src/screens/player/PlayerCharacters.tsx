@@ -1,23 +1,24 @@
 import React, { useEffect, useState } from "react"
 import { Character } from "../../entities/Character"
 import axios from "axios"
-import { apiCharactersByPlayer } from "../../network/Api"
+import { apiCharactersByPlayer, apiGetPlayer } from "../../network/Api"
 import FloatingActionButton from "../../components/FloatingActionButton"
 import CharacterListItem from "../../components/CharacterListItem"
 import { useParams } from 'react-router-dom';
 import { Player } from "../../entities/Player"
 import { MessageInstance } from "antd/es/message/interface"
+import { Divider } from "antd"
 
 interface PlayerCharactersProps {
 	messageApi: MessageInstance
 }
 
 function PlayerCharacters(props: PlayerCharactersProps) {
-	const [player, setPlayer] = useState<Player>()
+	const [playerObject, setPlayerObject] = useState<Player>()
 	const [characters, setCharacters] = useState<Character[]>()
 	const {playerId} = useParams()
 	
-	function loadUserCharacters() {
+	function loadUserCharacters(player: Player) {
 		if (player != null) {
 			axios.get<Character[]>(apiCharactersByPlayer(player.ID.toString()))
 			.then((res) => {
@@ -29,13 +30,13 @@ function PlayerCharacters(props: PlayerCharactersProps) {
 		}
 	}
 
-	function load() {
+	function loadPlayer() {
 		if (playerId != null) {
-			axios.get<Player>(apiCharactersByPlayer(playerId))
+			axios.get<Player>(apiGetPlayer(playerId))
 			.then((res) => {
 				console.log(res.data)
-				setPlayer(res.data)
-				loadUserCharacters()
+				setPlayerObject(res.data)
+				loadUserCharacters(res.data)
 			})
 		} else {
 			props.messageApi.warning('ユーザが存在しません')
@@ -43,11 +44,14 @@ function PlayerCharacters(props: PlayerCharactersProps) {
 	}
 
 	useEffect(() => {
-		load()
+		loadPlayer()
 	}, [])	
 
 	return (<>
-			{player?.DisplayName}
+			<div className="mx-4 text-lg flex items-center justify-center">
+				{playerObject?.DisplayName}
+			</div>
+			<Divider className="my-2"/>
 			{characters?.map((character) => {
 				return <div key={character.ID}>
 					<CharacterListItem character={character} />

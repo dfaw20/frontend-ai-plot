@@ -1,8 +1,8 @@
-import React, { useState } from "react"
+import React, { ReactNode, useState } from "react"
 import { CgMenuRight } from 'react-icons/cg'
 import { Drawer } from "antd"
 import { useUser } from "../contexts/UserContext";
-import { pathSetting } from "../routes/EndPoints";
+import { pathPlayer, pathSetting } from "../routes/EndPoints";
 import { useNavigate } from "react-router-dom";
 
 function DrawerButton() {
@@ -19,12 +19,16 @@ function DrawerButton() {
 	  setOpen(false);
 	};
 
-	function title(): string {
+	function title(): ReactNode {
 		if (user) {
-			return user.DisplayName
+			return <>
+				<button onClick={() => handleMenuClick(() => pathPlayer(user.ID.toString()))}>
+					{user.DisplayName}
+				</button>
+				</>
 		}
 
-		return ''
+		return <></>
 	}
 
 	function handleMenuClick(path: () => string) {

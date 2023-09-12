@@ -6,6 +6,7 @@ import { useUser } from '../../contexts/UserContext'
 import { LOCAL_STORAGE_ACCESS_TOKEN_KEY } from "../../repository/Storage"
 import { TokenResult } from "../../entities/Auth"
 import { MessageInstance } from "antd/es/message/interface"
+import { Spin } from "antd"
 
 interface LoginGoogleRedirectProps {
 	messageApi: MessageInstance
@@ -47,8 +48,8 @@ function LoginGoogleRedirect(props: LoginGoogleRedirectProps) {
 	}, [])
 
 	return (
-		<div>
-			redirect
+		<div className="flex items-center justify-center w-screen h-screen">
+			<Spin />
 		</div>
 	)
 }

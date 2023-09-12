@@ -17,6 +17,10 @@ export function apiCharacterCreate(): string {
 	return BACKEND_HOST + "/characters/create"
 }
 
+export function apiGetPlayer(playerID: string): string {
+	return BACKEND_HOST +  "/players/" + playerID
+}
+
 export function apiCharactersByPlayer(playerID: string): string {
 	return BACKEND_HOST +  "/players/" + playerID + "/characters"
 }

@@ -23,17 +23,17 @@ export function pathSetting(): string {
 /**
  * Player
  */
-export function pathPlayer(userID: string): string {
-	return "/u/" + userID
+export function pathPlayer(playerID: string): string {
+	return "/u/" + playerID
 }
-export function pathPlayerCharacters(userID: string): string {
-	return "/u/" + userID + "/characters"
+export function pathPlayerCharacters(playerID: string): string {
+	return "/u/" + playerID + "/characters"
 }
-export function pathPlayerPlots(userID: string): string {
-	return "/u/" + userID + "/plots"
+export function pathPlayerPlots(playerID: string): string {
+	return "/u/" + playerID + "/plots"
 }
-export function pathPlayerStories(userID: string): string {
-	return "/u/" + userID + "/stories"
+export function pathPlayerStories(playerID: string): string {
+	return "/u/" + playerID + "/stories"
 }
 
 /**
