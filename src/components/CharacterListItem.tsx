@@ -1,11 +1,11 @@
 import React from 'react'
 import { Character } from '../entities/Character'
 import { getGenderText } from '../entities/Character'
-import RoundedButton from './RoundedButton'
-import { Divider, Tag } from 'antd'
+import { Button, Divider, Tag } from 'antd'
 
 interface CharacterListItemProps {
 	character: Character
+	editable: boolean
 }
 
 function CharacterListItem(props: CharacterListItemProps) {
@@ -22,7 +22,9 @@ function CharacterListItem(props: CharacterListItemProps) {
 					</div>
 				</div>
 				<div className="flex items-center justify-center">
-					<RoundedButton/>
+					{props.editable ?
+					<Button>編集</Button>
+					: null}
 				</div>
 			</div>
 
@@ -36,6 +38,12 @@ function CharacterListItem(props: CharacterListItemProps) {
 				<Tag>{props.character.Tone}</Tag>
 			</div>
 			<div className='mt-4'>{props.character.Profile}</div>
+
+			<div className='mt-4 flex items-center justify-center'>
+				<Button>
+					物語を綴る
+				</Button>
+			</div>
 
 			<Divider/>
 		</div>

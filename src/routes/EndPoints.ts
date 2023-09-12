@@ -61,8 +61,27 @@ export function pathCharacterEdit(characterID: string): string {
 export function pathCharacterDelete(characterID: string): string {
 	return "/characters/" + characterID + "/delete"
 }
-export function pathCharacterPlotsChoice(characterID: string): string {
-	return "/characters/" + characterID + "/plots_choice"
+
+/**
+ * 主人公を選ぶ画面
+ * @param characterID キャラID
+ * @returns パス
+ */
+export function pathCharacterHeroChoice(
+	characterID: string): string {
+	return "/characters/" + characterID + "/heros"
+}
+/**
+ * プロットを選ぶ画面
+ * @param characterID キャラID
+ * @returns パス
+ */
+export function pathCharacterPlotChoice(
+	characterID: string,
+	heroCharacterID: string,
+): string {
+	return "/characters/" + characterID +
+	 "/heros/" + heroCharacterID + "/plots"
 }
 
 /**

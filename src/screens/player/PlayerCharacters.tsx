@@ -10,15 +10,17 @@ import { MessageInstance } from "antd/es/message/interface"
 import { Divider } from "antd"
 import { Link } from "react-router-dom"
 import { pathPlayer } from "../../routes/EndPoints"
+import { useUser } from "../../contexts/UserContext"
 
 interface PlayerCharactersProps {
 	messageApi: MessageInstance
 }
 
 function PlayerCharacters(props: PlayerCharactersProps) {
+	const {user} = useUser()
+	const {playerId} = useParams()
 	const [playerObject, setPlayerObject] = useState<Player>()
 	const [characters, setCharacters] = useState<Character[]>()
-	const {playerId} = useParams()
 	
 	function loadUserCharacters(player: Player) {
 		if (player != null) {
@@ -47,7 +49,15 @@ function PlayerCharacters(props: PlayerCharactersProps) {
 
 	useEffect(() => {
 		loadPlayer()
-	}, [])	
+	}, [playerId])
+
+	function editable(): boolean {
+		if (user != null && playerObject != null) {
+			return user.ID === playerObject.ID
+		}
+
+		return false
+	}
 
 	return (<div className="pb-40">
 			<div className="mx-4 text-lg flex items-center justify-center">
@@ -60,10 +70,12 @@ function PlayerCharacters(props: PlayerCharactersProps) {
 			<Divider className="my-2"/>
 			{characters?.map((character) => {
 				return <div key={character.ID}>
-					<CharacterListItem character={character} />
+					<CharacterListItem character={character} editable={editable()} />
 				</div>
 			})}
-			<FloatingActionButton/>
+			{
+				editable() ? <FloatingActionButton/> : null
+			}
 		</div>
 	)
 }
