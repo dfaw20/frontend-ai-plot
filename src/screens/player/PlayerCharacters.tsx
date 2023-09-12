@@ -47,7 +47,7 @@ function PlayerCharacters(props: PlayerCharactersProps) {
 		loadPlayer()
 	}, [])	
 
-	return (<>
+	return (<div className="pb-40">
 			<div className="mx-4 text-lg flex items-center justify-center">
 				{playerObject?.DisplayName}
 			</div>
@@ -58,7 +58,7 @@ function PlayerCharacters(props: PlayerCharactersProps) {
 				</div>
 			})}
 			<FloatingActionButton/>
-		</>
+		</div>
 	)
 }
 

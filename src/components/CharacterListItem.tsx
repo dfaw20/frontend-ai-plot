@@ -2,6 +2,7 @@ import React from 'react'
 import { Character } from '../entities/Character'
 import { getGenderText } from '../entities/Character'
 import RoundedButton from './RoundedButton'
+import { Divider, Tag } from 'antd'
 
 interface CharacterListItemProps {
 	character: Character
@@ -14,12 +15,9 @@ function CharacterListItem(props: CharacterListItemProps) {
 			<div className='flex justify-between'>
 				<div>
 					<div className='font-bold text-black-800'>{props.character.Name}</div>
-					<div className='flex items-center justify-center'>
+					<div className='flex items-center'>
 						<div className='text-gray-500'>
 							{props.character.Nickname}
-						</div>
-						<div className='ml-2 bg-slate-600 text-slate-50 px-2 text-sm flex items-center justify-center h-full'>
-							{getGenderText(props.character.Gender)}
 						</div>
 					</div>
 				</div>
@@ -28,13 +26,18 @@ function CharacterListItem(props: CharacterListItemProps) {
 				</div>
 			</div>
 
-			<div >
-				<div>{props.character.Outfit}</div>
-				<div>{props.character.Hairstyle}</div>
-				<div>{props.character.Personality}</div>
-				<div>{props.character.Tone}</div>
+			<div>
+				<Tag>
+					{getGenderText(props.character.Gender)}
+				</Tag>
+				<Tag>{props.character.Outfit}</Tag>
+				<Tag>{props.character.Hairstyle}</Tag>
+				<Tag>{props.character.Personality}</Tag>
+				<Tag>{props.character.Tone}</Tag>
 			</div>
-			<div>{props.character.Profile}</div>
+			<div className='mt-4'>{props.character.Profile}</div>
+
+			<Divider/>
 		</div>
 	)
 }
