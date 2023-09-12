@@ -1,33 +1,36 @@
 import React from "react"
 import { useUser } from '../contexts/UserContext'
-import { Link } from 'react-router-dom'
-import { CgMenuRight } from 'react-icons/cg'
-import { pathSetting } from "../routes/EndPoints"
+import { Link, useLocation } from 'react-router-dom'
+import { pathLogin, pathTop } from "../routes/EndPoints"
+import { Button, Spin } from "antd"
+import DrawerButton from "./DrawerButton"
 
 function Header() {
 
 	const {loginStatus} = useUser()
-
-	switch (loginStatus) {
-	case "INIT":
-		return <></>
-	case "LOGIN":
-		return (
-			<div className="flex justify-between">
-				<div className="p-4">
-				</div>
-				<div className="p-4">
-					<Link to={pathSetting()}>
-						<CgMenuRight size={30}/>
-					</Link>
-				</div>
+	const location = useLocation()
+	
+	return (
+		<div className="flex justify-between">
+			<div className="p-4">
+				<Link to={pathTop()}>
+					<h1 className="tracking-widest">PLot</h1>
+				</Link>
 			</div>
-		)
-	case "LOGOUT":
-		return (
-			<></>
-		)
-	}
+			<div className="p-4">
+				{loginStatus === 'INIT' ?
+					<><Spin /></>
+				 : null }
+				{loginStatus === 'LOGIN' ?
+					<DrawerButton/>
+				 : null }
+				{loginStatus === 'LOGOUT' && !location.pathname.includes(pathLogin()) ?
+				<Link to={pathLogin()}>
+					<Button>ログイン</Button>
+				</Link> : null }
+			</div>
+		</div>
+	)
 }
 
 export default Header

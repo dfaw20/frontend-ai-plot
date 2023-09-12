@@ -1,6 +1,6 @@
 import React from "react"
 
-function UserHome() {
+function PlayerPage() {
 	return (
 		<>
 			<div>ユーザ</div>
@@ -8,4 +8,4 @@ function UserHome() {
 	)
 }
 
-export default UserHome
+export default PlayerPage

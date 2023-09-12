@@ -6,20 +6,27 @@ import { apiUserInfo } from "../network/Api"
 import { UserResult } from "../entities/User"
 
 function LoginStateRestore() {
-	const {login, logout} = useUser()
+	const {login, logout, loginStatus} = useUser()
 
 	useEffect(() => {
-		const bearer = makeBearerToken()
-		if (bearer) {
-			axios
-				.get<UserResult>(apiUserInfo(), {headers: {	Authorization: bearer,}})
-				.then(res => {
-					login(res.data.user)
-				})
-		} else {
-			logout()
+		if (loginStatus === 'INIT' || loginStatus === 'LOGOUT') {
+			const bearer = makeBearerToken()
+			if (bearer) {
+				axios
+					.get<UserResult>(apiUserInfo(), {headers: {	Authorization: bearer,}})
+					.then(res => {
+						login(res.data.user)
+					})
+					.catch((err) => {
+						console.log(err)
+						logout()
+					})
+			} else {
+				logout()	
+			}
 		}
-	}, [])	
+
+	}, [loginStatus])	
 
 	return (
 		<></>

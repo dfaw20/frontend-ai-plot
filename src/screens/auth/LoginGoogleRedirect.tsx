@@ -5,8 +5,14 @@ import axios from "axios"
 import { useUser } from '../../contexts/UserContext'
 import { LOCAL_STORAGE_ACCESS_TOKEN_KEY } from "../../repository/Storage"
 import { TokenResult } from "../../entities/Auth"
+import { MessageInstance } from "antd/es/message/interface"
+import { Spin } from "antd"
 
-function LoginGoogleRedirect() {
+interface LoginGoogleRedirectProps {
+	messageApi: MessageInstance
+}
+
+function LoginGoogleRedirect(props: LoginGoogleRedirectProps) {
 	const navigate = useNavigate()
 	const didLoadRef = useRef(false)
 	const { login } = useUser()
@@ -31,6 +37,7 @@ function LoginGoogleRedirect() {
 							LOCAL_STORAGE_ACCESS_TOKEN_KEY,
 							res.data.token.access_token
 						)
+						props.messageApi.success('ログインしました')
 						navigate('/')
 					}
 				})
@@ -41,8 +48,8 @@ function LoginGoogleRedirect() {
 	}, [])
 
 	return (
-		<div>
-			redirect
+		<div className="flex items-center justify-center w-screen h-screen">
+			<Spin />
 		</div>
 	)
 }

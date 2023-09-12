@@ -51,7 +51,8 @@ module.exports = {
         ],
 		"no-console": [
 			"warn"
-		]
+		],
+		"no-mixed-spaces-and-tabs": "warn"
 	},
 	settings: {
 		react: {

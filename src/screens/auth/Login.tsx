@@ -17,8 +17,11 @@ function Login() {
 	}
     
 	return (
-		<div>
-			<button onClick={onClickGoogleLoginButton}>Login with Google!</button>
+		<div className="flex justify-center items-center h-screen">
+			<button
+			 onClick={onClickGoogleLoginButton}>
+				<img src="google/btn_google_signin_dark_normal_web@2x.png"/>
+			</button>
 		</div>
 	)
 }

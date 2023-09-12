@@ -1,4 +1,4 @@
-export function pathRoot(): string {
+export function pathTop(): string {
 	return "/"
 }
 
@@ -21,22 +21,26 @@ export function pathSetting(): string {
 }
 
 /**
+ * Player
+ */
+export function pathPlayer(playerID: string): string {
+	return "/u/" + playerID
+}
+export function pathPlayerCharacters(playerID: string): string {
+	return "/u/" + playerID + "/characters"
+}
+export function pathPlayerPlots(playerID: string): string {
+	return "/u/" + playerID + "/plots"
+}
+export function pathPlayerStories(playerID: string): string {
+	return "/u/" + playerID + "/stories"
+}
+
+/**
  * User
  */
-export function pathUser(userID: string): string {
-	return "/u/" + userID
-}
 export function pathUserEdit(userID: string): string {
-	return "/u/" + userID + "/edit"
-}
-export function pathUserCharacters(userID: string): string {
-	return "/u/" + userID + "/characters"
-}
-export function pathUserPlots(userID: string): string {
-	return "/u/" + userID + "/plots"
-}
-export function pathUserStories(userID: string): string {
-	return "/u/" + userID + "/stories"
+	return "/user/" + userID + "/edit"
 }
 
 /**
