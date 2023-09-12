@@ -8,6 +8,8 @@ import { useParams } from 'react-router-dom';
 import { Player } from "../../entities/Player"
 import { MessageInstance } from "antd/es/message/interface"
 import { Divider } from "antd"
+import { Link } from "react-router-dom"
+import { pathPlayer } from "../../routes/EndPoints"
 
 interface PlayerCharactersProps {
 	messageApi: MessageInstance
@@ -49,7 +51,11 @@ function PlayerCharacters(props: PlayerCharactersProps) {
 
 	return (<div className="pb-40">
 			<div className="mx-4 text-lg flex items-center justify-center">
-				{playerObject?.DisplayName}
+				{
+					playerObject != null ? <Link to={pathPlayer(playerObject.ID.toString())}>
+						{playerObject.DisplayName}
+					</Link> : null
+				}
 			</div>
 			<Divider className="my-2"/>
 			{characters?.map((character) => {
