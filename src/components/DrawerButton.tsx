@@ -1,8 +1,8 @@
 import React, { ReactNode, useState } from "react"
 import { CgMenuRight } from 'react-icons/cg'
-import { Drawer } from "antd"
+import { Divider, Drawer } from "antd"
 import { useUser } from "../contexts/UserContext";
-import { pathPlayer, pathSetting } from "../routes/EndPoints";
+import { pathPlayer, pathPlots, pathSetting } from "../routes/EndPoints";
 import { useNavigate } from "react-router-dom";
 
 function DrawerButton() {
@@ -40,7 +40,13 @@ function DrawerButton() {
 		<>
 			<button  onClick={showDrawer}><CgMenuRight size={30}/></button>
 			<Drawer title={title()} placement="right" onClose={onClose} open={open}>
-				<button onClick={() => handleMenuClick(pathSetting)}>設定</button>
+				<div>
+					<button onClick={() => handleMenuClick(pathSetting)}>設定</button>
+				</div>
+				<Divider/>
+				<div>
+					<button onClick={() => handleMenuClick(pathPlots)}>シナリオ管理</button>
+				</div>
 			</Drawer>
 		</>
 	)

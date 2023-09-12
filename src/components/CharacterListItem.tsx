@@ -2,6 +2,8 @@ import React from 'react'
 import { Character } from '../entities/Character'
 import { getGenderText } from '../entities/Character'
 import { Button, Divider, Tag } from 'antd'
+import { pathCharacterHeroChoice } from '../routes/EndPoints'
+import { Link } from 'react-router-dom'
 
 interface CharacterListItemProps {
 	character: Character
@@ -41,7 +43,9 @@ function CharacterListItem(props: CharacterListItemProps) {
 
 			<div className='mt-4 flex items-center justify-center'>
 				<Button>
+					<Link to={pathCharacterHeroChoice(props.character.ID.toString())}>
 					物語を綴る
+					</Link>
 				</Button>
 			</div>
 
