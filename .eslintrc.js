@@ -32,7 +32,7 @@ module.exports = {
 	],
 	"rules": {
 		"indent": [
-			"error",
+			"warn",
 			"tab"
 		],
 		"linebreak-style": [
@@ -40,12 +40,19 @@ module.exports = {
 			"unix"
 		],
 		"semi": [
-			"error",
-			"always"
+			"warn",
+			"never"
+		],
+		"no-warning-comments": [
+			"warn"
 		],
         "@typescript-eslint/no-unused-vars": [
             "error"
-        ]
+        ],
+		"no-console": [
+			"warn"
+		],
+		"no-mixed-spaces-and-tabs": "warn"
 	},
 	settings: {
 		react: {
