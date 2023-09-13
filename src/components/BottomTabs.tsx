@@ -22,14 +22,14 @@ interface TabItemProps {
 function TabItem(
 	props: TabItemProps
 ) {
-	const Icon = props.icon;
+	const Icon = props.icon
 
 	return (<div
-			className={`cursor-pointer ${props.activeTab === props.tabCode ? 'text-primary' : ''}`}
-			onClick={() => props.handleTabClick(props.tabCode)}>
-			{<Icon className="mx-auto"  size={28}/>}	
-			<span className="text-xs">{props.text}</span>
-		</div>)
+		className={`cursor-pointer ${props.activeTab === props.tabCode ? 'text-primary' : ''}`}
+		onClick={() => props.handleTabClick(props.tabCode)}>
+		{<Icon className="mx-auto"  size={28}/>}	
+		<span className="text-xs">{props.text}</span>
+	</div>)
 }
 
 interface BottomTabsProps {
@@ -57,7 +57,7 @@ const BottomTabs = (props: BottomTabsProps) => {
 				props.messageApi.open({
 					type: 'error',
 					content: 'ログインしていません',
-				});
+				})
 				return
 			}
 			navigate(pathPlayerStories(user.ID.toString()))
@@ -67,7 +67,7 @@ const BottomTabs = (props: BottomTabsProps) => {
 				props.messageApi.open({
 					type: 'error',
 					content: 'ログインしていません',
-				});
+				})
 				return
 			}
 			navigate(pathPlayerCharacters(user.ID.toString()))

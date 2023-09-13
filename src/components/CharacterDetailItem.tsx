@@ -12,7 +12,7 @@ interface DescriptionRowProps {
 }
 
 function DescriptionRow(props: DescriptionRowProps) {
-	const Icon = props.icon;
+	const Icon = props.icon
 
 	return <>
 		<div className='flex'>

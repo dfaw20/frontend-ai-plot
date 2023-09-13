@@ -22,8 +22,8 @@ function PlotListItem(props: PlotListItemProps) {
 				</div>
 				<div className="flex items-center justify-center">
 					{props.editable ?
-					<Button>編集</Button>
-					: null}
+						<Button>編集</Button>
+						: null}
 				</div>
 			</div>
 

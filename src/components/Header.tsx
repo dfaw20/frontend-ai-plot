@@ -25,9 +25,9 @@ function Header() {
 					<DrawerButton/>
 				 : null }
 				{loginStatus === 'LOGOUT' && !location.pathname.includes(pathLogin()) ?
-				<Link to={pathLogin()}>
-					<Button>ログイン</Button>
-				</Link> : null }
+					<Link to={pathLogin()}>
+						<Button>ログイン</Button>
+					</Link> : null }
 			</div>
 		</div>
 	)

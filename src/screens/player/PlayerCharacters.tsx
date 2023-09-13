@@ -4,12 +4,12 @@ import axios from "axios"
 import { apiCharactersByPlayer, apiGetPlayer } from "../../network/Api"
 import FloatingActionButton from "../../components/FloatingActionButton"
 import CharacterListItem from "../../components/CharacterListItem"
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom'
 import { Player } from "../../entities/Player"
 import { MessageInstance } from "antd/es/message/interface"
-import { Divider } from "antd"
+import { Button, Divider } from "antd"
 import { Link } from "react-router-dom"
-import { pathCharacterNew, pathPlayer } from "../../routes/EndPoints"
+import { pathCharacterNew, pathPlayer, pathTaleHeroChoice } from "../../routes/EndPoints"
 import { useUser } from "../../contexts/UserContext"
 
 interface PlayerCharactersProps {
@@ -26,10 +26,10 @@ function PlayerCharacters(props: PlayerCharactersProps) {
 	function loadUserCharacters(player: Player) {
 		if (player != null) {
 			axios.get<Character[]>(apiCharactersByPlayer(player.ID.toString()))
-			.then((res) => {
-				console.log(res.data)
-				setCharacters(res.data)
-			})
+				.then((res) => {
+					console.log(res.data)
+					setCharacters(res.data)
+				})
 		} else {
 			props.messageApi.warning('ユーザが存在しません')
 		}
@@ -38,11 +38,11 @@ function PlayerCharacters(props: PlayerCharactersProps) {
 	function loadPlayer() {
 		if (playerId != null) {
 			axios.get<Player>(apiGetPlayer(playerId))
-			.then((res) => {
-				console.log(res.data)
-				setPlayerObject(res.data)
-				loadUserCharacters(res.data)
-			})
+				.then((res) => {
+					console.log(res.data)
+					setPlayerObject(res.data)
+					loadUserCharacters(res.data)
+				})
 		} else {
 			props.messageApi.warning('ユーザが存在しません')
 		}
@@ -61,27 +61,32 @@ function PlayerCharacters(props: PlayerCharactersProps) {
 	}
 
 	return (<div className="pb-40">
-			<div className="mx-4 text-lg flex items-center justify-center">
-				{
-					playerObject != null ? <Link to={pathPlayer(playerObject.ID.toString())}>
-						{playerObject.DisplayName}
-					</Link> : null
-				}
-			</div>
-			<Divider className="my-2"/>
-			{characters?.map((character) => {
-				return <div key={character.ID}>
-					<CharacterListItem character={character} editable={editable()} />
-				</div>
-			})}
+		<div className="mx-4 text-lg flex items-center justify-center">
 			{
-				editable() ? <FloatingActionButton onHandleClick={
-					() => {
-						navigate(pathCharacterNew())
-					}
-				}/> : null
+				playerObject != null ? <Link to={pathPlayer(playerObject.ID.toString())}>
+					{playerObject.DisplayName}
+				</Link> : null
 			}
 		</div>
+		<Divider className="my-2"/>
+		{characters?.map((character) => {
+			return <div key={character.ID}>
+				<CharacterListItem character={character} editable={editable()} actionArea={				<Button>
+					<Link to={pathTaleHeroChoice(character.ID.toString())}>
+					物語を綴る
+					</Link>
+				</Button>
+				} />
+			</div>
+		})}
+		{
+			editable() ? <FloatingActionButton onHandleClick={
+				() => {
+					navigate(pathCharacterNew())
+				}
+			}/> : null
+		}
+	</div>
 	)
 }
 

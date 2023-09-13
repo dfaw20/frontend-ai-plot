@@ -1,13 +1,12 @@
-import React from 'react'
+import React, { ReactNode } from 'react'
 import { Character } from '../entities/Character'
 import { getGenderText } from '../entities/Character'
 import { Button, Divider, Tag } from 'antd'
-import { pathCharacterHeroChoice } from '../routes/EndPoints'
-import { Link } from 'react-router-dom'
 
 interface CharacterListItemProps {
 	character: Character
 	editable: boolean
+	actionArea: ReactNode
 }
 
 function CharacterListItem(props: CharacterListItemProps) {
@@ -25,8 +24,8 @@ function CharacterListItem(props: CharacterListItemProps) {
 				</div>
 				<div className="flex items-center justify-center">
 					{props.editable ?
-					<Button>編集</Button>
-					: null}
+						<Button>編集</Button>
+						: null}
 				</div>
 			</div>
 
@@ -41,11 +40,7 @@ function CharacterListItem(props: CharacterListItemProps) {
 			<div className='mt-4'>{props.character.Profile}</div>
 
 			<div className='mt-4 flex items-center justify-center'>
-				<Button>
-					<Link to={pathCharacterHeroChoice(props.character.ID.toString())}>
-					物語を綴る
-					</Link>
-				</Button>
+				{props.actionArea}
 			</div>
 
 			<Divider/>

@@ -67,20 +67,20 @@ export function pathCharacterDelete(characterID: string): string {
  * @param characterID キャラID
  * @returns パス
  */
-export function pathCharacterHeroChoice(
+export function pathTaleHeroChoice(
 	characterID: string): string {
-	return "/characters/" + characterID + "/heros"
+	return "/tale/characters/" + characterID + "/heros"
 }
 /**
  * プロットを選ぶ画面
  * @param characterID キャラID
  * @returns パス
  */
-export function pathCharacterPlotChoice(
+export function pathTalePlotChoice(
 	characterID: string,
 	heroCharacterID: string,
 ): string {
-	return "/characters/" + characterID +
+	return "/tale/characters/" + characterID +
 	 "/heros/" + heroCharacterID + "/plots"
 }
 

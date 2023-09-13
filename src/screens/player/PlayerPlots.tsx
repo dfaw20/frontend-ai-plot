@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react"
 import axios from "axios"
 import { apiGetPlayer, apiPlotsByPlayer } from "../../network/Api"
 import FloatingActionButton from "../../components/FloatingActionButton"
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom'
 import { Player } from "../../entities/Player"
 import { MessageInstance } from "antd/es/message/interface"
 import { Divider } from "antd"
@@ -26,10 +26,10 @@ function PlayerPlots(props: PlayerPlotsProps) {
 	function loadUserPlots(player: Player) {
 		if (player != null) {
 			axios.get<Plot[]>(apiPlotsByPlayer(player.ID.toString()))
-			.then((res) => {
-				console.log(res.data)
-				setPlots(res.data)
-			})
+				.then((res) => {
+					console.log(res.data)
+					setPlots(res.data)
+				})
 		} else {
 			props.messageApi.warning('ユーザが存在しません')
 		}
@@ -38,11 +38,11 @@ function PlayerPlots(props: PlayerPlotsProps) {
 	function loadPlayer() {
 		if (playerId != null) {
 			axios.get<Player>(apiGetPlayer(playerId))
-			.then((res) => {
-				console.log(res.data)
-				setPlayerObject(res.data)
-				loadUserPlots(res.data)
-			})
+				.then((res) => {
+					console.log(res.data)
+					setPlayerObject(res.data)
+					loadUserPlots(res.data)
+				})
 		} else {
 			props.messageApi.warning('ユーザが存在しません')
 		}
@@ -61,36 +61,36 @@ function PlayerPlots(props: PlayerPlotsProps) {
 	}
 
 	return (<div className="pb-40">
-			<div className="text-lg flex items-center justify-center">
-				{
-					playerObject != null ? <Link to={pathPlayer(playerObject.ID.toString())}>
-						{playerObject.DisplayName}
-					</Link> : null
-				}
-			</div>
-			<Divider className="my-2"/>
+		<div className="text-lg flex items-center justify-center">
 			{
-				plots == null || plots.length === 0 ? 
+				playerObject != null ? <Link to={pathPlayer(playerObject.ID.toString())}>
+					{playerObject.DisplayName}
+				</Link> : null
+			}
+		</div>
+		<Divider className="my-2"/>
+		{
+			plots == null || plots.length === 0 ? 
 				(<div className="mx-4">作成済みのシナリオはありません</div>)
 				: (
 					<>
-					{plots?.map((plot) => {
-						return <div key={plot.ID}>
-							<PlotListItem plot={plot} editable={editable()} />
-						</div>
-					})}
+						{plots?.map((plot) => {
+							return <div key={plot.ID}>
+								<PlotListItem plot={plot} editable={editable()} />
+							</div>
+						})}
 					</>
 				)
-			}
+		}
 			
-			{
-				editable() ? <FloatingActionButton onHandleClick={
-					() => {
-						navigate(pathPlotNew())
-					}
-				}/> : null
-			}
-		</div>
+		{
+			editable() ? <FloatingActionButton onHandleClick={
+				() => {
+					navigate(pathPlotNew())
+				}
+			}/> : null
+		}
+	</div>
 	)
 }
 

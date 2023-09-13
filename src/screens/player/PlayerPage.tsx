@@ -19,9 +19,9 @@ function PlayerPage(props: PlayerPageProps) {
 	function loadPlayer() {
 		if (playerId != null) {
 			axios.get<Player>(apiGetPlayer(playerId))
-			.then((res) => {
-				setPlayer(res.data)
-			})
+				.then((res) => {
+					setPlayer(res.data)
+				})
 		} else {
 			props.messageApi.warning('ユーザが存在しません')
 		}
@@ -35,23 +35,23 @@ function PlayerPage(props: PlayerPageProps) {
 		<>
 			{
 				player != null ? 
-				<div className="flex h-screen justify-center">
-					<div className="text-center">
-						<div className="flex items-center justify-center">
-							<LuUserSquare size={32}/>
-						</div>
+					<div className="flex h-screen justify-center">
+						<div className="text-center">
+							<div className="flex items-center justify-center">
+								<LuUserSquare size={32}/>
+							</div>
 		
-						<div className="text-xl mt-4">{player.DisplayName}</div>
-						<div className="mt-8">
-						<Link to={pathPlayerCharacters(player.ID.toString())}>
-							<Button>
+							<div className="text-xl mt-4">{player.DisplayName}</div>
+							<div className="mt-8">
+								<Link to={pathPlayerCharacters(player.ID.toString())}>
+									<Button>
 								作ったキャラクター
-							</Button>
-						</Link>
+									</Button>
+								</Link>
+							</div>
 						</div>
 					</div>
-				</div>
-				: null
+					: null
 			}
 		</>
 	)

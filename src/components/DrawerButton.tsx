@@ -1,23 +1,23 @@
 import React, { ReactNode, useState } from "react"
 import { CgMenuRight } from 'react-icons/cg'
 import { Divider, Drawer } from "antd"
-import { useUser } from "../contexts/UserContext";
-import { pathPlayer, pathPlayerPlots, pathSetting } from "../routes/EndPoints";
-import { useNavigate } from "react-router-dom";
+import { useUser } from "../contexts/UserContext"
+import { pathPlayer, pathPlayerPlots, pathSetting } from "../routes/EndPoints"
+import { useNavigate } from "react-router-dom"
 
 function DrawerButton() {
 
-	const [open, setOpen] = useState(false);
+	const [open, setOpen] = useState(false)
 	const {user} = useUser()
 	const navigate = useNavigate()
 
 	const showDrawer = () => {
-	  setOpen(true);
-	};
+	  setOpen(true)
+	}
   
 	const onClose = () => {
-	  setOpen(false);
-	};
+	  setOpen(false)
+	}
 
 	function title(): ReactNode {
 		if (user) {
@@ -25,7 +25,7 @@ function DrawerButton() {
 				<button onClick={() => handleMenuClick(pathPlayer(user.ID.toString()))}>
 					{user.DisplayName}
 				</button>
-				</>
+			</>
 		}
 
 		return <></>
@@ -45,9 +45,9 @@ function DrawerButton() {
 				</div>
 				<Divider/>
 				{user != null ? 
-				<div>
-					<button onClick={() => handleMenuClick(pathPlayerPlots(user.ID.toString()))}>シナリオ管理</button>
-				</div>
+					<div>
+						<button onClick={() => handleMenuClick(pathPlayerPlots(user.ID.toString()))}>シナリオ管理</button>
+					</div>
 				 : null}
 			</Drawer>
 		</>

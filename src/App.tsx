@@ -12,7 +12,7 @@ import CharacterList from "./screens/character/CharactersHome"
 import NewCharacter from "./screens/character/NewCharacter"
 import BottomTab from "./components/BottomTabs"
 import { TabProvider } from "./contexts/TabContext"
-import { pathAuthGoogleRedirect, pathCharacterNew, pathCharacters, pathLogin, pathTop, pathSetting, pathPlayer, pathPlayerCharacters, pathPlayerPlots, pathPlotNew, pathCharacterHeroChoice } from "./routes/EndPoints"
+import { pathAuthGoogleRedirect, pathCharacterNew, pathCharacters, pathLogin, pathTop, pathSetting, pathPlayer, pathPlayerCharacters, pathPlayerPlots, pathPlotNew, pathTaleHeroChoice } from "./routes/EndPoints"
 import PlayerPage from "./screens/player/PlayerPage"
 import PlayerCharacters from "./screens/player/PlayerCharacters"
 import { message  as antMessage } from "antd"
@@ -24,7 +24,7 @@ import ChoiceHeroPage from "./screens/tale/ChoiceHeroPage"
 
 function App() {
 
-	const [messageApi, contextHolder] = antMessage.useMessage();
+	const [messageApi, contextHolder] = antMessage.useMessage()
 
 	return (
 		<div className="w-screen">
@@ -63,7 +63,7 @@ function App() {
 								redirect={pathTop()} />}
 							/>
 
-							<Route path={pathCharacterHeroChoice(":characterId")} element={<RouteGuardAuth component={<ChoiceHeroPage messageApi={messageApi}/>}
+							<Route path={pathTaleHeroChoice(":characterId")} element={<RouteGuardAuth component={<ChoiceHeroPage messageApi={messageApi}/>}
 								redirect={pathTop()} />}
 							/>
 
