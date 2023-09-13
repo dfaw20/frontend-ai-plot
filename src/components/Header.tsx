@@ -14,7 +14,7 @@ function Header() {
 		<div className="flex justify-between">
 			<div className="p-4">
 				<Link to={pathTop()}>
-					<h1 className="tracking-widest">PLot</h1>
+					<h1 className="tracking-widest">monogatarAi</h1>
 				</Link>
 			</div>
 			<div className="p-4">
