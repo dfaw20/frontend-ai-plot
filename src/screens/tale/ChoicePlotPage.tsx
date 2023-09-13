@@ -77,11 +77,9 @@ function ChoicePlotPage(props: ChoicePlotPageProps) {
 								editable={false} 
 								revealPrompt={false}
 								actionArea={
-								<Button>
 									<Link to={pathTalePlotChoice(targetCharacter.ID.toString(), heroCharacter.ID.toString())}>
-										入場
+										<Button>入場</Button>
 									</Link>
-								</Button>
 								}
 							/>
 						</div>

@@ -61,11 +61,13 @@ function ChoiceHeroPage(props: ChoiceHeroPageProps) {
 					<Divider className="my-2"/>
 					{heroCharacters?.map((heroCharacter) => {
 						return <div key={heroCharacter.ID}>
-							<CharacterListItem character={heroCharacter} editable={false} actionArea={<Button>
+							<CharacterListItem character={heroCharacter} editable={false} actionArea={
 								<Link to={pathTalePlotChoice(targetCharacter.ID.toString(), heroCharacter.ID.toString())}>
-					選択
+									<Button>
+										選択
+									</Button>
 								</Link>
-							</Button>} />
+							} />
 						</div>
 					})}
 				</div> : null
