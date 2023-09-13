@@ -2,7 +2,7 @@ import React, { ReactNode, useState } from "react"
 import { CgMenuRight } from 'react-icons/cg'
 import { Divider, Drawer } from "antd"
 import { useUser } from "../contexts/UserContext";
-import { pathPlayer, pathPlots, pathSetting } from "../routes/EndPoints";
+import { pathPlayer, pathPlayerPlots, pathSetting } from "../routes/EndPoints";
 import { useNavigate } from "react-router-dom";
 
 function DrawerButton() {
@@ -22,7 +22,7 @@ function DrawerButton() {
 	function title(): ReactNode {
 		if (user) {
 			return <>
-				<button onClick={() => handleMenuClick(() => pathPlayer(user.ID.toString()))}>
+				<button onClick={() => handleMenuClick(pathPlayer(user.ID.toString()))}>
 					{user.DisplayName}
 				</button>
 				</>
@@ -31,9 +31,9 @@ function DrawerButton() {
 		return <></>
 	}
 
-	function handleMenuClick(path: () => string) {
+	function handleMenuClick(path: string) {
 		onClose()
-		navigate(path())
+		navigate(path)
 	}
 
 	return (
@@ -41,12 +41,14 @@ function DrawerButton() {
 			<button  onClick={showDrawer}><CgMenuRight size={30}/></button>
 			<Drawer title={title()} placement="right" onClose={onClose} open={open}>
 				<div>
-					<button onClick={() => handleMenuClick(pathSetting)}>設定</button>
+					<button onClick={() => handleMenuClick(pathSetting())}>設定</button>
 				</div>
 				<Divider/>
+				{user != null ? 
 				<div>
-					<button onClick={() => handleMenuClick(pathPlots)}>シナリオ管理</button>
+					<button onClick={() => handleMenuClick(pathPlayerPlots(user.ID.toString()))}>シナリオ管理</button>
 				</div>
+				 : null}
 			</Drawer>
 		</>
 	)

@@ -13,14 +13,26 @@ export function apiUserInfo(): string {
 	return BACKEND_HOST + "/user"
 }
 
-export function apiCharacterCreate(): string {
-	return BACKEND_HOST + "/characters/create"
-}
-
 export function apiGetPlayer(playerID: string): string {
 	return BACKEND_HOST +  "/players/" + playerID
 }
 
 export function apiCharactersByPlayer(playerID: string): string {
 	return BACKEND_HOST +  "/players/" + playerID + "/characters"
+}
+
+export function apiPlotsByPlayer(playerID: string): string {
+	return BACKEND_HOST +  "/players/" + playerID + "/plots"
+}
+
+export function apiCharacterCreate(): string {
+	return BACKEND_HOST + "/characters/create"
+}
+
+export function apiRecentPlots(): string {
+	return BACKEND_HOST + "/plots/recent"
+}
+
+export function apiPlotCreate(): string {
+	return BACKEND_HOST + "/plots/create"
 }
