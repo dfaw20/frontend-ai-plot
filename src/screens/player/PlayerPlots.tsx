@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react"
 import axios from "axios"
 import { apiGetPlayer, apiPlotsByPlayer } from "../../network/Api"
 import FloatingActionButton from "../../components/FloatingActionButton"
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { Player } from "../../entities/Player"
 import { MessageInstance } from "antd/es/message/interface"
 import { Divider } from "antd"
 import { Link } from "react-router-dom"
-import { pathPlayer } from "../../routes/EndPoints"
+import { pathPlayer, pathPlotNew } from "../../routes/EndPoints"
 import { useUser } from "../../contexts/UserContext"
 import { Plot } from "../../entities/Plot"
 import PlotListItem from "../../components/PlotListItem"
@@ -21,6 +21,7 @@ function PlayerPlots(props: PlayerPlotsProps) {
 	const {playerId} = useParams()
 	const [playerObject, setPlayerObject] = useState<Player>()
 	const [plots, setPlots] = useState<Plot[]>()
+	const navigate = useNavigate()
 	
 	function loadUserPlots(player: Player) {
 		if (player != null) {
@@ -83,7 +84,11 @@ function PlayerPlots(props: PlayerPlotsProps) {
 			}
 			
 			{
-				editable() ? <FloatingActionButton/> : null
+				editable() ? <FloatingActionButton onHandleClick={
+					() => {
+						navigate(pathPlotNew())
+					}
+				}/> : null
 			}
 		</div>
 	)

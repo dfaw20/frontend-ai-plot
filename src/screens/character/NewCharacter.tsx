@@ -4,7 +4,7 @@ import { apiCharacterCreate } from "../../network/Api"
 import { CharacterInput } from "../../types/post_data/Character"
 import { makeBearerToken } from "../../repository/Storage"
 
-function CreateCharacter() {
+function NewCharacter() {
 
 	function onClickCreate() {
 		const input: CharacterInput = {
@@ -37,4 +37,4 @@ function CreateCharacter() {
 	)
 }
 
-export default CreateCharacter
+export default NewCharacter

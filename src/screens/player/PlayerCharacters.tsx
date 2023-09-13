@@ -4,12 +4,12 @@ import axios from "axios"
 import { apiCharactersByPlayer, apiGetPlayer } from "../../network/Api"
 import FloatingActionButton from "../../components/FloatingActionButton"
 import CharacterListItem from "../../components/CharacterListItem"
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { Player } from "../../entities/Player"
 import { MessageInstance } from "antd/es/message/interface"
 import { Divider } from "antd"
 import { Link } from "react-router-dom"
-import { pathPlayer } from "../../routes/EndPoints"
+import { pathCharacterNew, pathPlayer } from "../../routes/EndPoints"
 import { useUser } from "../../contexts/UserContext"
 
 interface PlayerCharactersProps {
@@ -21,6 +21,7 @@ function PlayerCharacters(props: PlayerCharactersProps) {
 	const {playerId} = useParams()
 	const [playerObject, setPlayerObject] = useState<Player>()
 	const [characters, setCharacters] = useState<Character[]>()
+	const navigate = useNavigate()
 	
 	function loadUserCharacters(player: Player) {
 		if (player != null) {
@@ -74,7 +75,11 @@ function PlayerCharacters(props: PlayerCharactersProps) {
 				</div>
 			})}
 			{
-				editable() ? <FloatingActionButton/> : null
+				editable() ? <FloatingActionButton onHandleClick={
+					() => {
+						navigate(pathCharacterNew())
+					}
+				}/> : null
 			}
 		</div>
 	)
