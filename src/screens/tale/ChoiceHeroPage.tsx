@@ -18,7 +18,7 @@ function ChoiceHeroPage(props: ChoiceHeroPageProps) {
 	const {user} = useUser()
 	const {characterId} = useParams()
 	const [heroCharacters, setHeroCharacters] = useState<Character[]>()
-	const [targetCharacter, setTargetCharacters] = useState<Character>()
+	const [targetCharacter, setTargetCharacter] = useState<Character>()
 	
 	function loadHeroCharacters() {
 		if (user != null) {
@@ -35,7 +35,7 @@ function ChoiceHeroPage(props: ChoiceHeroPageProps) {
 		if (characterId != null) {
 			axios.get<Character>(apiGetCharacter(characterId))
 				.then((res) => {
-					setTargetCharacters(res.data)
+					setTargetCharacter(res.data)
 				})
 		} else {
 			props.messageApi.warning('キャラクターが存在しません')

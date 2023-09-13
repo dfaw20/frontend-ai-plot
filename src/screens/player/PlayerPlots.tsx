@@ -76,7 +76,7 @@ function PlayerPlots(props: PlayerPlotsProps) {
 					<>
 						{plots?.map((plot) => {
 							return <div key={plot.ID}>
-								<PlotListItem plot={plot} editable={editable()} />
+								<PlotListItem plot={plot} editable={editable()} revealPrompt={true} actionArea={null} />
 							</div>
 						})}
 					</>

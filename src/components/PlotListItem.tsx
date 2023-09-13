@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { ReactNode } from 'react'
 import { Button, Divider, Tag } from 'antd'
 import { Plot } from '../entities/Plot'
 
 interface PlotListItemProps {
 	plot: Plot
 	editable: boolean
+	revealPrompt: boolean
+	actionArea: ReactNode
 }
 
 function PlotListItem(props: PlotListItemProps) {
@@ -37,7 +39,13 @@ function PlotListItem(props: PlotListItemProps) {
 				<Tag>{props.plot.OutputFormat}</Tag>
 			</div>
 
+			{props.revealPrompt ? 
 			<div className='mt-4'>{props.plot.Prompt}</div>
+			: null }
+
+			<div className='mt-4 flex items-center justify-center'>
+				{props.actionArea}
+			</div>
 
 			<Divider/>
 		</div>
