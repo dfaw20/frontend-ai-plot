@@ -19,7 +19,6 @@ export interface Character {
 	Nickname: string
 	Gender: Gender
 	Outfit: string
-	Hairstyle: string
 	Personality: string
 	Tone: string
 	Profile: string

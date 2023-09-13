@@ -5,7 +5,6 @@ export interface CharacterInput {
 	nickname: string
 	gender: Gender
 	outfit: string
-	hairstyle: string
 	personality: string
 	tone: string
 	profile: string

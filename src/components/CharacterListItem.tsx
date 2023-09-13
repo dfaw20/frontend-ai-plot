@@ -35,7 +35,6 @@ function CharacterListItem(props: CharacterListItemProps) {
 					{getGenderText(props.character.Gender)}
 				</Tag>
 				<Tag>{props.character.Outfit}</Tag>
-				<Tag>{props.character.Hairstyle}</Tag>
 				<Tag>{props.character.Personality}</Tag>
 				<Tag>{props.character.Tone}</Tag>
 			</div>

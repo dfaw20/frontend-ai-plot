@@ -12,7 +12,6 @@ function NewCharacter() {
 			nickname: "",
 			gender: "female",
 			outfit: "",
-			hairstyle: "",
 			personality: "",
 			tone: "",
 			profile: ``

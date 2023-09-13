@@ -12,7 +12,7 @@ import CharacterList from "./screens/character/CharactersHome"
 import NewCharacter from "./screens/character/NewCharacter"
 import BottomTab from "./components/BottomTabs"
 import { TabProvider } from "./contexts/TabContext"
-import { pathAuthGoogleRedirect, pathCharacterNew, pathCharacters, pathLogin, pathTop, pathSetting, pathPlayer, pathPlayerCharacters, pathPlayerPlots, pathPlotNew } from "./routes/EndPoints"
+import { pathAuthGoogleRedirect, pathCharacterNew, pathCharacters, pathLogin, pathTop, pathSetting, pathPlayer, pathPlayerCharacters, pathPlayerPlots, pathPlotNew, pathCharacterHeroChoice } from "./routes/EndPoints"
 import PlayerPage from "./screens/player/PlayerPage"
 import PlayerCharacters from "./screens/player/PlayerCharacters"
 import { message  as antMessage } from "antd"
@@ -20,6 +20,7 @@ import Setting from "./screens/setting/Setting"
 import NotFoundPage from "./screens/NotFoundPage"
 import PlayerPlots from "./screens/player/PlayerPlots"
 import NewPlot from "./screens/plot/NewPlot"
+import ChoiceHeroPage from "./screens/tale/ChoiceHeroPage"
 
 function App() {
 
@@ -61,6 +62,11 @@ function App() {
 							<Route path={pathPlotNew()} element={<RouteGuardAuth component={<NewPlot/>}
 								redirect={pathTop()} />}
 							/>
+
+							<Route path={pathCharacterHeroChoice(":characterId")} element={<RouteGuardAuth component={<ChoiceHeroPage messageApi={messageApi}/>}
+								redirect={pathTop()} />}
+							/>
+
 							<Route path="*" element={<NotFoundPage/>}/>
 						</Routes>
 						<BottomTab messageApi={messageApi}/>

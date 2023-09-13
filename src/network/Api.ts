@@ -29,6 +29,10 @@ export function apiCharacterCreate(): string {
 	return BACKEND_HOST + "/characters/create"
 }
 
+export function apiGetCharacter(characterID: string): string {
+	return BACKEND_HOST + "/characters/" + characterID
+}
+
 export function apiRecentPlots(): string {
 	return BACKEND_HOST + "/plots/recent"
 }
