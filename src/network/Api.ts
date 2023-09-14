@@ -48,3 +48,11 @@ export function apiPlotCreate(): string {
 export function apiTaleCreate(): string {
 	return BACKEND_HOST + "/tale/create"
 }
+
+export function apiGetStory(storyID: string): string {
+	return BACKEND_HOST +  "/stories/" + storyID
+}
+
+export function apiStoryGenerateChat(): string {
+	return BACKEND_HOST + "/stories/generate_chat"
+}
