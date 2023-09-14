@@ -1,8 +1,8 @@
 import React from "react"
 import { 
-	GiSwordsEmblem,
 	GiBookmarklet,
 	GiMushroomHouse,
+	GiCrystalWand,
 } from "react-icons/gi"
 import { TabCode, useTab } from "../contexts/TabContext"
 import { useNavigate } from "react-router-dom"
@@ -77,7 +77,7 @@ const BottomTabs = (props: BottomTabsProps) => {
 
 	return (
 		<>
-			<div className="bg-white text-gray-700 fixed bottom-0 left-0 w-full h-20 flex justify-around items-center z-10 py-1">
+			<div className="bg-palePink text-gray-700 fixed bottom-0 left-0 w-full h-20 flex justify-around items-center z-10 py-1">
 				<TabItem
 					activeTab={activeTab}
 					handleTabClick={handleTabClick}
@@ -97,7 +97,7 @@ const BottomTabs = (props: BottomTabsProps) => {
 					handleTabClick={handleTabClick}
 					tabCode={'tabC'}
 					text={'Character'}
-					icon={GiSwordsEmblem}
+					icon={GiCrystalWand}
 				/>
 			</div>
 		</>

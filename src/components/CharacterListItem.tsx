@@ -2,6 +2,7 @@ import React, { ReactNode } from 'react'
 import { Character } from '../entities/Character'
 import { Button, Divider, Tag } from 'antd'
 import { GiFemale, GiMale } from 'react-icons/gi'
+import { AiTwotoneEdit } from 'react-icons/ai'
 
 interface CharacterListItemProps {
 	character: Character
@@ -42,7 +43,7 @@ function CharacterListItem(props: CharacterListItemProps) {
 				</div>
 				<div className="flex items-center justify-center">
 					{props.editable ?
-						<Button>編集</Button>
+						<Button><AiTwotoneEdit/></Button>
 						: null}
 				</div>
 			</div>

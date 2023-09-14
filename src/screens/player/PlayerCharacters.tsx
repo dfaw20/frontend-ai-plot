@@ -11,6 +11,7 @@ import { Button, Divider } from "antd"
 import { Link } from "react-router-dom"
 import { pathCharacterNew, pathPlayer, pathTaleHeroChoice } from "../../routes/EndPoints"
 import { useUser } from "../../contexts/UserContext"
+import { GiBrokenHeartZone } from "react-icons/gi"
 
 interface PlayerCharactersProps {
 	messageApi: MessageInstance
@@ -73,7 +74,16 @@ function PlayerCharacters(props: PlayerCharactersProps) {
 			return <div key={character.ID}>
 				<CharacterListItem character={character} editable={editable()} actionArea={				
 					<Link to={pathTaleHeroChoice(character.ID.toString())}>
-						<Button>物語を綴る</Button>
+						<Button>
+							<div className="flex gap-1">
+								<div className="flex items-center">
+									<GiBrokenHeartZone/>
+								</div>
+								<div>
+									物語を綴る
+								</div>
+							</div>
+						</Button>
 					</Link>
 				} />
 			</div>

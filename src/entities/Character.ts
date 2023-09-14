@@ -15,11 +15,11 @@ export function getGenderText(gender: Gender) {
 
 export interface Character {
 	ID: number
-	Name: string
-	Nickname: string
-	Gender: Gender
-	Outfit: string
-	Personality: string
-	Tone: string
-	Profile: string
+	Name: string //名前
+	Nickname: string //呼び名
+	Gender: Gender //性別
+	Outfit: string //服装
+	Personality: string //性格
+	Tone: string // 話し方
+	Profile: string // プロフィール
 }

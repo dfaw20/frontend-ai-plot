@@ -40,7 +40,7 @@ function DrawerButton() {
 		<>
 			<button  onClick={showDrawer}><CgMenuRight size={30}/></button>
 			<Drawer title={title()} placement="right" onClose={onClose} open={open}>
-				<div>
+				<div className="bg-taleThinPink">
 					<button onClick={() => handleMenuClick(pathSetting())}>設定</button>
 				</div>
 				<Divider/>
