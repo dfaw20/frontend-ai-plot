@@ -68,8 +68,8 @@ function App() {
 								redirect={pathTop()} />}
 							/>
 							<Route path={pathTalePlotChoice(":targetCharacterId", ":heroCharacterId")} 
-							element={<RouteGuardAuth component={<ChoicePlotPage messageApi={messageApi}/>}
-								redirect={pathTop()} />}
+								element={<RouteGuardAuth component={<ChoicePlotPage messageApi={messageApi}/>}
+									redirect={pathTop()} />}
 							/>
 
 							<Route path="*" element={<NotFoundPage/>}/>

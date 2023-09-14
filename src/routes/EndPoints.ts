@@ -62,20 +62,11 @@ export function pathCharacterDelete(characterID: string): string {
 	return "/characters/" + characterID + "/delete"
 }
 
-/**
- * 主人公を選ぶ画面
- * @param characterID キャラID
- * @returns パス
- */
 export function pathTaleHeroChoice(
 	characterID: string): string {
 	return "/tale/characters/" + characterID + "/heros"
 }
-/**
- * プロットを選ぶ画面
- * @param characterID キャラID
- * @returns パス
- */
+
 export function pathTalePlotChoice(
 	characterID: string,
 	heroCharacterID: string,

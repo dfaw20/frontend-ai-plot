@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from "react"
 import { Character } from "../../entities/Character"
 import axios from "axios"
-import { apiGetCharacter, apiRecentPlots } from "../../network/Api"
-import { Link, useParams } from 'react-router-dom'
+import { apiGetCharacter, apiRecentPlots, apiTaleCreate } from "../../network/Api"
+import {  useParams } from 'react-router-dom'
 import { MessageInstance } from "antd/es/message/interface"
 import { Button, Divider } from "antd"
 import { useUser } from "../../contexts/UserContext"
 import CharacterDetailItem from "../../components/CharacterDetailItem"
-import { pathTalePlotChoice as pathTalePlotChoice } from "../../routes/EndPoints"
 import { Plot } from "../../entities/Plot"
 import PlotListItem from "../../components/PlotListItem"
+import { Story } from "../../entities/Story"
+import { TaleInput } from "../../types/post_data/Tale"
+import { makeBearerToken } from "../../repository/Storage"
 
 interface ChoicePlotPageProps {
 	messageApi: MessageInstance
@@ -51,6 +53,30 @@ function ChoicePlotPage(props: ChoicePlotPageProps) {
 			})
 	}
 
+	function handleEntry(plot: Plot) {
+		if (targetCharacter == null) {
+			props.messageApi.error("対象キャラクターが存在しません")
+			return
+		}
+		if (heroCharacter == null){
+			 props.messageApi.error("主人公キャラクターが存在しません")
+			 return
+		}
+
+		const input: TaleInput = {
+			TargetCharacterID: targetCharacter.ID,
+			HeroCharacterID: heroCharacter.ID,
+			PlotID: plot.ID
+		}
+
+		console.log(input)
+
+		axios.post<Story>(apiTaleCreate(), input, {headers: {Authorization: makeBearerToken(),}})
+			.then((res) => {
+				console.log(res.data)
+			})
+	}
+
 	useEffect(() => {
 		loadTargetCharacter()
 		loadHeroCharacter()
@@ -77,9 +103,7 @@ function ChoicePlotPage(props: ChoicePlotPageProps) {
 								editable={false} 
 								revealPrompt={false}
 								actionArea={
-									<Link to={pathTalePlotChoice(targetCharacter.ID.toString(), heroCharacter.ID.toString())}>
-										<Button>入場</Button>
-									</Link>
+									<Button onClick={() => {handleEntry(plot)}}>入場</Button>
 								}
 							/>
 						</div>

@@ -40,8 +40,8 @@ function PlotListItem(props: PlotListItemProps) {
 			</div>
 
 			{props.revealPrompt ? 
-			<div className='mt-4'>{props.plot.Prompt}</div>
-			: null }
+				<div className='mt-4'>{props.plot.Prompt}</div>
+				: null }
 
 			<div className='mt-4 flex items-center justify-center'>
 				{props.actionArea}

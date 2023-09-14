@@ -71,11 +71,10 @@ function PlayerCharacters(props: PlayerCharactersProps) {
 		<Divider className="my-2"/>
 		{characters?.map((character) => {
 			return <div key={character.ID}>
-				<CharacterListItem character={character} editable={editable()} actionArea={				<Button>
+				<CharacterListItem character={character} editable={editable()} actionArea={				
 					<Link to={pathTaleHeroChoice(character.ID.toString())}>
-					物語を綴る
+						<Button>物語を綴る</Button>
 					</Link>
-				</Button>
 				} />
 			</div>
 		})}
