@@ -33,13 +33,13 @@ function StoryDetail(props: StoryDetailProps) {
 	function loadStory() {
 		if (storyId != null) {
 			axios.get<Story>(apiGetStory(storyId))
-			.then((res) => {
-				if (!res.data.Text) {
-					generateChat(res.data)
-				} else {
-					setStoryObj(res.data)
-				}
-			})
+				.then((res) => {
+					if (!res.data.Text) {
+						generateChat(res.data)
+					} else {
+						setStoryObj(res.data)
+					}
+				})
 		} else {
 			props.messageApi.warning('ストーリーが存在しません')
 		}

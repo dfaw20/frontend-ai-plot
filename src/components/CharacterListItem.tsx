@@ -1,8 +1,9 @@
 import React, { ReactNode } from 'react'
 import { Character } from '../entities/Character'
-import { Button, Divider, Tag } from 'antd'
+import { Button, Divider } from 'antd'
 import { GiFemale, GiMale } from 'react-icons/gi'
 import { AiTwotoneEdit } from 'react-icons/ai'
+import CharacterAttribute from './CharacterAttribute'
 
 interface CharacterListItemProps {
 	character: Character
@@ -49,9 +50,9 @@ function CharacterListItem(props: CharacterListItemProps) {
 			</div>
 
 			<div>
-				<Tag>{props.character.Outfit}</Tag>
-				<Tag>{props.character.Personality}</Tag>
-				<Tag>{props.character.Tone}</Tag>
+				<CharacterAttribute>{props.character.Outfit}</CharacterAttribute>
+				<CharacterAttribute>{props.character.Personality}</CharacterAttribute>
+				<CharacterAttribute>{props.character.Tone}</CharacterAttribute>
 			</div>
 			<div className='mt-4'>{props.character.Profile}</div>
 

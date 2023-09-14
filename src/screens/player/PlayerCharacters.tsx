@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react"
 import { Character } from "../../entities/Character"
 import axios from "axios"
 import { apiCharactersByPlayer, apiGetPlayer } from "../../network/Api"
-import FloatingActionButton from "../../components/FloatingActionButton"
 import CharacterListItem from "../../components/CharacterListItem"
 import { useNavigate, useParams } from 'react-router-dom'
 import { Player } from "../../entities/Player"
@@ -12,6 +11,7 @@ import { Link } from "react-router-dom"
 import { pathCharacterNew, pathPlayer, pathTaleHeroChoice } from "../../routes/EndPoints"
 import { useUser } from "../../contexts/UserContext"
 import { GiBrokenHeartZone } from "react-icons/gi"
+import { BsPlus } from "react-icons/bs"
 
 interface PlayerCharactersProps {
 	messageApi: MessageInstance
@@ -89,11 +89,23 @@ function PlayerCharacters(props: PlayerCharactersProps) {
 			</div>
 		})}
 		{
-			editable() ? <FloatingActionButton onHandleClick={
-				() => {
-					navigate(pathCharacterNew())
-				}
-			}/> : null
+			editable() ? 
+				<div className="flex items-center justify-center gap-2">
+					<Button onClick={
+						() => {
+							navigate(pathCharacterNew())
+						}}>
+						<div className="flex">
+							<div className="flex items-center">
+								<BsPlus/>
+							</div>
+							<div>
+						新しいキャラを作る
+							</div>
+						</div>
+					</Button>
+				</div>
+			 : null
 		}
 	</div>
 	)

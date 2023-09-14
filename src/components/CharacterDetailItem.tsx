@@ -45,12 +45,12 @@ function CharacterDetailItem(
 				<div className='mt-4'>
 					<DescriptionRow
 						icon={AiTwotoneSound}
-						label="略称"
+						label="名前"
 						text={props.character.Nickname}
 					/>
 					<DescriptionRow
 						icon={AiTwotoneSound}
-						label="容姿"
+						label="服装"
 						text={props.character.Outfit}
 					/>
 					<DescriptionRow
@@ -63,6 +63,9 @@ function CharacterDetailItem(
 						label="口調"
 						text={props.character.Tone}
 					/>
+				</div>
+				<div className='mt-4'>
+					{props.character.Profile}
 				</div>
 			</Card>
 		</div>
