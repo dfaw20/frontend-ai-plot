@@ -5,7 +5,7 @@ import { User } from '../entities/User'
 export type LoginStatus = 'INIT' | 'LOGIN' | 'LOGOUT';
 
 interface UserContextType {
-	user: User | null;
+	user: User | null | undefined;
 	loginStatus: LoginStatus;
 	login: (user: User) => void;
 	logout: () => void;
@@ -27,7 +27,7 @@ interface UserProviderProps {
 
 export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
 	const [loginStatus, setLoginStatus] = useState<LoginStatus>('INIT')
-	const [user, setUser] = useState<User | null>(null)
+	const [user, setUser] = useState<User | null | undefined>(null)
 
 	// ログイン状態を設定する関数
 	const login = (user: User) => {

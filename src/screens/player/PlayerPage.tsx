@@ -7,6 +7,8 @@ import { Link, useParams } from "react-router-dom"
 import { pathPlayerCharacters } from "../../routes/EndPoints"
 import { Button } from "antd"
 import { LuUserSquare } from 'react-icons/lu'
+import { useUser } from "../../contexts/UserContext"
+import UserDisplayNameEditForm from "../../components/UserDisplayNameEditForm"
 
 interface PlayerPageProps {
 	messageApi: MessageInstance
@@ -15,6 +17,7 @@ interface PlayerPageProps {
 function PlayerPage(props: PlayerPageProps) {
 	const [player, setPlayer] = useState<Player>()
 	const {playerId} = useParams()
+	const {user} = useUser()
 
 	function loadPlayer() {
 		if (playerId != null) {
@@ -41,7 +44,12 @@ function PlayerPage(props: PlayerPageProps) {
 								<LuUserSquare size={32}/>
 							</div>
 		
-							<div className="text-xl mt-4">{player.DisplayName}</div>
+							<div className="text-xl mt-4">
+								{user != null && user.ID === player.ID ? 
+									<UserDisplayNameEditForm messageApi={props.messageApi}/> : 
+									player.DisplayName}
+							</div>
+
 							<div className="mt-8">
 								<Link to={pathPlayerCharacters(player.ID.toString())}>
 									<Button>

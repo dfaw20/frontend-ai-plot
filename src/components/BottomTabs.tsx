@@ -39,12 +39,12 @@ interface BottomTabsProps {
 const BottomTabs = (props: BottomTabsProps) => {
 
 	const {user} = useUser()
+	const {activeTab, updateActiveTab} = useTab()
+	const navigate = useNavigate()
+
 	if (user == null) {
 		return <></>
 	}
-
-	const {activeTab, updateActiveTab} = useTab()
-	const navigate = useNavigate()
 	
 	const handleTabClick = (tabCode: TabCode) => {
 		updateActiveTab(tabCode)	

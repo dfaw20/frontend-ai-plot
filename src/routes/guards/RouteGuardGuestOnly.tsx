@@ -9,12 +9,13 @@ type Props = {
 
 export const RouteGuardGuestOnly: React.FC<Props> = (props) => {
 	const {loginStatus} = useUser()
+	const location = useLocation()
   
 	switch (loginStatus) {
 	case 'INIT':
 	case 'LOGOUT':
 		return <>{props.component}</>
 	case 'LOGIN':
-		return <Navigate to={props.redirect} state={{from:useLocation()}} replace={false} />
+		return <Navigate to={props.redirect} state={{from:location}} replace={false} />
 	}
 }

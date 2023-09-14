@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react'
 import { Character } from '../entities/Character'
-import { getGenderText } from '../entities/Character'
 import { Button, Divider, Tag } from 'antd'
+import { GiFemale, GiMale } from 'react-icons/gi'
 
 interface CharacterListItemProps {
 	character: Character
@@ -11,11 +11,29 @@ interface CharacterListItemProps {
 
 function CharacterListItem(props: CharacterListItemProps) {
 
+	function showGenderIcon() {
+		switch (props.character.Gender) {
+		case 'male':
+			return <GiMale size={20} color='#3b82f6'/>
+		case 'female':
+			return <GiFemale size={20} color='#ef4444'/>
+		case 'other':
+			return null
+		case '':
+			return null
+		}
+	}
+
 	return (
 		<div className='px-4 py-2'>
 			<div className='flex justify-between'>
 				<div>
-					<div className='font-bold text-black-800'>{props.character.Name}</div>
+					<div className='font-bold text-black-800'>
+						<div className='flex'>
+							<div className='flex items-center mr-2'>{showGenderIcon()}</div>
+							<div>{props.character.Name}</div>
+						</div>
+					</div>
 					<div className='flex items-center'>
 						<div className='text-gray-500'>
 							{props.character.Nickname}
@@ -30,9 +48,6 @@ function CharacterListItem(props: CharacterListItemProps) {
 			</div>
 
 			<div>
-				<Tag>
-					{getGenderText(props.character.Gender)}
-				</Tag>
 				<Tag>{props.character.Outfit}</Tag>
 				<Tag>{props.character.Personality}</Tag>
 				<Tag>{props.character.Tone}</Tag>
