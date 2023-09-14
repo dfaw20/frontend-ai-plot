@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react"
 import { Character } from "../../entities/Character"
 import axios from "axios"
 import { apiGetCharacter, apiRecentPlots, apiTaleCreate } from "../../network/Api"
-import {  useParams } from 'react-router-dom'
+import {  useNavigate, useParams } from 'react-router-dom'
 import { MessageInstance } from "antd/es/message/interface"
 import { Button, Divider } from "antd"
 import { useUser } from "../../contexts/UserContext"
@@ -12,6 +12,7 @@ import PlotListItem from "../../components/PlotListItem"
 import { Story } from "../../entities/Story"
 import { TaleInput } from "../../types/post_data/Tale"
 import { makeBearerToken } from "../../repository/Storage"
+import { pathStoryDetail } from "../../routes/EndPoints"
 
 interface ChoicePlotPageProps {
 	messageApi: MessageInstance
@@ -19,6 +20,7 @@ interface ChoicePlotPageProps {
 
 function ChoicePlotPage(props: ChoicePlotPageProps) {
 	const {user} = useUser()
+	const navigate = useNavigate()
 	const {targetCharacterId, heroCharacterId} = useParams()
 	const [targetCharacter, setTargetCharacter] = useState<Character>()
 	const [heroCharacter, setHeroCharacter] = useState<Character>()
@@ -74,6 +76,7 @@ function ChoicePlotPage(props: ChoicePlotPageProps) {
 		axios.post<Story>(apiTaleCreate(), input, {headers: {Authorization: makeBearerToken(),}})
 			.then((res) => {
 				console.log(res.data)
+				navigate(pathStoryDetail(res.data.ID.toString()))
 			})
 	}
 
