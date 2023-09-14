@@ -74,13 +74,13 @@ function PlayerCharacters(props: PlayerCharactersProps) {
 			return <div key={character.ID}>
 				<CharacterListItem character={character} editable={editable()} actionArea={				
 					<Link to={pathTaleHeroChoice(character.ID.toString())}>
-						<Button>
+						<Button className="bg-primary text-white border-none" shape="round">
 							<div className="flex gap-1">
 								<div className="flex items-center">
 									<GiBrokenHeartZone/>
 								</div>
-								<div>
-									物語を綴る
+								<div className="text-base">
+									攻略する
 								</div>
 							</div>
 						</Button>
