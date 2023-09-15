@@ -1,6 +1,7 @@
 import React, { ReactNode } from 'react'
 import { Button, Divider, Tag } from 'antd'
 import { Plot } from '../entities/Plot'
+import { AiTwotoneEdit } from 'react-icons/ai'
 
 interface PlotListItemProps {
 	plot: Plot
@@ -24,7 +25,7 @@ function PlotListItem(props: PlotListItemProps) {
 				</div>
 				<div className="flex items-center justify-center">
 					{props.editable ?
-						<Button>編集</Button>
+						<Button><AiTwotoneEdit/></Button>
 						: null}
 				</div>
 			</div>

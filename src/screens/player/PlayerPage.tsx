@@ -4,7 +4,7 @@ import { Player } from "../../entities/Player"
 import axios from "axios"
 import { apiGetPlayer } from "../../network/Api"
 import { Link, useParams } from "react-router-dom"
-import { pathPlayerCharacters } from "../../routes/EndPoints"
+import { pathPlayerCharacters, pathPlayerPlots } from "../../routes/EndPoints"
 import { Button } from "antd"
 import { LuUserSquare } from 'react-icons/lu'
 import { useUser } from "../../contexts/UserContext"
@@ -35,7 +35,7 @@ function PlayerPage(props: PlayerPageProps) {
 	}, [])	
 
 	return (
-		<>
+		<div className="mt-8">
 			{
 				player != null ? 
 					<div className="flex h-screen justify-center">
@@ -53,7 +53,15 @@ function PlayerPage(props: PlayerPageProps) {
 							<div className="mt-8">
 								<Link to={pathPlayerCharacters(player.ID.toString())}>
 									<Button>
-								作ったキャラクター
+										キャラクター
+									</Button>
+								</Link>
+							</div>
+
+							<div className="mt-8">
+								<Link to={pathPlayerPlots(player.ID.toString())}>
+									<Button>
+										物語の舞台
 									</Button>
 								</Link>
 							</div>
@@ -61,7 +69,7 @@ function PlayerPage(props: PlayerPageProps) {
 					</div>
 					: null
 			}
-		</>
+		</div>
 	)
 }
 

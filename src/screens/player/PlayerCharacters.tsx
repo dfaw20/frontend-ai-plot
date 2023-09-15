@@ -62,14 +62,14 @@ function PlayerCharacters(props: PlayerCharactersProps) {
 	}
 
 	return (<div className="pb-40">
-		<div className="mx-4 text-lg flex items-center justify-center">
+		<div className="my-2 mx-4 text-sm flex items-center justify-center">
 			{
 				playerObject != null ? <Link to={pathPlayer(playerObject.ID.toString())}>
 					{playerObject.DisplayName}
 				</Link> : null
 			}
 		</div>
-		<Divider className="my-2"/>
+		<Divider className="mt-0 mb-2"/>
 		{characters?.map((character) => {
 			return <div key={character.ID}>
 				<CharacterListItem character={character} editable={editable()} actionArea={				
@@ -100,7 +100,7 @@ function PlayerCharacters(props: PlayerCharactersProps) {
 								<BsPlus/>
 							</div>
 							<div>
-						新しいキャラを作る
+								新しいキャラを作る
 							</div>
 						</div>
 					</Button>

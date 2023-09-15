@@ -3,11 +3,12 @@ import {
 	GiBookmarklet,
 	GiMushroomHouse,
 	GiCrystalWand,
+	GiCastle,
 } from "react-icons/gi"
 import { TabCode, useTab } from "../contexts/TabContext"
 import { useNavigate } from "react-router-dom"
 import { useUser } from "../contexts/UserContext"
-import { pathTop, pathPlayerCharacters, pathPlayerStories } from "../routes/EndPoints"
+import { pathTop, pathPlayerCharacters, pathPlayerStories, pathPlayerPlots } from "../routes/EndPoints"
 import { IconType } from "react-icons"
 import { MessageInstance } from "antd/es/message/interface"
 
@@ -72,32 +73,49 @@ const BottomTabs = (props: BottomTabsProps) => {
 			}
 			navigate(pathPlayerCharacters(user.ID.toString()))
 			break
+		case "tabD":
+			if (user == null) {
+				props.messageApi.open({
+					type: 'error',
+					content: 'ログインしていません',
+				})
+				return
+			}
+			navigate(pathPlayerPlots(user.ID.toString()))
+			break
 		}
 	}
 
 	return (
 		<>
-			<div className="bg-palePink text-gray-700 fixed bottom-0 left-0 w-full h-20 flex justify-around items-center z-10 py-1">
+			<div className="bg-palePink text-gray-700 fixed bottom-0 left-0 w-full h-16 flex justify-around items-center z-10 py-1">
 				<TabItem
 					activeTab={activeTab}
 					handleTabClick={handleTabClick}
 					tabCode={'tabA'}
-					text={'Home'}
+					text={'ホーム'}
 					icon={GiMushroomHouse}
 				/>
 				<TabItem
 					activeTab={activeTab}
 					handleTabClick={handleTabClick}
 					tabCode={'tabB'}
-					text={'Story'}
+					text={'ライブラリ'}
 					icon={GiBookmarklet}
 				/>
 				<TabItem
 					activeTab={activeTab}
 					handleTabClick={handleTabClick}
 					tabCode={'tabC'}
-					text={'Character'}
+					text={'キャラ'}
 					icon={GiCrystalWand}
+				/>
+				<TabItem
+					activeTab={activeTab}
+					handleTabClick={handleTabClick}
+					tabCode={'tabD'}
+					text={'シナリオ'}
+					icon={GiCastle}
 				/>
 			</div>
 		</>
