@@ -10,7 +10,7 @@ import { Button, Divider } from "antd"
 import { Link } from "react-router-dom"
 import { pathCharacterNew, pathPlayer, pathTaleHeroChoice } from "../../routes/EndPoints"
 import { useUser } from "../../contexts/UserContext"
-import { GiBrokenHeartZone } from "react-icons/gi"
+import { GiBroadsword } from "react-icons/gi"
 import { BsPlus } from "react-icons/bs"
 
 interface PlayerCharactersProps {
@@ -77,7 +77,7 @@ function PlayerCharacters(props: PlayerCharactersProps) {
 						<Button className="bg-primary text-white border-none" shape="round">
 							<div className="flex gap-1">
 								<div className="flex items-center">
-									<GiBrokenHeartZone/>
+									<GiBroadsword size={20}/>
 								</div>
 								<div className="text-base">
 									攻略する
