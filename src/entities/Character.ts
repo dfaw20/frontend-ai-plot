@@ -23,4 +23,5 @@ export interface Character {
 	Personality: string //性格
 	Tone: string // 話し方
 	Profile: string // プロフィール
+	Sensitive: boolean
 }

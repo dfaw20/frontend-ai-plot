@@ -8,5 +8,6 @@ export interface Plot {
 	Season       :string 
 	Genre        :string 
 	OutputFormat :string 
-	ShowWarning  :boolean 
+	ShowWarning  :boolean
+	Sensitive: boolean
 }

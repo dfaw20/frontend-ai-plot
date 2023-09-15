@@ -4,4 +4,5 @@ export interface Story {
 	PlotID: number
 	Prompt :string
 	Text :string
+	Sensitive: boolean
 }
