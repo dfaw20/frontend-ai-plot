@@ -24,13 +24,13 @@ function Setting(props: SettingProps) {
 			SensitiveDirect: checked
 		}
 		axios.post(apiUpdateUserSensitiveOption(), input, {headers: {Authorization: makeBearerToken()}})
-		.then(() => {
-			if (checked) {
-				props.messageApi.success("センシティブなコンテンツを表示する")
-			} else {
-				props.messageApi.info("センシティブなコンテンツを表示しない")
-			}
-		})
+			.then(() => {
+				if (checked) {
+					props.messageApi.success("センシティブなコンテンツを表示する")
+				} else {
+					props.messageApi.info("センシティブなコンテンツを表示しない")
+				}
+			})
 	}
 
 	return (

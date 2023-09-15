@@ -29,7 +29,8 @@ module.exports = {
 	},
 	"plugins": [
 		"@typescript-eslint",
-		"react"
+		"react",
+		"tailwindcss",
 	],
 	"rules": {
 		"indent": [

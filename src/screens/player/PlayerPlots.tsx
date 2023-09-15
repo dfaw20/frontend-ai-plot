@@ -85,21 +85,21 @@ function PlayerPlots(props: PlayerPlotsProps) {
 			
 		{
 			editable() ? 
-			<div className="flex items-center justify-center gap-2">
-				<Button onClick={
-					() => {
-						navigate(pathPlotNew())
-					}}>
-					<div className="flex">
-						<div className="flex items-center">
-							<BsPlus/>
-						</div>
-						<div>
+				<div className="flex items-center justify-center gap-2">
+					<Button onClick={
+						() => {
+							navigate(pathPlotNew())
+						}}>
+						<div className="flex">
+							<div className="flex items-center">
+								<BsPlus/>
+							</div>
+							<div>
 							新しいシナリオを作る
+							</div>
 						</div>
-					</div>
-				</Button>
-			</div>
+					</Button>
+				</div>
 			 : null
 		}
 	</div>

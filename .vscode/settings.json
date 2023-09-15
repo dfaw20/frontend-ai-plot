@@ -4,4 +4,10 @@
         "monogatar",
         "Twotone"
     ],
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
+      },
+      "tailwindCSS.includeLanguages": {
+        "plaintext": "javascript"
+      }
 }
