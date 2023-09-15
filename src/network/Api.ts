@@ -17,6 +17,10 @@ export function apiUpdateUserDisplayName(): string {
 	return BACKEND_HOST + "/user/update/display_name"
 }
 
+export function apiUpdateUserSensitiveOption(): string {
+	return BACKEND_HOST + "/user/update/sensitive_option"
+}
+
 export function apiGetPlayer(playerID: string): string {
 	return BACKEND_HOST +  "/players/" + playerID
 }

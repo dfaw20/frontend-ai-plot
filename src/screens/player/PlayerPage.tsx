@@ -61,7 +61,7 @@ function PlayerPage(props: PlayerPageProps) {
 							<div className="mt-8">
 								<Link to={pathPlayerPlots(player.ID.toString())}>
 									<Button>
-										物語の舞台
+										シナリオ
 									</Button>
 								</Link>
 							</div>

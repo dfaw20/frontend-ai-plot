@@ -51,7 +51,7 @@ function StoryDetail(props: StoryDetailProps) {
 
 	return (
 		<>
-			<div>{storyObj?.Text}</div>
+			<div className="p-4">{storyObj?.Text}</div>
 		</>
 	)
 }
