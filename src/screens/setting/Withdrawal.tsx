@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { useUser } from "../../contexts/UserContext"
-import { Button, Modal, message } from "antd"
+import { Button, Input, Modal, message } from "antd"
 import axios from "axios";
 import { apiUserWithdrawal } from "../../network/Api";
 import { MessageInstance } from "antd/es/message/interface";
@@ -14,6 +14,8 @@ function Withdrawal(props: WithdrawalProps) {
 	const {user, logout} = useUser()
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const [isCompleteModalOpen, setIsCompleteModalOpen] = useState(false);
+
+	const [inputValidMail, setInputValidMail] = useState("");
 
 	/**
 	 * 退会確認ダイアログ
@@ -57,7 +59,7 @@ function Withdrawal(props: WithdrawalProps) {
 	};
 
 	return (
-		<div className="mx-4">
+		<div className="mx-4 pb-60">
 			<Modal title="退会完了" 
 			open={isCompleteModalOpen} 
 			onOk={handleCompleteWithdrawal}
@@ -88,18 +90,33 @@ function Withdrawal(props: WithdrawalProps) {
 						よろしければ退会を押してください。
 					</p>
 				</Modal>
-				<div className="flex items-center justify-center mt-12">
-					<p className="text-xl">
-						{user.DisplayName}<br/>{user.Email}
-					</p>
-				</div>
-				<div className="flex items-center justify-center mt-12">
+				
+				<div className="flex items-center justify-center mt-4">
 					<p>
-						退会すると作成したキャラクターとシナリオは削除されます。
+						退会すると作成したキャラクターとシナリオは削除されます。<br/>
+						念のため、登録メールアドレスを手入力してください。<br/>
+						入力すると退会ボタンが有効になります。
 					</p>
 				</div>
-				<div className="flex items-center justify-center mt-36">
-					<Button onClick={() => showModal()} className="bg-red-500 text-white">
+
+				<div className="flex items-center justify-center mt-4">
+					<p className="text-xl">
+						{user.DisplayName}<br/>
+						{user.Email}
+					</p>
+				</div>
+
+				<div className="flex items-center justify-center mt-8">
+					<Input 
+						defaultValue={inputValidMail} 
+						onChange={(e) => setInputValidMail(e.target.value)} 
+						placeholder={user.Email + "を入力..."}>
+					</Input>
+				</div>
+				<div className="flex items-center justify-center mt-8">
+					<Button 
+					disabled={inputValidMail.trim() !== user.Email.trim()}
+					onClick={() => showModal()} className="bg-red-500 text-white">
 						退会
 					</Button>
 				</div>
