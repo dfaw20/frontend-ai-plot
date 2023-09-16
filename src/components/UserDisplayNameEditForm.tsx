@@ -16,7 +16,7 @@ interface UserDisplayNameEditFormProps {
 }
 
 function UserDisplayNameEditForm(props: UserDisplayNameEditFormProps) {
-	const {user, login} = useUser()
+	const {user, reloadUser} = useUser()
 	const [editing, setEditing] = useState<boolean>(false)
 	const [inputDisplayName, SetInputDisplayName] = useState<string>('')
 
@@ -27,7 +27,7 @@ function UserDisplayNameEditForm(props: UserDisplayNameEditFormProps) {
 		axios
 			.post<User>(apiUpdateUserDisplayName(), input, {headers: {Authorization: makeBearerToken(),}})
 			.then((res) => {
-				login(res.data)
+				reloadUser(res.data)
 				setEditing(false)
 				props.messageApi.success("ユーザの名前を更新しました")
 			})

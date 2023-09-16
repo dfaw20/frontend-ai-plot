@@ -6,13 +6,14 @@ import axios from "axios"
 import { apiUpdateUserSensitiveOption } from "../../network/Api"
 import { makeBearerToken } from "../../repository/Storage"
 import { UserSensitiveOptionEdit } from "../../types/post_data/User"
+import { User } from "../../entities/User"
 
 interface SettingProps {
 	messageApi: MessageInstance
 }
 
 function Setting(props: SettingProps) {
-	const {logout} = useUser()
+	const {logout, reloadUser} = useUser()
 
 	function onClickLogout() {
 		logout()
@@ -23,8 +24,10 @@ function Setting(props: SettingProps) {
 		const input: UserSensitiveOptionEdit = {
 			SensitiveDirect: checked
 		}
-		axios.post(apiUpdateUserSensitiveOption(), input, {headers: {Authorization: makeBearerToken()}})
-			.then(() => {
+		axios.post<User>(apiUpdateUserSensitiveOption(), input, {headers: {Authorization: makeBearerToken()}})
+			.then((res) => {
+				reloadUser(res.data)
+
 				if (checked) {
 					props.messageApi.success("センシティブなコンテンツを表示する")
 				} else {

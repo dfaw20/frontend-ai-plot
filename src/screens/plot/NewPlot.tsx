@@ -20,6 +20,7 @@ function NewPlot() {
 			Genre: '冒険活劇',
 			OutputFormat: '小説形式',
 			ShowWarning: true,
+			Sensitive: false,
 		}
 
 		const bearer = makeBearerToken()

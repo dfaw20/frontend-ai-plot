@@ -8,13 +8,15 @@ function NewCharacter() {
 
 	function onClickCreate() {
 		const input: CharacterInput = {
-			name: "",
-			nickname: "",
-			gender: "female",
-			outfit: "",
-			personality: "",
-			tone: "",
-			profile: ``
+			Name: "",
+			Nickname: "",
+			Hair: "",
+			Gender: "female",
+			Outfit: "",
+			Personality: "",
+			Tone: "",
+			Profile: ``,
+			Sensitive: false,
 		}
 
 		const bearer = makeBearerToken()
