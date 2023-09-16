@@ -25,6 +25,10 @@ export function apiUserWithdrawal(): string {
 	return BACKEND_HOST + "/user/withdrawal"
 }
 
+export function apiWithdrawalReRegister(): string {
+	return BACKEND_HOST + "/withdrawal/re_register"
+}
+
 export function apiGetPlayer(playerID: string): string {
 	return BACKEND_HOST +  "/players/" + playerID
 }

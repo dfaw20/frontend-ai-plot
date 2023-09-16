@@ -12,7 +12,7 @@ import CharacterList from "./screens/character/CharactersHome"
 import NewCharacter from "./screens/character/NewCharacter"
 import BottomTab from "./components/BottomTabs"
 import { TabProvider } from "./contexts/TabContext"
-import { pathAuthGoogleRedirect, pathCharacterNew, pathCharacters, pathLogin, pathTop, pathSetting, pathPlayer, pathPlayerCharacters, pathPlayerPlots, pathPlotNew, pathTaleHeroChoice, pathTalePlotChoice, pathStoryDetail, pathWithdrawal } from "./routes/EndPoints"
+import { pathAuthGoogleRedirect, pathCharacterNew, pathCharacters, pathLogin, pathTop, pathSetting, pathPlayer, pathPlayerCharacters, pathPlayerPlots, pathPlotNew, pathTaleHeroChoice, pathTalePlotChoice, pathStoryDetail, pathWithdrawal, pathWithdrawalReRegister } from "./routes/EndPoints"
 import PlayerPage from "./screens/player/PlayerPage"
 import PlayerCharacters from "./screens/player/PlayerCharacters"
 import { message  as antMessage } from "antd"
@@ -24,6 +24,7 @@ import ChoiceHeroPage from "./screens/tale/ChoiceHeroPage"
 import ChoicePlotPage from "./screens/tale/ChoicePlotPage"
 import StoryDetail from "./screens/story/StoryDetail"
 import Withdrawal from "./screens/setting/Withdrawal"
+import WithdrawalReRegister from "./screens/guest/WithdrawalReRegister"
 
 function App() {
 
@@ -53,6 +54,8 @@ function App() {
 							<Route path={pathWithdrawal()} element={<RouteGuardAuth component={<Withdrawal messageApi={messageApi}/>}
 								redirect={pathTop()} />}
 							/>
+
+							<Route path={pathWithdrawalReRegister()} element={<WithdrawalReRegister messageApi={messageApi} />} />
 
 							<Route path={pathPlayer(":playerId")} element={<PlayerPage messageApi={messageApi} />}/>
 

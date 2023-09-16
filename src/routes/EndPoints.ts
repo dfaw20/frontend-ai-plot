@@ -24,6 +24,13 @@ export function pathWithdrawal(): string {
 }
 
 /**
+ * Re Register
+ */
+export function pathWithdrawalReRegister(): string {
+	return "/withdrawal/re_register"
+}
+
+/**
  * Player
  */
 export function pathPlayer(playerID: string): string {
