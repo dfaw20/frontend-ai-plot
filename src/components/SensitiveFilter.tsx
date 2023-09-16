@@ -31,16 +31,18 @@ function SensitiveFilter(props: SensitiveFilterProps) {
 	}
 
 	if (showFilter && props.sensitiveContent) {
-		return <>
-			<div>センシティブなコンテンツを含んでいます</div>
+		return <div className='px-12 py-8 border-2 border-sensitiveContent'>
+			<div className='flex justify-center mb-8'>
+				センシティブなコンテンツを含んでいます
+			</div>
 
-			<div>
+			<div className='flex justify-center'>
 				<Button type='link' onClick={() => onclickToShow()}>表示する</Button>
 			</div>
-			<div>
+			<div className='flex justify-center'>
 				<Link to={pathSetting()}><Button type='link'>設定を変更する</Button></Link>
 			</div>
-		</>
+		</div>
 	} else {
 		return (
 			<>

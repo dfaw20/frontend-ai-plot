@@ -25,6 +25,9 @@ module.exports = {
         paleThinPink: {
           DEFAULT: '#FFF0F5',
         },
+        sensitiveContent: {
+          DEFAULT: '#F674A7',
+        },
       },
     },
   },
