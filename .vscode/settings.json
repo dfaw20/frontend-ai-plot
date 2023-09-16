@@ -2,7 +2,8 @@
     "workbench.colorTheme": "Solarized-light-functional",
     "cSpell.words": [
         "monogatar",
-        "Twotone"
+        "Twotone",
+        "antd",
     ],
     "editor.codeActionsOnSave": {
         "source.fixAll.eslint": true

@@ -21,6 +21,10 @@ export function apiUpdateUserSensitiveOption(): string {
 	return BACKEND_HOST + "/user/update/sensitive_option"
 }
 
+export function apiUserWithdrawal(): string {
+	return BACKEND_HOST + "/user/withdrawal"
+}
+
 export function apiGetPlayer(playerID: string): string {
 	return BACKEND_HOST +  "/players/" + playerID
 }

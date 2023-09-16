@@ -7,6 +7,8 @@ import { apiUpdateUserSensitiveOption } from "../../network/Api"
 import { makeBearerToken } from "../../repository/Storage"
 import { UserSensitiveOptionEdit } from "../../types/post_data/User"
 import { User } from "../../entities/User"
+import { Link } from "react-router-dom"
+import { pathWithdrawal } from "../../routes/EndPoints"
 
 interface SettingProps {
 	messageApi: MessageInstance
@@ -46,6 +48,8 @@ function Setting(props: SettingProps) {
 				<div><Switch defaultChecked={user.SensitiveDirect} className="bg-gray-300" onChange={onChangeSensitiveDirect}/></div>
 			</div>
 			: null}
+			<Divider/>
+			<Link to={pathWithdrawal()}>退会</Link>
 			<Divider/>
 			<Button className="mt-4" onClick={onClickLogout}>ログアウト</Button>
 		</div>

@@ -19,6 +19,9 @@ export function pathAuthGoogleRedirect(): string {
 export function pathSetting(): string {
 	return "/setting"
 }
+export function pathWithdrawal(): string {
+	return "/setting/withdrawal"
+}
 
 /**
  * Player
