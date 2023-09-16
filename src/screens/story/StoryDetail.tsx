@@ -6,6 +6,7 @@ import { apiGetStory, apiStoryGenerateChat } from "../../network/Api"
 import { makeBearerToken } from "../../repository/Storage"
 import { MessageInstance } from "antd/es/message/interface"
 import { StoryGenerateReq } from "../../types/post_data/Story"
+import SensitiveFilter from "../../components/SensitiveFilter"
 
 interface StoryDetailProps {
 	messageApi: MessageInstance
@@ -51,7 +52,13 @@ function StoryDetail(props: StoryDetailProps) {
 
 	return (
 		<>
-			<div className="p-4">{storyObj?.Text}</div>
+			<div className="p-4">
+				{storyObj != null ? 
+				<SensitiveFilter sensitiveContent={storyObj?.Sensitive}>
+					{storyObj?.Text}
+				</SensitiveFilter>
+				: null}
+			</div>
 		</>
 	)
 }

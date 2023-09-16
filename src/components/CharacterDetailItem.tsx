@@ -4,6 +4,7 @@ import Meta from 'antd/es/card/Meta'
 import { Character } from '../entities/Character'
 import {AiTwotoneSound} from 'react-icons/ai'
 import { IconType } from 'react-icons'
+import SensitiveFilter from './SensitiveFilter'
 
 interface DescriptionRowProps {
 	icon: IconType,
@@ -42,6 +43,7 @@ function CharacterDetailItem(
 				<Meta
 				 title={<>{props.character.Name}</>}
 				/>
+				<SensitiveFilter sensitiveContent={props.character.Sensitive}>
 				<div className='mt-4'>
 					<DescriptionRow
 						icon={AiTwotoneSound}
@@ -67,6 +69,7 @@ function CharacterDetailItem(
 				<div className='mt-4'>
 					{props.character.Profile}
 				</div>
+				</SensitiveFilter>
 			</Card>
 		</div>
 	)

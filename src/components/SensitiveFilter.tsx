@@ -24,14 +24,14 @@ function SensitiveFilter(props: SensitiveFilterProps) {
 				setShowFilter(true)
 			}
 		}
-	}, [])
+	}, [user])
 
 	function onclickToShow() {
 		setShowFilter(false)
 	}
 
 	if (showFilter && props.sensitiveContent) {
-		return <div className='px-12 py-8 border-2 border-sensitiveContent'>
+		return <div className='mx-2 my-2 px-12 py-8 border-2 border-sensitiveContent'>
 			<div className='flex justify-center mb-8'>
 				センシティブなコンテンツを含んでいます
 			</div>

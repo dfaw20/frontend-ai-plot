@@ -5,6 +5,8 @@ import { GiFemale, GiMale } from 'react-icons/gi'
 import { AiTwotoneEdit } from 'react-icons/ai'
 import CharacterAttribute from './CharacterAttribute'
 import SensitiveFilter from './SensitiveFilter'
+import { Link } from 'react-router-dom'
+import { pathCharacterDetail } from '../routes/EndPoints'
 
 interface CharacterListItemProps {
 	character: Character
@@ -30,13 +32,12 @@ function CharacterListItem(props: CharacterListItemProps) {
 	return (
 		<div className='px-4 py-2'>
 
-			<SensitiveFilter sensitiveContent={props.character.Sensitive}>
 				<div className='flex justify-between'>
 					<div>
 						<div className='font-bold text-black-800'>
 							<div className='flex'>
 								<div className='flex items-center mr-2'>{showGenderIcon()}</div>
-								<div>{props.character.Name}</div>
+								<div><Link to={pathCharacterDetail(props.character.ID.toString())}>{props.character.Name}</Link></div>
 							</div>
 						</div>
 						<div className='flex items-center'>
@@ -52,6 +53,8 @@ function CharacterListItem(props: CharacterListItemProps) {
 					</div>
 				</div>
 
+				<SensitiveFilter sensitiveContent={props.character.Sensitive}>
+
 				<div>
 					<CharacterAttribute>{props.character.Outfit}</CharacterAttribute>
 					<CharacterAttribute>{props.character.Personality}</CharacterAttribute>
@@ -62,7 +65,7 @@ function CharacterListItem(props: CharacterListItemProps) {
 				<div className='mt-4 flex items-center justify-center'>
 					{props.actionArea}
 				</div>
-			</SensitiveFilter>
+				</SensitiveFilter>
 
 			<Divider/>
 		</div>

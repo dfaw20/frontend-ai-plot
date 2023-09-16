@@ -2,6 +2,7 @@ import React, { ReactNode } from 'react'
 import { Button, Divider, Tag } from 'antd'
 import { Plot } from '../entities/Plot'
 import { AiTwotoneEdit } from 'react-icons/ai'
+import SensitiveFilter from './SensitiveFilter'
 
 interface PlotListItemProps {
 	plot: Plot
@@ -30,6 +31,7 @@ function PlotListItem(props: PlotListItemProps) {
 				</div>
 			</div>
 
+			<SensitiveFilter sensitiveContent={props.plot.Sensitive}>
 			<div>
 				<Tag>{props.plot.Location}</Tag>
 				<Tag>{props.plot.Season}</Tag>
@@ -47,6 +49,7 @@ function PlotListItem(props: PlotListItemProps) {
 			<div className='mt-4 flex items-center justify-center'>
 				{props.actionArea}
 			</div>
+			</SensitiveFilter>
 
 			<Divider/>
 		</div>
