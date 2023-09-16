@@ -68,7 +68,7 @@ function App() {
 								redirect={pathTop()} />}
 							/>
 
-							<Route path={pathPlotNew()} element={<RouteGuardAuth component={<NewPlot/>}
+							<Route path={pathPlotNew()} element={<RouteGuardAuth component={<NewPlot messageApi={messageApi}/>}
 								redirect={pathTop()} />}
 							/>
 

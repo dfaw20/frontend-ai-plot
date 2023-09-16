@@ -18,11 +18,6 @@ function PlotListItem(props: PlotListItemProps) {
 			<div className='flex justify-between'>
 				<div>
 					<div className='font-bold text-black-800'>{props.plot.Title}</div>
-					<div className='flex items-center'>
-						<div className='text-gray-500'>
-							{props.plot.Description}
-						</div>
-					</div>
 				</div>
 				<div className="flex items-center justify-center">
 					{props.editable ?
@@ -33,13 +28,9 @@ function PlotListItem(props: PlotListItemProps) {
 
 			<SensitiveFilter sensitiveContent={props.plot.Sensitive}>
 			<div>
-				<Tag>{props.plot.Location}</Tag>
-				<Tag>{props.plot.Season}</Tag>
-				<Tag>{props.plot.Genre}</Tag>
-				{props.plot.ShowWarning ? 
-					<Tag>警告表示あり</Tag> : null
+				{props.plot.Sensitive ? 
+					<Tag>センシティブ</Tag> : null
 				}
-				<Tag>{props.plot.OutputFormat}</Tag>
 			</div>
 
 			{props.revealPrompt ? 
