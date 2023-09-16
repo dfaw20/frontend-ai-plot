@@ -1,7 +1,6 @@
 import React, { createContext, useContext, useState, ReactNode } from 'react'
 import { LOCAL_STORAGE_ACCESS_TOKEN_KEY } from '../repository/Storage'
 import { User } from '../entities/User'
-import { Extension } from 'typescript';
 
 export type LoginStatus = 'INIT' | 'LOGIN' | 'LOGOUT';
 

@@ -13,7 +13,7 @@ interface SettingProps {
 }
 
 function Setting(props: SettingProps) {
-	const {logout, reloadUser} = useUser()
+	const {logout, user, reloadUser} = useUser()
 
 	function onClickLogout() {
 		logout()
@@ -40,10 +40,12 @@ function Setting(props: SettingProps) {
 		<div className="mx-4">
 			<h2 className="mt-4 text-lg leading-tight">設定</h2>
 			<Divider/>
+			{user != null ?
 			<div className="flex justify-between">
 				<div>センシティブなコンテンツを表示する</div>
-				<div><Switch className="bg-gray-300" onChange={onChangeSensitiveDirect}/></div>
+				<div><Switch defaultChecked={user.SensitiveDirect} className="bg-gray-300" onChange={onChangeSensitiveDirect}/></div>
 			</div>
+			: null}
 			<Divider/>
 			<Button className="mt-4" onClick={onClickLogout}>ログアウト</Button>
 		</div>

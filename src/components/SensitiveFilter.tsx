@@ -24,7 +24,7 @@ function SensitiveFilter(props: SensitiveFilterProps) {
 				setShowFilter(true)
 			}
 		}
-	}, [user])
+	}, [])
 
 	function onclickToShow() {
 		setShowFilter(false)
