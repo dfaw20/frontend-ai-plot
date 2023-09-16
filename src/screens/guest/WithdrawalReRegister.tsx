@@ -4,9 +4,9 @@ import { useLocation, useNavigate } from "react-router-dom"
 import { useUser } from "../../contexts/UserContext"
 import axios from "axios"
 import { apiWithdrawalReRegister } from "../../network/Api"
-import { ReRegisterEmail } from "../../types/post_data/AUth"
 import { MessageInstance } from "antd/es/message/interface"
 import { pathLogin } from "../../routes/EndPoints"
+import { ReRegisterEmail } from "../../types/post_data/WithdrawalEmail"
 
 interface WithdrawalReRegisterProps {
 	messageApi: MessageInstance
