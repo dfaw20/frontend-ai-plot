@@ -11,7 +11,7 @@ function Header() {
 	const location = useLocation()
 	
 	return (
-		<div className="flex justify-between bg-paleThinPink">
+		<div className="flex justify-between ">
 			<div className="px-4 pb-2 pt-4">
 				<Link to={pathTop()}>
 					<h1 className="tracking-widest">monogatarAi</h1>

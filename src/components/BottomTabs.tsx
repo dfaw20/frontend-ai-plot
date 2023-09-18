@@ -88,7 +88,7 @@ const BottomTabs = (props: BottomTabsProps) => {
 
 	return (
 		<>
-			<div className="bg-palePink text-gray-700 fixed bottom-0 left-0 w-full h-16 flex justify-around items-center z-10 py-1">
+			<div className=" text-gray-700 fixed bottom-0 left-0 w-full h-16 flex justify-around items-center z-10 py-1">
 				<TabItem
 					activeTab={activeTab}
 					handleTabClick={handleTabClick}
