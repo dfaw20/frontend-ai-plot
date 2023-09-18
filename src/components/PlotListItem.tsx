@@ -27,19 +27,19 @@ function PlotListItem(props: PlotListItemProps) {
 			</div>
 
 			<SensitiveFilter sensitiveContent={props.plot.Sensitive}>
-			<div>
-				{props.plot.Sensitive ? 
-					<Tag>センシティブ</Tag> : null
-				}
-			</div>
+				<div>
+					{props.plot.Sensitive ? 
+						<Tag>センシティブ</Tag> : null
+					}
+				</div>
 
-			{props.revealPrompt ? 
-				<div className='mt-4'>{props.plot.Prompt}</div>
-				: null }
+				{props.revealPrompt ? 
+					<div className='mt-4'>{props.plot.Prompt}</div>
+					: null }
 
-			<div className='mt-4 flex items-center justify-center'>
-				{props.actionArea}
-			</div>
+				<div className='mt-4 flex items-center justify-center'>
+					{props.actionArea}
+				</div>
 			</SensitiveFilter>
 
 			<Divider/>

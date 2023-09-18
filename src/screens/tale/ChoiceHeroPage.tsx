@@ -26,6 +26,9 @@ function ChoiceHeroPage(props: ChoiceHeroPageProps) {
 				.then((res) => {
 					setHeroCharacters(res.data)
 				})
+				.catch(() => {
+					props.messageApi.warning('ユーザが読み込めません')		
+				})
 		} else {
 			props.messageApi.warning('ユーザが存在しません')
 		}
@@ -36,6 +39,9 @@ function ChoiceHeroPage(props: ChoiceHeroPageProps) {
 			axios.get<Character>(apiGetCharacter(characterId))
 				.then((res) => {
 					setTargetCharacter(res.data)
+				})
+				.catch(() => {
+					props.messageApi.warning('キャラクターが読み込めません')		
 				})
 		} else {
 			props.messageApi.warning('キャラクターが存在しません')

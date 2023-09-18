@@ -36,6 +36,9 @@ function Setting(props: SettingProps) {
 					props.messageApi.info("センシティブなコンテンツを表示しない")
 				}
 			})
+			.catch(() => {
+				props.messageApi.info("センシティブの設定の変更に失敗しました")
+			})
 	}
 
 	return (
@@ -43,11 +46,11 @@ function Setting(props: SettingProps) {
 			<h2 className="mt-4 text-lg leading-tight">設定</h2>
 			<Divider/>
 			{user != null ?
-			<div className="flex justify-between">
-				<div>センシティブなコンテンツを表示する</div>
-				<div><Switch defaultChecked={user.SensitiveDirect} className="bg-gray-300" onChange={onChangeSensitiveDirect}/></div>
-			</div>
-			: null}
+				<div className="flex justify-between">
+					<div>センシティブなコンテンツを表示する</div>
+					<div><Switch defaultChecked={user.SensitiveDirect} className="bg-gray-300" onChange={onChangeSensitiveDirect}/></div>
+				</div>
+				: null}
 			<Divider/>
 			<Link to={pathWithdrawal()}>退会</Link>
 			<Divider/>

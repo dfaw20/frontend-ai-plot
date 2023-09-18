@@ -41,7 +41,7 @@ function App() {
 							<Route path={pathTop()} element={<Top/>}/>
 
 							<Route path={pathLogin()}
-								element={<RouteGuardGuestOnly component={<Login/>} redirect={pathTop()} />}
+								element={<RouteGuardGuestOnly component={<Login messageApi={messageApi}/>} redirect={pathTop()} />}
 							/>
 
 							<Route path={pathAuthGoogleRedirect()}

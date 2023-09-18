@@ -32,6 +32,9 @@ function ChoicePlotPage(props: ChoicePlotPageProps) {
 				.then((res) => {
 					setTargetCharacter(res.data)
 				})
+				.catch(() => {
+					props.messageApi.warning('対象キャラクターが読み込めません')		
+				})
 		} else {
 			props.messageApi.warning('対象キャラクターが存在しません')
 		}
@@ -43,6 +46,9 @@ function ChoicePlotPage(props: ChoicePlotPageProps) {
 				.then((res) => {
 					setHeroCharacter(res.data)
 				})
+				.catch(() => {
+					props.messageApi.warning('主人公キャラクターが読み込めません')		
+				})
 		} else {
 			props.messageApi.warning('主人公キャラクターが存在しません')
 		}
@@ -53,6 +59,9 @@ function ChoicePlotPage(props: ChoicePlotPageProps) {
 			.then((res) => {
 				setPlots(res.data)
 			})
+			.catch(() => {
+				props.messageApi.warning('シナリオが読み込めません')		
+			})
 	}
 
 	function handleEntry(plot: Plot) {
@@ -61,8 +70,8 @@ function ChoicePlotPage(props: ChoicePlotPageProps) {
 			return
 		}
 		if (heroCharacter == null){
-			 props.messageApi.error("主人公キャラクターが存在しません")
-			 return
+			props.messageApi.error("主人公キャラクターが存在しません")
+			return
 		}
 
 		const input: TaleInput = {
@@ -71,12 +80,12 @@ function ChoicePlotPage(props: ChoicePlotPageProps) {
 			PlotID: plot.ID
 		}
 
-		console.log(input)
-
 		axios.post<Story>(apiTaleCreate(), input, {headers: {Authorization: makeBearerToken(),}})
 			.then((res) => {
-				console.log(res.data)
 				navigate(pathStoryDetail(res.data.ID.toString()))
+			})
+			.catch(() => {
+				props.messageApi.warning('ストーリーの生成に失敗しました')		
 			})
 	}
 

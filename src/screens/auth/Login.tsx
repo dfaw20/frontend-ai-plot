@@ -2,8 +2,13 @@ import React from "react"
 import {apiGetGoogle} from "../../network/Api"
 import axios from "axios"
 import { GoogleOAuthUrlObject } from "../../entities/Auth"
+import { MessageInstance } from "antd/es/message/interface"
 
-function Login() {
+interface LoginProps {
+	messageApi: MessageInstance
+}
+
+function Login(props: LoginProps) {
 
 	function onClickGoogleLoginButton() {
 		axios.get<GoogleOAuthUrlObject>(apiGetGoogle())
@@ -13,6 +18,9 @@ function Login() {
 
 				// Googleのログイン画面にリダイレクト
 				window.location.replace(res.data.oauth_url)
+			})
+			.catch(() => {
+				props.messageApi.error("ログインに失敗しました")
 			})
 	}
     

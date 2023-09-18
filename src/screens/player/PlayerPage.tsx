@@ -25,6 +25,9 @@ function PlayerPage(props: PlayerPageProps) {
 				.then((res) => {
 					setPlayer(res.data)
 				})
+				.catch(() => {
+					props.messageApi.warning("ユーザが読み込めません")
+				})
 		} else {
 			props.messageApi.warning('ユーザが存在しません')
 		}

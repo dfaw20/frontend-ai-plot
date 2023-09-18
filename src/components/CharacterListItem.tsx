@@ -32,28 +32,28 @@ function CharacterListItem(props: CharacterListItemProps) {
 	return (
 		<div className='px-4 py-2'>
 
-				<div className='flex justify-between'>
-					<div>
-						<div className='font-bold text-black-800'>
-							<div className='flex'>
-								<div className='flex items-center mr-2'>{showGenderIcon()}</div>
-								<div><Link to={pathCharacterDetail(props.character.ID.toString())}>{props.character.Name}</Link></div>
-							</div>
-						</div>
-						<div className='flex items-center'>
-							<div className='text-gray-500'>
-								{props.character.Nickname}
-							</div>
+			<div className='flex justify-between'>
+				<div>
+					<div className='font-bold text-black-800'>
+						<div className='flex'>
+							<div className='flex items-center mr-2'>{showGenderIcon()}</div>
+							<div><Link to={pathCharacterDetail(props.character.ID.toString())}>{props.character.Name}</Link></div>
 						</div>
 					</div>
-					<div className="flex items-center justify-center">
-						{props.editable ?
-							<Button><AiTwotoneEdit/></Button>
-							: null}
+					<div className='flex items-center'>
+						<div className='text-gray-500'>
+							{props.character.Nickname}
+						</div>
 					</div>
 				</div>
+				<div className="flex items-center justify-center">
+					{props.editable ?
+						<Button><AiTwotoneEdit/></Button>
+						: null}
+				</div>
+			</div>
 
-				<SensitiveFilter sensitiveContent={props.character.Sensitive}>
+			<SensitiveFilter sensitiveContent={props.character.Sensitive}>
 
 				<div>
 					<CharacterAttribute>{props.character.Outfit}</CharacterAttribute>
@@ -65,7 +65,7 @@ function CharacterListItem(props: CharacterListItemProps) {
 				<div className='mt-4 flex items-center justify-center'>
 					{props.actionArea}
 				</div>
-				</SensitiveFilter>
+			</SensitiveFilter>
 
 			<Divider/>
 		</div>

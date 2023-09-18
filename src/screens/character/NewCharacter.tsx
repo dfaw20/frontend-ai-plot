@@ -26,6 +26,9 @@ function NewCharacter() {
 				.then(res => {
 					console.log(res)
 				})
+				.catch(() => {
+					console.log("err")
+				})
 		}
 	}
 

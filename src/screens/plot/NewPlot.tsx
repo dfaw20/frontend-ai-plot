@@ -17,9 +17,9 @@ interface NewProtProps {
 }
 
 function NewPlot(props:NewProtProps) {
-	const [inputTitle, setInputTitle] = useState<string>("");
-	const [inputPrompt, setInputPrompt] = useState<string>("");
-	const [checkSensitive, setCheckSensitive] = useState<boolean>(false);
+	const [inputTitle, setInputTitle] = useState<string>("")
+	const [inputPrompt, setInputPrompt] = useState<string>("")
+	const [checkSensitive, setCheckSensitive] = useState<boolean>(false)
 	const navigate = useNavigate()
 	const {user} = useUser()
 
@@ -66,37 +66,37 @@ function NewPlot(props:NewProtProps) {
 
 			<div>
 			
-			<div>
-			<Input
-			onChange={(e) => setInputTitle(e.target.value)}
-			value={inputTitle}
-			placeholder="タイトル"
-			/>
-			</div>
+				<div>
+					<Input
+						onChange={(e) => setInputTitle(e.target.value)}
+						value={inputTitle}
+						placeholder="タイトル"
+					/>
+				</div>
 
-			<div className="py-4">
-			<TextArea
-			showCount
-			maxLength={200}
-			onChange={(e) => setInputPrompt(e.target.value)}
-			value={inputPrompt}
-			placeholder="プロンプト"
-			className="h-60"
-			/>
+				<div className="py-4">
+					<TextArea
+						showCount
+						maxLength={200}
+						onChange={(e) => setInputPrompt(e.target.value)}
+						value={inputPrompt}
+						placeholder="プロンプト"
+						className="h-60"
+					/>
 
-			<p className="text-sm text-gray-500 pt-2">
+					<p className="text-sm text-gray-500 pt-2">
 				プロンプトの書き方
-			</p>
-			<ul className="text-xs text-gray-400">
-				<li>AIに入力されるプロンプトです</li>
-				<li>文中の{"{i}"}と{"{u}"}はそれぞれキャラの名前に置き換えられます</li>
-				<li>箇条書きで物語の流れを書いたり、舞台設定を書くことができます</li>
-			</ul>
-			</div>
+					</p>
+					<ul className="text-xs text-gray-400">
+						<li>AIに入力されるプロンプトです</li>
+						<li>文中の{"{i}"}と{"{u}"}はそれぞれキャラの名前に置き換えられます</li>
+						<li>箇条書きで物語の流れを書いたり、舞台設定を書くことができます</li>
+					</ul>
+				</div>
 
-			<Checkbox onChange={(e) => {
-				setCheckSensitive(e.target.checked)
-			}}>センシティブな内容を含む</Checkbox>
+				<Checkbox onChange={(e) => {
+					setCheckSensitive(e.target.checked)
+				}}>センシティブな内容を含む</Checkbox>
 
 			</div>
 

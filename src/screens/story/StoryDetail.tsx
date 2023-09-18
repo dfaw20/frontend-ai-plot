@@ -25,8 +25,8 @@ function StoryDetail(props: StoryDetailProps) {
 			.then((res) => {
 				setStoryObj(res.data)
 			})
-			.catch((err) => {
-				console.log(err)
+			.catch(() => {
+				props.messageApi.warning('執筆に失敗しました')
 			})
 
 	}
@@ -41,6 +41,9 @@ function StoryDetail(props: StoryDetailProps) {
 						setStoryObj(res.data)
 					}
 				})
+				.catch(() => {
+					props.messageApi.warning('ストーリーが読み込めません')		
+				})
 		} else {
 			props.messageApi.warning('ストーリーが存在しません')
 		}
@@ -54,10 +57,10 @@ function StoryDetail(props: StoryDetailProps) {
 		<>
 			<div className="p-4">
 				{storyObj != null ? 
-				<SensitiveFilter sensitiveContent={storyObj?.Sensitive}>
-					{storyObj?.Text}
-				</SensitiveFilter>
-				: null}
+					<SensitiveFilter sensitiveContent={storyObj?.Sensitive}>
+						{storyObj?.Text}
+					</SensitiveFilter>
+					: null}
 			</div>
 		</>
 	)

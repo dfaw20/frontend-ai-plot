@@ -9,6 +9,9 @@ const reportWebVitals = (onPerfEntry?: ReportHandler) => {
 			getLCP(onPerfEntry)
 			getTTFB(onPerfEntry)
 		})
+			.catch(() => {
+				console.error("web vitals loading failed")
+			})
 	}
 }
 

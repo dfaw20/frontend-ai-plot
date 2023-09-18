@@ -31,8 +31,10 @@ module.exports = {
 		"@typescript-eslint",
 		"react",
 		"tailwindcss",
+		"promise",
 	],
 	"rules": {
+		"promise/catch-or-return": "error",
 		"indent": [
 			"warn",
 			"tab"

@@ -31,6 +31,9 @@ function UserDisplayNameEditForm(props: UserDisplayNameEditFormProps) {
 				setEditing(false)
 				props.messageApi.success("ユーザの名前を更新しました")
 			})
+			.catch(() => {
+				props.messageApi.success("ユーザの名前の更新に失敗しました")
+			})
 	}
 
 	useEffect(() => {

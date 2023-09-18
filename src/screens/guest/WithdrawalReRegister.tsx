@@ -38,10 +38,14 @@ function WithdrawalReRegister(
 				WithdrawalEmail: withdrawEmail
 			}
 	 
-			axios.post(apiWithdrawalReRegister(), input).then(() => {
-				navigate(pathLogin())
-				props.messageApi.info("メールアドレス " + withdrawEmail + " のアカウントで再登録が可能になりました")
-			})
+			axios.post(apiWithdrawalReRegister(), input)
+				.then(() => {
+					navigate(pathLogin())
+					props.messageApi.info("メールアドレス " + withdrawEmail + " のアカウントで再登録が可能になりました")
+				})
+				.catch(() => {
+					props.messageApi.warning("アカウントの再登録手続きに失敗しました")
+				})
 		}
 	}
 

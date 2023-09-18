@@ -31,6 +31,9 @@ function PlayerCharacters(props: PlayerCharactersProps) {
 					console.log(res.data)
 					setCharacters(res.data)
 				})
+				.catch(() => {
+					props.messageApi.warning("キャラクターが読み込めません")
+				})
 		} else {
 			props.messageApi.warning('ユーザが存在しません')
 		}
@@ -43,6 +46,9 @@ function PlayerCharacters(props: PlayerCharactersProps) {
 					console.log(res.data)
 					setPlayerObject(res.data)
 					loadUserCharacters(res.data)
+				})
+				.catch(() => {
+					props.messageApi.warning("ユーザが読み込めません")
 				})
 		} else {
 			props.messageApi.warning('ユーザが存在しません')

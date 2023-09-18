@@ -44,31 +44,31 @@ function CharacterDetailItem(
 				 title={<>{props.character.Name}</>}
 				/>
 				<SensitiveFilter sensitiveContent={props.character.Sensitive}>
-				<div className='mt-4'>
-					<DescriptionRow
-						icon={AiTwotoneSound}
-						label="名前"
-						text={props.character.Nickname}
-					/>
-					<DescriptionRow
-						icon={AiTwotoneSound}
-						label="服装"
-						text={props.character.Outfit}
-					/>
-					<DescriptionRow
-						icon={AiTwotoneSound}
-						label="性格"
-						text={props.character.Personality}
-					/>
-					<DescriptionRow
-						icon={AiTwotoneSound}
-						label="口調"
-						text={props.character.Tone}
-					/>
-				</div>
-				<div className='mt-4'>
-					{props.character.Profile}
-				</div>
+					<div className='mt-4'>
+						<DescriptionRow
+							icon={AiTwotoneSound}
+							label="名前"
+							text={props.character.Nickname}
+						/>
+						<DescriptionRow
+							icon={AiTwotoneSound}
+							label="服装"
+							text={props.character.Outfit}
+						/>
+						<DescriptionRow
+							icon={AiTwotoneSound}
+							label="性格"
+							text={props.character.Personality}
+						/>
+						<DescriptionRow
+							icon={AiTwotoneSound}
+							label="口調"
+							text={props.character.Tone}
+						/>
+					</div>
+					<div className='mt-4'>
+						{props.character.Profile}
+					</div>
 				</SensitiveFilter>
 			</Card>
 		</div>

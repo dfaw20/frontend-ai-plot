@@ -30,6 +30,9 @@ function PlayerPlots(props: PlayerPlotsProps) {
 					console.log(res.data)
 					setPlots(res.data)
 				})
+				.catch(() => {
+					props.messageApi.warning("シナリオが読み込めません")
+				})
 		} else {
 			props.messageApi.warning('ユーザが存在しません')
 		}
@@ -42,6 +45,9 @@ function PlayerPlots(props: PlayerPlotsProps) {
 					console.log(res.data)
 					setPlayerObject(res.data)
 					loadUserPlots(res.data)
+				})
+				.catch(() => {
+					props.messageApi.warning("ユーザが読み込めません")
 				})
 		} else {
 			props.messageApi.warning('ユーザが存在しません')
