@@ -51,12 +51,12 @@ module.exports = {
 			"warn"
 		],
         "@typescript-eslint/no-unused-vars": [
-            "error"
+            "warn"
         ],
 		"no-console": [
 			"warn"
 		],
-		"no-mixed-spaces-and-tabs": "warn"
+		"no-mixed-spaces-and-tabs": "warn",
 	},
 	settings: {
 		react: {

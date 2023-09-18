@@ -6,7 +6,7 @@ import { Player } from "../../entities/Player"
 import { MessageInstance } from "antd/es/message/interface"
 import { Button, Divider } from "antd"
 import { Link } from "react-router-dom"
-import { pathPlayer, pathPlotNew } from "../../routes/EndPoints"
+import { pathPlayer, pathPlotDetail, pathPlotNew } from "../../routes/EndPoints"
 import { useUser } from "../../contexts/UserContext"
 import { Plot } from "../../entities/Plot"
 import PlotListItem from "../../components/PlotListItem"
@@ -82,7 +82,9 @@ function PlayerPlots(props: PlayerPlotsProps) {
 					<>
 						{plots?.map((plot) => {
 							return <div key={plot.ID}>
+								<Link to={pathPlotDetail(plot.ID.toString())}>
 								<PlotListItem plot={plot} editable={editable()} revealPrompt={true} actionArea={null} />
+								</Link>
 							</div>
 						})}
 					</>

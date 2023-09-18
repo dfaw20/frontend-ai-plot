@@ -12,7 +12,7 @@ interface SensitiveFilterProps {
 
 function SensitiveFilter(props: SensitiveFilterProps) {
 	const {user} = useUser()
-	const [showFilter, setShowFilter] = useState(true)
+	const [showFilter, setShowFilter] = useState<boolean|null>(null)
 
 	useEffect(() => {
 		if (user == null) {
@@ -29,6 +29,8 @@ function SensitiveFilter(props: SensitiveFilterProps) {
 	function onclickToShow() {
 		setShowFilter(false)
 	}
+
+	if (showFilter == null) return <></>
 
 	if (showFilter && props.sensitiveContent) {
 		return <div className='mx-2 my-2 px-12 py-8 border-2 border-sensitiveContent'>

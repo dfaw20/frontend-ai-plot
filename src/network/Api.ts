@@ -57,6 +57,10 @@ export function apiPlotCreate(): string {
 	return BACKEND_HOST + "/plots/create"
 }
 
+export function apiGetPlot(plotID: string): string {
+	return BACKEND_HOST + "/plots/" + plotID
+}
+
 export function apiTaleCreate(): string {
 	return BACKEND_HOST + "/tale/create"
 }
