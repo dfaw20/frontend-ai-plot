@@ -8,6 +8,7 @@ import SensitiveFilter from "../../components/SensitiveFilter"
 import PlotListItem from "../../components/PlotListItem"
 import PlotDetailItem from "../../components/PlotDetailItem"
 import { useUser } from "../../contexts/UserContext"
+import { plotCommon } from "../../texts/words"
 
 interface PlotDetailProps {
 	messageApi: MessageInstance
@@ -26,10 +27,10 @@ function PlotDetail(props: PlotDetailProps) {
 					setPlot(res.data)
 				})
 				.catch(() => {
-					props.messageApi.warning('シナリオが読み込めません')		
+					props.messageApi.warning(plotCommon + 'が読み込めません')		
 				})
 		} else {
-			props.messageApi.warning('シナリオが存在しません')
+			props.messageApi.warning(plotCommon + 'が存在しません')
 		}
 	}
 

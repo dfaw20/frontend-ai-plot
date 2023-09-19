@@ -11,6 +11,7 @@ import { pathPlayerPlots } from "../../routes/EndPoints"
 import { useUser } from "../../contexts/UserContext"
 import { Plot } from "../../entities/Plot"
 import { useNavigate } from "react-router-dom"
+import { plotCommon } from "../../texts/words"
 
 interface NewProtProps {
 	messageApi: MessageInstance
@@ -57,7 +58,7 @@ function NewPlot(props:NewProtProps) {
 						<GiPencil className='text-black' size={24}/>
 					</div>
 					<div className="text-gray-700">
-						物語のシナリオを書く
+						{plotCommon}を作る
 					</div>
 				</div>
 			</div>
@@ -102,10 +103,10 @@ function NewPlot(props:NewProtProps) {
 
 			<Divider/>
 
-			<Button onClick={onClickCreate}>シナリオを公開</Button>
+			<Button onClick={onClickCreate}>{plotCommon}を公開</Button>
 
 			<ul className="text-xs text-gray-400 mt-2">
-				<li>シナリオは他のユーザに公開されます</li>
+				<li>{plotCommon}は他のユーザに公開されます</li>
 			</ul>
 		</div>
 	)

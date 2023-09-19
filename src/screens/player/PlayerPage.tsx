@@ -9,6 +9,7 @@ import { Button } from "antd"
 import { LuUserSquare } from 'react-icons/lu'
 import { useUser } from "../../contexts/UserContext"
 import UserDisplayNameEditForm from "../../components/UserDisplayNameEditForm"
+import { plotCommon } from "../../texts/words"
 
 interface PlayerPageProps {
 	messageApi: MessageInstance
@@ -64,7 +65,7 @@ function PlayerPage(props: PlayerPageProps) {
 							<div className="mt-8">
 								<Link to={pathPlayerPlots(player.ID.toString())}>
 									<Button>
-										シナリオ
+										{plotCommon}
 									</Button>
 								</Link>
 							</div>

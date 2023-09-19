@@ -11,6 +11,7 @@ import { useUser } from "../contexts/UserContext"
 import { pathTop, pathPlayerCharacters, pathPlayerStories, pathPlayerPlots } from "../routes/EndPoints"
 import { IconType } from "react-icons"
 import { MessageInstance } from "antd/es/message/interface"
+import { plotCommon } from "../texts/words"
 
 interface TabItemProps {
 	activeTab: string|null,
@@ -114,7 +115,7 @@ const BottomTabs = (props: BottomTabsProps) => {
 					activeTab={activeTab}
 					handleTabClick={handleTabClick}
 					tabCode={'tabD'}
-					text={'シナリオ'}
+					text={plotCommon}
 					icon={GiCastle}
 				/>
 			</div>

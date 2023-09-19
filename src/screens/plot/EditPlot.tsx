@@ -11,6 +11,7 @@ import { pathPlayerPlots } from "../../routes/EndPoints"
 import { useUser } from "../../contexts/UserContext"
 import { Plot } from "../../entities/Plot"
 import { useNavigate, useParams } from "react-router-dom"
+import { plotCommon } from "../../texts/words"
 
 interface NewEditProps {
 	messageApi: MessageInstance
@@ -35,10 +36,10 @@ function EditPlot(props:NewEditProps) {
 					setCheckSensitive(res.data.Sensitive)
 				})
 				.catch(() => {
-					props.messageApi.warning('シナリオが読み込めません')		
+					props.messageApi.warning(plotCommon + 'が読み込めません')		
 				})
 		} else {
-			props.messageApi.warning('シナリオが存在しません')
+			props.messageApi.warning(plotCommon + 'が存在しません')
 		}
 	}
 
@@ -81,7 +82,7 @@ function EditPlot(props:NewEditProps) {
 						<GiPencil className='text-black' size={24}/>
 					</div>
 					<div className="text-gray-700">
-						物語のシナリオを書く
+						{plotCommon}を編集する
 					</div>
 				</div>
 			</div>
@@ -126,10 +127,10 @@ function EditPlot(props:NewEditProps) {
 
 			<Divider/>
 
-			<Button onClick={onClickUpdate}>シナリオを更新</Button>
+			<Button onClick={onClickUpdate}>{plotCommon}を更新</Button>
 
 			<ul className="text-xs text-gray-400 mt-2">
-				<li>シナリオは他のユーザに公開されます</li>
+				<li>{plotCommon}は他のユーザに公開されます</li>
 			</ul>
 		</div>
 	)

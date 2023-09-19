@@ -11,6 +11,7 @@ import { useUser } from "../../contexts/UserContext"
 import { Plot } from "../../entities/Plot"
 import PlotListItem from "../../components/PlotListItem"
 import { BsPlus } from "react-icons/bs"
+import { plotCommon } from "../../texts/words"
 
 interface PlayerPlotsProps {
 	messageApi: MessageInstance
@@ -31,7 +32,7 @@ function PlayerPlots(props: PlayerPlotsProps) {
 					setPlots(res.data)
 				})
 				.catch(() => {
-					props.messageApi.warning("シナリオが読み込めません")
+					props.messageApi.warning(plotCommon + "が読み込めません")
 				})
 		} else {
 			props.messageApi.warning('ユーザが存在しません')
@@ -77,7 +78,7 @@ function PlayerPlots(props: PlayerPlotsProps) {
 		<Divider className="mt-0 mb-2"/>
 		{
 			plots == null || plots.length === 0 ? 
-				(<div className="mx-4">作成済みのシナリオはありません</div>)
+				(<div className="mx-4">作成済みの{plotCommon}はありません</div>)
 				: (
 					<>
 						{plots?.map((plot) => {
@@ -103,7 +104,7 @@ function PlayerPlots(props: PlayerPlotsProps) {
 								<BsPlus/>
 							</div>
 							<div>
-							新しいシナリオを作る
+							新しい{plotCommon}を作る
 							</div>
 						</div>
 					</Button>

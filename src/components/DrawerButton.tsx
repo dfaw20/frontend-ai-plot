@@ -4,6 +4,7 @@ import { Divider, Drawer } from "antd"
 import { useUser } from "../contexts/UserContext"
 import { pathPlayer, pathPlayerPlots, pathSetting } from "../routes/EndPoints"
 import { useNavigate } from "react-router-dom"
+import { plotCommon } from "../texts/words"
 
 function DrawerButton() {
 
@@ -46,7 +47,7 @@ function DrawerButton() {
 				<Divider/>
 				{user != null ? 
 					<div>
-						<button onClick={() => handleMenuClick(pathPlayerPlots(user.ID.toString()))}>シナリオ管理</button>
+						<button onClick={() => handleMenuClick(pathPlayerPlots(user.ID.toString()))}>{plotCommon}管理</button>
 					</div>
 				 : null}
 			</Drawer>

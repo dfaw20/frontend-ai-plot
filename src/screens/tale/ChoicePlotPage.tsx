@@ -13,6 +13,7 @@ import { Story } from "../../entities/Story"
 import { TaleInput } from "../../types/post_data/Tale"
 import { makeBearerToken } from "../../repository/Storage"
 import { pathStoryDetail } from "../../routes/EndPoints"
+import { plotCommon } from "../../texts/words"
 
 interface ChoicePlotPageProps {
 	messageApi: MessageInstance
@@ -60,7 +61,7 @@ function ChoicePlotPage(props: ChoicePlotPageProps) {
 				setPlots(res.data)
 			})
 			.catch(() => {
-				props.messageApi.warning('シナリオが読み込めません')		
+				props.messageApi.warning(plotCommon + 'が読み込めません')		
 			})
 	}
 

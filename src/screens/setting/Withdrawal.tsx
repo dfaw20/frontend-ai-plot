@@ -5,6 +5,7 @@ import axios from "axios"
 import { apiUserWithdrawal } from "../../network/Api"
 import { MessageInstance } from "antd/es/message/interface"
 import { makeBearerToken } from "../../repository/Storage"
+import { plotCommon } from "../../texts/words"
 
 interface WithdrawalProps {
 	messageApi: MessageInstance
@@ -93,7 +94,7 @@ function Withdrawal(props: WithdrawalProps) {
 				
 					<div className="flex items-center justify-center mt-4">
 						<p>
-						退会すると作成したキャラクターとシナリオは削除されます。<br/>
+						退会すると作成したキャラクターと{plotCommon}は削除されます。<br/>
 						念のため、登録メールアドレスを手入力してください。<br/>
 						入力すると退会ボタンが有効になります。
 						</p>
