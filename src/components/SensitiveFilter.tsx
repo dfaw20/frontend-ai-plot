@@ -18,19 +18,22 @@ function SensitiveFilter(props: SensitiveFilterProps) {
 	const {open, isOpen, throughItems} = useSensitive()
 
 	function judgeShowFilter(): boolean {
+		// センシティブなコンテンツでない場合は表示
+		if (!props.sensitiveItem.target.Sensitive) {
+			return false
+		}
+
+		// 表示するボタンを押したアイテムなら常に表示
 		if (isOpen(props.sensitiveItem)) {
 			return false
 		}
 
-		if (user == null) {
-			return true
-		} else {
-			if (user.SensitiveDirect) {
-				return false
-			} else {
-				return true
-			}
-		}
+		// ユーザがログイン済みかつセンシティブ直接表示設定にした場合は表示
+		if (user != null && user.SensitiveDirect) {
+			return false
+		} 
+
+		return true
 	}
 
 	useEffect(() => {

@@ -57,7 +57,7 @@ function StoryDetail(props: StoryDetailProps) {
 		<>
 			<div className="p-4">
 				{storyObj != null ? 
-					<SensitiveFilter sensitiveContent={storyObj?.Sensitive}>
+					<SensitiveFilter sensitiveItem={{target: storyObj, targetCode: 'Story'}}>
 						{storyObj?.Text}
 					</SensitiveFilter>
 					: null}

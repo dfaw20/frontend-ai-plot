@@ -43,7 +43,7 @@ function CharacterDetailItem(
 				<Meta
 				 title={<>{props.character.Name}</>}
 				/>
-				<SensitiveFilter sensitiveContent={props.character.Sensitive}>
+				<SensitiveFilter sensitiveItem={{target: props.character, targetCode: 'Character'}}>
 					<div className='mt-4'>
 						<DescriptionRow
 							icon={AiTwotoneSound}

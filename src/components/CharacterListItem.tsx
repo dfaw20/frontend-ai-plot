@@ -53,7 +53,7 @@ function CharacterListItem(props: CharacterListItemProps) {
 				</div>
 			</div>
 
-			<SensitiveFilter sensitiveContent={props.character.Sensitive}>
+			<SensitiveFilter sensitiveItem={{target: props.character, targetCode: 'Character'}}>
 
 				<div>
 					<CharacterAttribute>{props.character.Outfit}</CharacterAttribute>

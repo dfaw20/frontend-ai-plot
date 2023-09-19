@@ -27,7 +27,7 @@ function PlotDetailItem(props: PlotDetailItemProps) {
 				</div>
 			</div>
 
-			<SensitiveFilter sensitiveContent={props.plot.Sensitive}>
+			<SensitiveFilter sensitiveItem={{target: props.plot, targetCode: 'Plot'}}>
 				<div>
 					{props.plot.Sensitive ? 
 						<Tag>センシティブ</Tag> : null
