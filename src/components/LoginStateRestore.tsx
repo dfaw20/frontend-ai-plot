@@ -19,10 +19,9 @@ function LoginStateRestore() {
 					})
 					.catch((err) => {
 						console.log(err)
-						logout()
 					})
 			} else {
-				logout()	
+				logout()
 			}
 		}
 
