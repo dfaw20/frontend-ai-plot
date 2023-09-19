@@ -28,6 +28,7 @@ import WithdrawalReRegister from "./screens/guest/WithdrawalReRegister"
 import PlotDetail from "./screens/plot/PlotDetail"
 import EditPlot from "./screens/plot/EditPlot"
 import HealthCheck from "./components/HealthCheck"
+import { SensitiveProvider } from "./contexts/SensitiveContext"
 
 function App() {
 
@@ -38,71 +39,71 @@ function App() {
 			<BrowserRouter>
 				<UserProvider>
 					<TabProvider>
-						<HealthCheck/>
-						<LoginStateRestore/>
-						<Header/>
-						<Routes>
-							<Route path={pathTop()} element={<Top/>}/>
+						<SensitiveProvider>
+							<HealthCheck/>
+							<LoginStateRestore/>
+							<Header/>
+							<Routes>
+								<Route path={pathTop()} element={<Top/>}/>
 
-							<Route path={pathLogin()}
-								element={<RouteGuardGuestOnly component={<Login messageApi={messageApi}/>} redirect={pathTop()} />}
-							/>
+								<Route path={pathLogin()}
+									element={<RouteGuardGuestOnly component={<Login messageApi={messageApi}/>} redirect={pathTop()} />}
+								/>
 
-							<Route path={pathAuthGoogleRedirect()}
-								element={<RouteGuardGuestOnly component={<LoginGoogleRedirect messageApi={messageApi} />} redirect={pathTop()} />}
-							/>
+								<Route path={pathAuthGoogleRedirect()}
+									element={<RouteGuardGuestOnly component={<LoginGoogleRedirect messageApi={messageApi} />} redirect={pathTop()} />}
+								/>
 
-							<Route path={pathSetting()} element={<RouteGuardAuth component={<Setting messageApi={messageApi}/>}
-								redirect={pathTop()} />}
-							/>
-							<Route path={pathWithdrawal()} element={<RouteGuardAuth component={<Withdrawal messageApi={messageApi}/>}
-								redirect={pathTop()} />}
-							/>
-
-							<Route path={pathWithdrawalReRegister()} element={<WithdrawalReRegister messageApi={messageApi} />} />
-
-							<Route path={pathPlayer(":playerId")} element={<PlayerPage messageApi={messageApi} />}/>
-
-							<Route path={pathPlayerCharacters(":playerId")} element={<PlayerCharacters messageApi={messageApi} />}/>
-							<Route path={pathPlayerPlots(":playerId")} element={<PlayerPlots messageApi={messageApi} />}/>
-
-							<Route path={pathCharacters()} element={<CharacterList/>}/>
-
-							<Route path={pathCharacterNew()} element={<RouteGuardAuth component={<NewCharacter/>}
-								redirect={pathTop()} />}
-							/>
-
-							<Route path={pathPlotNew()} element={<RouteGuardAuth component={<NewPlot messageApi={messageApi}/>}
-								redirect={pathTop()} />}
-							/>
-
-							<Route path={pathPlotEdit(":plotId")} element={<RouteGuardAuth component={<EditPlot messageApi={messageApi}/>}
-								redirect={pathTop()} />}
-							/>
-
-							<Route path={pathPlotDetail(":plotId")} element={<RouteGuardAuth component={<PlotDetail messageApi={messageApi}/>}
-								redirect={pathTop()} />}
-							/>
-
-							
-
-							<Route path={pathTaleHeroChoice(":characterId")} element={<RouteGuardAuth component={<ChoiceHeroPage messageApi={messageApi}/>}
-								redirect={pathTop()} />}
-							/>
-							<Route path={pathTalePlotChoice(":targetCharacterId", ":heroCharacterId")} 
-								element={<RouteGuardAuth component={<ChoicePlotPage messageApi={messageApi}/>}
+								<Route path={pathSetting()} element={<RouteGuardAuth component={<Setting messageApi={messageApi}/>}
 									redirect={pathTop()} />}
-							/>
-
-							<Route path={pathStoryDetail(":storyId")} 
-								element={<RouteGuardAuth component={<StoryDetail messageApi={messageApi}/>}
+								/>
+								<Route path={pathWithdrawal()} element={<RouteGuardAuth component={<Withdrawal messageApi={messageApi}/>}
 									redirect={pathTop()} />}
-							/>
+								/>
 
-							<Route path="*" element={<NotFoundPage/>}/>
-						</Routes>
-						<BottomTab messageApi={messageApi}/>
-						{contextHolder}
+								<Route path={pathWithdrawalReRegister()} element={<WithdrawalReRegister messageApi={messageApi} />} />
+
+								<Route path={pathPlayer(":playerId")} element={<PlayerPage messageApi={messageApi} />}/>
+
+								<Route path={pathPlayerCharacters(":playerId")} element={<PlayerCharacters messageApi={messageApi} />}/>
+								<Route path={pathPlayerPlots(":playerId")} element={<PlayerPlots messageApi={messageApi} />}/>
+
+								<Route path={pathCharacters()} element={<CharacterList/>}/>
+
+								<Route path={pathCharacterNew()} element={<RouteGuardAuth component={<NewCharacter/>}
+									redirect={pathTop()} />}
+								/>
+
+								<Route path={pathPlotNew()} element={<RouteGuardAuth component={<NewPlot messageApi={messageApi}/>}
+									redirect={pathTop()} />}
+								/>
+
+								<Route path={pathPlotEdit(":plotId")} element={<RouteGuardAuth component={<EditPlot messageApi={messageApi}/>}
+									redirect={pathTop()} />}
+								/>
+
+								<Route path={pathPlotDetail(":plotId")} element={<RouteGuardAuth component={<PlotDetail messageApi={messageApi}/>}
+									redirect={pathTop()} />}
+								/>	
+
+								<Route path={pathTaleHeroChoice(":characterId")} element={<RouteGuardAuth component={<ChoiceHeroPage messageApi={messageApi}/>}
+									redirect={pathTop()} />}
+								/>
+								<Route path={pathTalePlotChoice(":targetCharacterId", ":heroCharacterId")} 
+									element={<RouteGuardAuth component={<ChoicePlotPage messageApi={messageApi}/>}
+										redirect={pathTop()} />}
+								/>
+
+								<Route path={pathStoryDetail(":storyId")} 
+									element={<RouteGuardAuth component={<StoryDetail messageApi={messageApi}/>}
+										redirect={pathTop()} />}
+								/>
+
+								<Route path="*" element={<NotFoundPage/>}/>
+							</Routes>
+							<BottomTab messageApi={messageApi}/>
+							{contextHolder}
+						</SensitiveProvider>
 					</TabProvider>
 				</UserProvider>
 			</BrowserRouter>

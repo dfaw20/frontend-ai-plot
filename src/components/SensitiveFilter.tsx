@@ -4,35 +4,46 @@ import { useUser } from '../contexts/UserContext'
 import { Button } from 'antd'
 import { Link } from 'react-router-dom'
 import { pathSetting } from '../routes/EndPoints'
+import { useSensitive } from '../contexts/SensitiveContext'
+import { SensitiveItem } from '../entities/Sensitive'
 
 interface SensitiveFilterProps {
 	children: ReactNode
-	sensitiveContent: boolean
+	sensitiveItem: SensitiveItem
 }
 
 function SensitiveFilter(props: SensitiveFilterProps) {
 	const {user} = useUser()
 	const [showFilter, setShowFilter] = useState<boolean|null>(null)
+	const {open, isOpen, throughItems} = useSensitive()
 
-	useEffect(() => {
+	function judgeShowFilter(): boolean {
+		if (isOpen(props.sensitiveItem)) {
+			return false
+		}
+
 		if (user == null) {
-			setShowFilter(true)
+			return true
 		} else {
 			if (user.SensitiveDirect) {
-				setShowFilter(false)
+				return false
 			} else {
-				setShowFilter(true)
+				return true
 			}
 		}
-	}, [user])
+	}
+
+	useEffect(() => {
+		setShowFilter(judgeShowFilter())
+	}, [user, throughItems])
 
 	function onclickToShow() {
-		setShowFilter(false)
+		open(props.sensitiveItem)
 	}
 
 	if (showFilter == null) return <></>
 
-	if (showFilter && props.sensitiveContent) {
+	if (showFilter) {
 		return <div className='mx-2 my-2 px-12 py-8 border-2 border-sensitiveContent'>
 			<div className='flex justify-center mb-8'>
 				センシティブなコンテンツを含んでいます
