@@ -7,7 +7,7 @@ import { Button, Checkbox, Divider, Input } from "antd"
 import { GiPencil } from "react-icons/gi"
 import TextArea from "antd/es/input/TextArea"
 import { MessageInstance } from "antd/es/message/interface"
-import { pathPlayerPlots } from "../../routes/EndPoints"
+import { pathPlayerPlots, pathPlotDetail } from "../../routes/EndPoints"
 import { useUser } from "../../contexts/UserContext"
 import { Plot } from "../../entities/Plot"
 import { useNavigate } from "react-router-dom"
@@ -37,7 +37,7 @@ function NewPlot(props:NewProtProps) {
 				.post<Plot>(apiPlotCreate(), input, {headers: {	Authorization: bearer,}})
 				.then(res => {
 					if (user != null) {
-						navigate(pathPlayerPlots(user.ID.toString()))
+						navigate(pathPlotDetail(res.data.ID.toString()))
 						props.messageApi.success(res.data.Title + "を作成しました")
 					} else {
 						props.messageApi.error("ユーザが存在しません")

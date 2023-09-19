@@ -66,7 +66,7 @@ export function apiGetPlot(plotID: string): string {
 }
 
 export function apiPlotUpdate(plotID: string): string {
-	return BACKEND_HOST + "/plots/" + plotID + "/edit"
+	return BACKEND_HOST + "/plots/" + plotID + "/update"
 }
 
 export function apiPlotDelete(plotID: string): string {
