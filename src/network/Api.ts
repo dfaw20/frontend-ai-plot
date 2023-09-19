@@ -61,6 +61,14 @@ export function apiGetPlot(plotID: string): string {
 	return BACKEND_HOST + "/plots/" + plotID
 }
 
+export function apiPlotUpdate(plotID: string): string {
+	return BACKEND_HOST + "/plots/" + plotID + "/edit"
+}
+
+export function apiPlotDelete(plotID: string): string {
+	return BACKEND_HOST + "/plots/" + plotID + "/delete"
+}
+
 export function apiTaleCreate(): string {
 	return BACKEND_HOST + "/tale/create"
 }

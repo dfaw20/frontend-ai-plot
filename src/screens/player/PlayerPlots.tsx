@@ -82,9 +82,9 @@ function PlayerPlots(props: PlayerPlotsProps) {
 					<>
 						{plots?.map((plot) => {
 							return <div key={plot.ID}>
-								<Link to={pathPlotDetail(plot.ID.toString())}>
+								
 								<PlotListItem plot={plot} editable={editable()} revealPrompt={true} actionArea={null} />
-								</Link>
+								
 							</div>
 						})}
 					</>

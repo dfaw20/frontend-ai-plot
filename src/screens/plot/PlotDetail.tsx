@@ -6,6 +6,8 @@ import { apiGetPlot } from "../../network/Api"
 import axios from "axios"
 import SensitiveFilter from "../../components/SensitiveFilter"
 import PlotListItem from "../../components/PlotListItem"
+import PlotDetailItem from "../../components/PlotDetailItem"
+import { useUser } from "../../contexts/UserContext"
 
 interface PlotDetailProps {
 	messageApi: MessageInstance
@@ -13,6 +15,7 @@ interface PlotDetailProps {
 
 function PlotDetail(props: PlotDetailProps) {
 
+	const {user} = useUser()
 	const [plot, setPlot] = useState<Plot>()
 	const {plotId} = useParams()
 
@@ -30,6 +33,14 @@ function PlotDetail(props: PlotDetailProps) {
 		}
 	}
 
+	function editable(): boolean {
+		if (user != null && plot != null) {
+			return user.ID === plot.UserID
+		}
+
+		return false
+	}
+
 	useEffect(() => {
 		loadPlot()
 	}, [])
@@ -38,14 +49,11 @@ function PlotDetail(props: PlotDetailProps) {
 		<>
 			<div className="p-4">
 				{plot != null ? 
-					<SensitiveFilter sensitiveContent={plot.Sensitive}>
-						<PlotListItem
+						<PlotDetailItem
 						 plot={plot}
-						 editable={true}
-						 revealPrompt={true}
-						 actionArea={<></>}
+						 editable={editable()}
 						 />
-					</SensitiveFilter>
+				
 					: null}
 			</div>
 		</>
