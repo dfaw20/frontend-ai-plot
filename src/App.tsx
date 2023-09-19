@@ -27,6 +27,7 @@ import Withdrawal from "./screens/setting/Withdrawal"
 import WithdrawalReRegister from "./screens/guest/WithdrawalReRegister"
 import PlotDetail from "./screens/plot/PlotDetail"
 import EditPlot from "./screens/plot/EditPlot"
+import HealthCheck from "./components/HealthCheck"
 
 function App() {
 
@@ -37,6 +38,7 @@ function App() {
 			<BrowserRouter>
 				<UserProvider>
 					<TabProvider>
+						<HealthCheck/>
 						<LoginStateRestore/>
 						<Header/>
 						<Routes>

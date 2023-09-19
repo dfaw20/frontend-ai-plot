@@ -1,6 +1,10 @@
 const BACKEND_HOST = "http://localhost:8080"
 export {BACKEND_HOST}
 
+export function apiHealthCheck(): string {
+	return BACKEND_HOST + "/health_check"
+}
+
 export function apiGetGoogle(): string {
 	return BACKEND_HOST + "/auth/google"
 }
