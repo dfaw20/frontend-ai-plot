@@ -106,7 +106,7 @@ function ChoicePlotPage(props: ChoicePlotPageProps) {
 					</div>
 
 					<div className="mx-4 my-8 text-lg flex items-center justify-center">
-					物語を選ぶ
+					{plotCommon}を選ぶ
 					</div>
 					<Divider className="my-2"/>
 					{plots?.map((plot) => {
