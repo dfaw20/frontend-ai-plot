@@ -1,12 +1,13 @@
 import { Gender } from "../../entities/Character"
 
 export interface CharacterInput {
-	name: string
-	nickname: string
-	gender: Gender
-	outfit: string
-	hairstyle: string
-	personality: string
-	tone: string
-	profile: string
+	Name: string
+	Nickname: string
+	Gender: Gender
+	Hair: string
+	Outfit: string
+	Personality: string
+	Tone: string
+	Profile: string
+	Sensitive: boolean
 }

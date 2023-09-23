@@ -19,6 +19,16 @@ export function pathAuthGoogleRedirect(): string {
 export function pathSetting(): string {
 	return "/setting"
 }
+export function pathWithdrawal(): string {
+	return "/setting/withdrawal"
+}
+
+/**
+ * Re Register
+ */
+export function pathWithdrawalReRegister(): string {
+	return "/withdrawal/re_register"
+}
 
 /**
  * Player
@@ -62,25 +72,16 @@ export function pathCharacterDelete(characterID: string): string {
 	return "/characters/" + characterID + "/delete"
 }
 
-/**
- * 主人公を選ぶ画面
- * @param characterID キャラID
- * @returns パス
- */
-export function pathCharacterHeroChoice(
+export function pathTaleHeroChoice(
 	characterID: string): string {
-	return "/characters/" + characterID + "/heros"
+	return "/tale/characters/" + characterID + "/heros"
 }
-/**
- * プロットを選ぶ画面
- * @param characterID キャラID
- * @returns パス
- */
-export function pathCharacterPlotChoice(
+
+export function pathTalePlotChoice(
 	characterID: string,
 	heroCharacterID: string,
 ): string {
-	return "/characters/" + characterID +
+	return "/tale/characters/" + characterID +
 	 "/heros/" + heroCharacterID + "/plots"
 }
 

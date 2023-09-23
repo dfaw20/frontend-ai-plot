@@ -8,7 +8,7 @@ function RoundedButton() {
 			onClick={() => {
 				// ボタンがクリックされたときの処理を追加
 			}}
-			>
+		>
 			<div className="flex items-center justify-center h-full">
 				編集
 			</div>

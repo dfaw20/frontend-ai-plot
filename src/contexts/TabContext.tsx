@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, ReactNode } from 'react'
 
-export type TabCode = 'tabA' | 'tabB' | 'tabC';
+export type TabCode = 'tabA' | 'tabB' | 'tabC' | 'tabD'
 
 interface TabContextType {
 	activeTab: TabCode|null;

@@ -9,6 +9,7 @@ type Props = {
 
 export const RouteGuardAuth: React.FC<Props> = (props) => {
 	const {loginStatus} = useUser()
+	const location = useLocation()
   
 	switch (loginStatus) {
 	case 'INIT':
@@ -16,6 +17,6 @@ export const RouteGuardAuth: React.FC<Props> = (props) => {
 	case 'LOGIN':
 		return <>{props.component}</>
 	case 'LOGOUT':
-		return <Navigate to={props.redirect} state={{from:useLocation()}} replace={false} />
+		return <Navigate to={props.redirect} state={{from:location}} replace={false} />
 	}
 }

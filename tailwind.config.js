@@ -10,20 +10,23 @@ module.exports = {
     extend: {
       // カスタムカラーを定義
       colors: {
-        secondary: {
-          light: '#3490dc', // ライトバージョン
-          DEFAULT: '#2779bd', // デフォルトバージョン
-          dark: '#1e528e', // ダークバージョン
-        },
         primary: {
-          light: '#ffcc80', // ライトバージョン
-          DEFAULT: '#ff9800', // デフォルトバージョン
-          dark: '#f57c00', // ダークバージョン
+          DEFAULT: '#F674A7',
+        },
+        secondary: {
+          DEFAULT: '#4097DD',
         },
         accent: {
-          light: '#f66d9b', // ライトバージョン
-          DEFAULT: '#ec407a', // デフォルトバージョン
-          dark: '#d81b60', // ダークバージョン
+          DEFAULT: '#FCDEE6',
+        },
+        palePink: {
+          DEFAULT: '#FDDFEA',
+        },
+        paleThinPink: {
+          DEFAULT: '#FFF0F5',
+        },
+        sensitiveContent: {
+          DEFAULT: '#F674A7',
         },
       },
     },

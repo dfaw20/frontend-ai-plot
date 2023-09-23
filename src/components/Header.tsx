@@ -11,13 +11,13 @@ function Header() {
 	const location = useLocation()
 	
 	return (
-		<div className="flex justify-between">
-			<div className="p-4">
+		<div className="flex justify-between ">
+			<div className="px-4 pb-2 pt-4">
 				<Link to={pathTop()}>
-					<h1 className="tracking-widest">PLot</h1>
+					<h1 className="tracking-widest">monogatarAi</h1>
 				</Link>
 			</div>
-			<div className="p-4">
+			<div className="px-4 pb-2 pt-4">
 				{loginStatus === 'INIT' ?
 					<><Spin /></>
 				 : null }
@@ -25,9 +25,9 @@ function Header() {
 					<DrawerButton/>
 				 : null }
 				{loginStatus === 'LOGOUT' && !location.pathname.includes(pathLogin()) ?
-				<Link to={pathLogin()}>
-					<Button>ログイン</Button>
-				</Link> : null }
+					<Link to={pathLogin()}>
+						<Button>ログイン</Button>
+					</Link> : null }
 			</div>
 		</div>
 	)
