@@ -45,11 +45,6 @@ function DrawerButton() {
 					<button onClick={() => handleMenuClick(pathSetting())}>設定</button>
 				</div>
 				<Divider/>
-				{user != null ? 
-					<div>
-						<button onClick={() => handleMenuClick(pathPlayerPlots(user.ID.toString()))}>{plotCommon}管理</button>
-					</div>
-				 : null}
 			</Drawer>
 		</>
 	)

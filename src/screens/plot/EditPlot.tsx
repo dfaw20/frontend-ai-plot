@@ -12,6 +12,7 @@ import { useUser } from "../../contexts/UserContext"
 import { Plot } from "../../entities/Plot"
 import { useNavigate, useParams } from "react-router-dom"
 import { plotCommon } from "../../texts/words"
+import {HiMenu} from 'react-icons/hi'
 
 interface NewEditProps {
 	messageApi: MessageInstance
@@ -127,7 +128,7 @@ function EditPlot(props:NewEditProps) {
 
 			<Divider/>
 
-			<Button onClick={onClickUpdate}>{plotCommon}を更新</Button>
+			<Button onClick={onClickUpdate}>{plotCommon}を保存</Button>
 
 			<ul className="text-xs text-gray-400 mt-2">
 				<li>{plotCommon}は他のユーザに公開されます</li>

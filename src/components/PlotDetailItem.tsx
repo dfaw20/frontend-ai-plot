@@ -3,6 +3,10 @@ import { Button, Tag } from 'antd'
 import { Plot } from '../entities/Plot'
 import { AiTwotoneEdit } from 'react-icons/ai'
 import SensitiveFilter from './SensitiveFilter'
+import { Link } from 'react-router-dom'
+import { pathPlotEdit } from '../routes/EndPoints'
+import {FiMenu} from 'react-icons/fi'
+import MenuItem from 'antd/es/menu/MenuItem'
 
 interface PlotDetailItemProps {
 	plot: Plot
@@ -20,9 +24,8 @@ function PlotDetailItem(props: PlotDetailItemProps) {
 				</div>
 				<div className="flex items-center justify-center">
 					{props.editable ?
-						<>
-						<Button><AiTwotoneEdit/></Button>
-						</>
+						<Button><FiMenu/></Button>
+					
 						: null}
 				</div>
 			</div>
@@ -43,6 +46,16 @@ function PlotDetailItem(props: PlotDetailItemProps) {
 					</div>
 				</div>			
 			</SensitiveFilter>
+
+			{props.editable ?
+						<div className='mt-8'>
+						<Link to={pathPlotEdit(props.plot.ID.toString())}>
+						<Button>
+							<AiTwotoneEdit/>
+						</Button>
+						</Link>
+						</div>
+						: null}
 
 		</div>
 	)
