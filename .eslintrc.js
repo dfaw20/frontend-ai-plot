@@ -6,7 +6,8 @@ module.exports = {
 	"extends": [
 		"eslint:recommended",
 		"plugin:@typescript-eslint/recommended",
-		"plugin:react/recommended"
+		"plugin:react/recommended",
+		"plugin:react-hooks/recommended",
 	],
 	"overrides": [
 		{
@@ -28,9 +29,12 @@ module.exports = {
 	},
 	"plugins": [
 		"@typescript-eslint",
-		"react"
+		"react",
+		"tailwindcss",
+		"promise",
 	],
 	"rules": {
+		"promise/catch-or-return": "error",
 		"indent": [
 			"warn",
 			"tab"
@@ -47,12 +51,12 @@ module.exports = {
 			"warn"
 		],
         "@typescript-eslint/no-unused-vars": [
-            "error"
+            "warn"
         ],
 		"no-console": [
 			"warn"
 		],
-		"no-mixed-spaces-and-tabs": "warn"
+		"no-mixed-spaces-and-tabs": "warn",
 	},
 	settings: {
 		react: {

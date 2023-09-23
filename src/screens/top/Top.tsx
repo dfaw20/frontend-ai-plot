@@ -4,7 +4,7 @@ function Top() {
 
 	return (
 		<>
-		<div>Top</div>
+			<div>Top</div>
 		</>
 	)
 }

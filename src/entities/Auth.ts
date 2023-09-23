@@ -8,8 +8,10 @@ export interface Token {
 }
 
 export interface TokenResult {
-    token: Token
-    user: User
+    IsWithdrawal: boolean
+    WithdrawalEmail: string | null
+    Token: Token | null
+    User: User | null
 }
 
 export interface GoogleOAuthUrlObject {

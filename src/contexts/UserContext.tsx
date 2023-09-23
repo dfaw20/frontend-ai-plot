@@ -5,9 +5,10 @@ import { User } from '../entities/User'
 export type LoginStatus = 'INIT' | 'LOGIN' | 'LOGOUT';
 
 interface UserContextType {
-	user: User | null;
+	user: User | null | undefined;
 	loginStatus: LoginStatus;
 	login: (user: User) => void;
+	reloadUser: (user: User) => void;
 	logout: () => void;
 }
 
@@ -27,12 +28,21 @@ interface UserProviderProps {
 
 export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
 	const [loginStatus, setLoginStatus] = useState<LoginStatus>('INIT')
-	const [user, setUser] = useState<User | null>(null)
+	const [user, setUser] = useState<User | null | undefined>(null)
 
 	// ログイン状態を設定する関数
 	const login = (user: User) => {
 		setUser(user)
 		setLoginStatus('LOGIN')
+	}
+
+	// ユーザを更新する関数
+	const reloadUser = (user: User) => {
+		if (loginStatus === 'LOGIN') {
+			setUser(user)
+		} else {
+			throw new Error("ログインしていない場合ユーザを更新できません")
+		}
 	}
 
 	// ログアウト状態を設定する関数
@@ -43,7 +53,7 @@ export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
 	}
 
 	return (
-		<UserContext.Provider value={{ user, loginStatus, login, logout }}>
+		<UserContext.Provider value={{ user, loginStatus, login, reloadUser, logout }}>
 			{children}
 		</UserContext.Provider>
 	)

@@ -19,6 +19,16 @@ export function pathAuthGoogleRedirect(): string {
 export function pathSetting(): string {
 	return "/setting"
 }
+export function pathWithdrawal(): string {
+	return "/setting/withdrawal"
+}
+
+/**
+ * Re Register
+ */
+export function pathWithdrawalReRegister(): string {
+	return "/withdrawal/re_register"
+}
 
 /**
  * Player
@@ -61,8 +71,18 @@ export function pathCharacterEdit(characterID: string): string {
 export function pathCharacterDelete(characterID: string): string {
 	return "/characters/" + characterID + "/delete"
 }
-export function pathCharacterPlotsChoice(characterID: string): string {
-	return "/characters/" + characterID + "/plots_choice"
+
+export function pathTaleHeroChoice(
+	characterID: string): string {
+	return "/tale/characters/" + characterID + "/heros"
+}
+
+export function pathTalePlotChoice(
+	characterID: string,
+	heroCharacterID: string,
+): string {
+	return "/tale/characters/" + characterID +
+	 "/heros/" + heroCharacterID + "/plots"
 }
 
 /**

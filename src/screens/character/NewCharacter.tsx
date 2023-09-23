@@ -4,18 +4,19 @@ import { apiCharacterCreate } from "../../network/Api"
 import { CharacterInput } from "../../types/post_data/Character"
 import { makeBearerToken } from "../../repository/Storage"
 
-function CreateCharacter() {
+function NewCharacter() {
 
 	function onClickCreate() {
 		const input: CharacterInput = {
-			name: "",
-			nickname: "",
-			gender: "female",
-			outfit: "",
-			hairstyle: "",
-			personality: "",
-			tone: "",
-			profile: ``
+			Name: "",
+			Nickname: "",
+			Hair: "",
+			Gender: "female",
+			Outfit: "",
+			Personality: "",
+			Tone: "",
+			Profile: ``,
+			Sensitive: false,
 		}
 
 		const bearer = makeBearerToken()
@@ -24,6 +25,9 @@ function CreateCharacter() {
 				.post(apiCharacterCreate(), input, {headers: {	Authorization: bearer,}})
 				.then(res => {
 					console.log(res)
+				})
+				.catch(() => {
+					console.log("err")
 				})
 		}
 	}
@@ -37,4 +41,4 @@ function CreateCharacter() {
 	)
 }
 
-export default CreateCharacter
+export default NewCharacter

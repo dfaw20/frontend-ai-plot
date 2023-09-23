@@ -7,6 +7,7 @@ import { LOCAL_STORAGE_ACCESS_TOKEN_KEY } from "../../repository/Storage"
 import { TokenResult } from "../../entities/Auth"
 import { MessageInstance } from "antd/es/message/interface"
 import { Spin } from "antd"
+import { pathWithdrawalReRegister } from "../../routes/EndPoints"
 
 interface LoginGoogleRedirectProps {
 	messageApi: MessageInstance
@@ -29,16 +30,24 @@ function LoginGoogleRedirect(props: LoginGoogleRedirectProps) {
 			axios
 				.get<TokenResult>(apiGoogleRedirectUrl() + `?code=${code}`)
 				.then((res) => {
-					console.log("Success Get Token:", res.data)
+					console.log("Get TokenResult:", res.data)
 
-					if (res.data.token) {
-						login(res.data.user)
-						localStorage.setItem(
-							LOCAL_STORAGE_ACCESS_TOKEN_KEY,
-							res.data.token.access_token
-						)
-						props.messageApi.success('ログインしました')
-						navigate('/')
+					if (res.data.IsWithdrawal) {
+						navigate(pathWithdrawalReRegister(), {
+							state: {
+								"withdrawal_email": res.data.WithdrawalEmail
+							}
+						})
+					} else {
+						if (res.data.Token != null && res.data.User != null) {
+							login(res.data.User)
+							localStorage.setItem(
+								LOCAL_STORAGE_ACCESS_TOKEN_KEY,
+								res.data.Token.access_token
+							)
+							props.messageApi.success('ログインしました')
+							navigate('/')
+						}
 					}
 				})
 				.catch((error) => {
